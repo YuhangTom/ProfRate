@@ -1,8 +1,11 @@
 #' General Info Finder
 #'
 #' Extracts General Information for an Instructor
+#'
 #' @param url A Character value indicating the url of the webpage corresponding to an instructor
 #' @export
+#' @import rvest
+#' @import stringr
 #' @return A list with two elements
 #' \itemize{
 #'   \item name - Complete Name of the Instructor
@@ -12,8 +15,6 @@
 #' general_info(url = 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448')
 #' general_info(url = 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1801125')
 
-library("rvest")
-library("stringr")
 general_info <- function(url){
 
   # Reading the Webpage
