@@ -3,11 +3,9 @@
 #' Summarize all rating information for an instructor
 #'
 #' @param url A Character value indicating the url of the webpage corresponding to an instructor
-#' @param ifplot Show the bar plots for overall quality and difficulty for an instructor
 #' @export
 #' @import rvest
 #' @import stringr
-#' @import ggplot2
 #' @return A list with eight elements
 #' \itemize{
 #'   \item n_ratings - Number of ratings
@@ -22,12 +20,10 @@
 #' @examples
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
 #' ratings_summ(url = url)
-#' ratings_summ(url = url, ifplot = TRUE)
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1801125'
 #' ratings_summ(url = url)
-#' ratings_summ(url = url, ifplot = TRUE)
 
-ratings_summ <- function(url, ifplot = FALSE){
+ratings_summ <- function(url){
   ### Read the webpage
   webpage <- read_html(url)
 
@@ -39,22 +35,6 @@ ratings_summ <- function(url, ifplot = FALSE){
 
   ### Number of ratings
   n_ratings <-length(quality)
-
-  ### Plot when ifplot = TRUE
-  ### Factor, make a data frame and plot
-  if (ifplot){
-    quality_plot <- quality %>% factor(., levels = seq(0, 5, 0.5)) %>% data.frame(Quality = .) %>%
-      ggplot(aes(x = Quality)) +
-      geom_bar()
-      scale_x_discrete(drop=FALSE)
-    print(quality_plot)
-
-    difficulty_plot <- difficulty %>% factor(., levels = seq(0, 5, 0.5)) %>% data.frame(Difficulty = .) %>%
-      ggplot(aes(x = Difficulty)) +
-      geom_bar() +
-      scale_x_discrete(drop=FALSE)
-    print(difficulty_plot) %>% suppressWarnings()
-  }
 
   ### Follows the order of questions on questionnaire version 3/17/2022.
   ### Take again; for credit; textbook; attendance; grade
