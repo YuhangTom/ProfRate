@@ -16,6 +16,9 @@
 #' general_info(url = 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1801125')
 
 general_info <- function(url){
+  # Check for input
+  stopifnot("Input url must be a character value!" = is.character(url))
+  stopifnot("Input url must from Rate My Professors!" = str_detect(url, "https://www.ratemyprofessors.com/.+"))
 
   # Reading the Webpage
   webpage = read_html(url)
