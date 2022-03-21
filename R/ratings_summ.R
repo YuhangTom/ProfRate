@@ -24,6 +24,10 @@
 #' ratings_summ(url = url)
 
 ratings_summ <- function(url){
+  ### Check for input
+  stopifnot("Input url must be a character value!" = is.character(url))
+  stopifnot("Input url must from Rate My Professors!" = str_detect(url, "https://www.ratemyprofessors.com/.+"))
+
   ### Read the webpage
   webpage <- read_html(url)
 
