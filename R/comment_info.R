@@ -6,7 +6,7 @@
 #' @import rvest
 #' @import stringr
 #' @import tidytext
-#' @import tidyverse
+#' @import dplyr
 #' @import wordcloud2
 
 #' @export
