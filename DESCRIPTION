@@ -13,4 +13,7 @@ RoxygenNote: 7.1.2
 Imports: 
     ggplot2,
     rvest,
-    stringr
+    stringr,
+    tidytext,
+    tidyverse,
+    wordcloud2
