@@ -39,9 +39,9 @@ comment_info <- function(url, y = numeric(0), word = "positive"){
   up <- reation[seq(1, length(reation), 2)]
   down <- reation[seq(2, length(reation), 2)]
 
-  # Combine all information extracted into a dataframe comment_df:
+  # Combine all information extracted into a data frame comment_df:
   # Course name, year of the comment, content of the comment,
-  # Number of thumbsup, number of thumbsdown
+  # Number of thumbs-up, number of thumbs-down
   # Filter according to user's request
   comment_df <- data.frame(
     course = course,
@@ -91,18 +91,4 @@ comment_info <- function(url, y = numeric(0), word = "positive"){
     tags %>%
       wordcloud2()
   }
-
-  # # Tokenize and sort bigrams by frequency
-  # comment_bigrams <- comment_df %>%
-  #   unnest_tokens(bigram, comments, token = "ngrams", n = 2, drop = FALSE) %>%
-  #   separate(bigram, c("word1", "word2"), sep = " ") %>%
-  #   filter(!word1 %in% stop_words$word,
-  #          !word2 %in% stop_words$word) %>%
-  #   count(word1, word2, sort = TRUE) %>%
-  #   unite(bigram, word1, word2, sep = " ")
-  #
-  # # Wordcloud of bigrams
-  # comment_bigrams%>%
-  #   wordcloud(main="Title")
-
 }

@@ -1,24 +1,14 @@
-library(rvest)
-library(dplyr)
-library(stringr)
-
-
-
-
-SchoolID_to_Name <- function(url){
-
-  SchoolName = read_html(url) %>%
-    html_nodes('.result-name') %>%
-    html_text() %>%
-    str_remove_all('[\r,\n,\t]') %>%
-    str_trim(side='both')
-
-    return(SchoolName)
-}
-
-
-
-
+#'Finds the university ID using its name
+#'
+#' @param school_name A Character value indicating the name of the university
+#' @import rvest
+#' @import stringr
+#' @import dplyr
+#' @export
+#' @return A url corresponding to the university of interest
+#' @examples
+#' get_all_schools('Iowa State University')
+#' get_all_schools('University of Iowa')
 
 get_all_schools <- function(school_name){
 
@@ -32,15 +22,17 @@ get_all_schools <- function(school_name){
   School_list = c()
 
   for (i in 1:length(Links)){
-    School_list = append(School_list, SchoolID_to_Name(Links[i]))
+
+    Name = read_html(Links[i]) %>%
+      html_nodes('.result-name') %>%
+      html_text() %>%
+      str_remove_all('[\r,\n,\t]') %>%
+      str_trim(side='both')
+
+    School_list = append(School_list, Name)
   }
-  print(School_list)
-  num = readline(prompt="Which one do you want: ")
-  return(Links[as.integer(num)])
+
+  return(Links[1])
 }
 
 
-
-
-# Example
-get_all_schools('Iowa State')

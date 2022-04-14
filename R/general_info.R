@@ -6,6 +6,7 @@
 #' @export
 #' @import rvest
 #' @import stringr
+#' @import dplyr
 #' @return A list with two elements
 #' \itemize{
 #'   \item name - Complete Name of the Instructor
@@ -29,10 +30,17 @@ general_info <- function(url){
   name = str_trim(name, side = 'both')
 
   # Extract Place
-  place = html_text(html_nodes(webpage, '.iLYGwn'))
-  place = str_trim(place, side = 'both')
+  department = webpage %>%
+    html_nodes('b') %>%
+    html_text() %>%
+    str_trim(side = 'both')
+
+  university <- webpage %>%
+    html_nodes('.iLYGwn a') %>%
+    html_text() %>%
+    str_trim(side = 'both')
 
   # Output
-  output = list(name=name, place=place)
+  output = list(name=name, department=department, university=university)
   return(output)
 }
