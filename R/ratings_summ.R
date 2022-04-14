@@ -66,8 +66,15 @@ ratings_summ <- function(url){
   ### Get the grades
   grade_key <- grade %>% str_sub(start = 8L)
 
-  ### Ouptut
-  list(n_ratings = n_ratings, percent_take_again = percent_take_again, difficulty = summary(difficulty), take_again_logic = take_again_logic, for_credit_logic = for_credit_logic, textbooks_logic = textbooks_logic, attendance_logic = attendance_logic, grade_key = grade_key)
+  ### Output
+  list(n_ratings = n_ratings,
+       percent_take_again = percent_take_again,
+       difficulty = difficulty,
+       take_again_logic = take_again_logic,
+       for_credit_logic = for_credit_logic,
+       textbooks_logic = textbooks_logic,
+       attendance_logic = attendance_logic,
+       grade_key = grade_key)
 }
 
 
