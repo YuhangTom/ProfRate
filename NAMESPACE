@@ -2,6 +2,8 @@
 
 export(comment_info)
 export(general_info)
+export(get_all_schools)
+export(plot_attendance)
 export(ratings_summ)
 import(dplyr)
 import(rvest)
