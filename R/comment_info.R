@@ -11,7 +11,8 @@
 
 #' @export
 #' @examples
-#' comment_info(url = 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448', y = 2011, word = "negative")
+#' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
+#' comment_info(url = url, y = 2011, word = "negative")
 
 comment_info <- function(url, y = numeric(0), word = "positive"){
 
