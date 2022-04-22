@@ -23,7 +23,7 @@
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1801125'
 #' ratings_summ(url = url)
 
-ratings_summ <- function(url){
+ratings_summ <- function(url) {
   ### Check for input
   stopifnot("Input url must be a character value!" = is.character(url))
   stopifnot("Input url must from Rate My Professors!" = str_detect(url, "https://www.ratemyprofessors.com/.+"))
@@ -32,17 +32,25 @@ ratings_summ <- function(url){
   webpage <- read_html(url)
 
   ### Get quality
-  quality <- webpage %>% html_nodes(".kMhQxZ") %>% html_text() %>% as.numeric
+  quality <- webpage %>%
+    html_nodes(".kMhQxZ") %>%
+    html_text() %>%
+    as.numeric()
 
   ### Get difficulty
-  difficulty <- webpage %>% html_nodes(".cDKJcc") %>% html_text() %>% as.numeric
+  difficulty <- webpage %>%
+    html_nodes(".cDKJcc") %>%
+    html_text() %>%
+    as.numeric()
 
   ### Number of ratings
-  n_ratings <-length(quality)
+  n_ratings <- length(quality)
 
   ### Follows the order of questions on questionnaire version 3/17/2022.
   ### Take again; for credit; textbook; attendance; grade
-  detail_ratings <- webpage %>% html_nodes(".fPJDHT") %>% html_text()
+  detail_ratings <- webpage %>%
+    html_nodes(".fPJDHT") %>%
+    html_text()
 
   take_again <- detail_ratings %>% str_extract("Would Take Again: Yes|Would Take Again: No")
   ### Transform as logical vector
@@ -67,15 +75,17 @@ ratings_summ <- function(url){
   grade_key <- grade %>% str_sub(start = 8L)
 
   ### Output
-  list(n_ratings = n_ratings,
-       percent_take_again = percent_take_again,
-       quality = quality,
-       difficulty = difficulty,
-       take_again_logic = take_again_logic,
-       for_credit_logic = for_credit_logic,
-       textbooks_logic = textbooks_logic,
-       attendance_logic = attendance_logic,
-       grade_key = grade_key)
+  list(
+    n_ratings = n_ratings,
+    percent_take_again = percent_take_again,
+    quality = quality,
+    difficulty = difficulty,
+    take_again_logic = take_again_logic,
+    for_credit_logic = for_credit_logic,
+    textbooks_logic = textbooks_logic,
+    attendance_logic = attendance_logic,
+    grade_key = grade_key
+  )
 }
 
 
