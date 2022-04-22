@@ -15,7 +15,8 @@ plot_attendance <- function(url) {
 
   # Plot
   atte <- factor(A$attendance_logic, labels = c("Not Mandatory", "Mandatory")) %>% table()
-
+  Attendance <- NULL
+  Counts <- NULL
   tibble(
     Attendance = 1:2 %>% factor(labels = c("Not Mandatory", "Mandatory")),
     Counts = c(atte)

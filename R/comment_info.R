@@ -63,6 +63,7 @@ comment_info <- function(url, y = numeric(0), word = "positive"){
     inner_join(get_sentiments("bing"))
 
   # Filter and sort positive words by frequency
+  sentiment <- NULL
   positive_words <- comment_sentiment %>%
     filter(sentiment == "positive") %>%
     group_by(word) %>%

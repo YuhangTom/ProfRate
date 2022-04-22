@@ -16,6 +16,9 @@ plot_QualDiff <- function(url) {
   # Table summary
   qual <- factor(A$quality, levels = c(1, 2, 3, 4, 5)) %>% table()
   diff <- factor(A$difficulty, levels = c(1, 2, 3, 4, 5)) %>% table()
+  Ratings <- NULL
+  Counts <- NULL
+  Group <- NULL
   dat.plot <- tibble(
     Ratings = rep(1:5, 2) %>% factor(),
     Counts = c(qual, diff),
