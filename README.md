@@ -68,3 +68,8 @@ The function `comment_info` provides wordcloud plots for positive words, negativ
 comment_info(url = url, y = 2018, word = "Negative")
 ```
 
+The function `runExample` .......................
+```r
+EXAMPLE FOR runExample
+```
+
