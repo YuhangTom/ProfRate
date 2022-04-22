@@ -4,10 +4,14 @@ export(comment_info)
 export(comment_info2)
 export(general_info)
 export(get_all_schools)
+export(plot_QualDiff)
 export(plot_attendance)
-export(plot_difficulty)
 export(ratings_summ)
 import(dplyr)
+<<<<<<< HEAD
+=======
+import(ggplot2)
+>>>>>>> 869830935fc369cc4f741a46887dec91cb6186ae
 import(polite)
 import(rvest)
 import(stringr)

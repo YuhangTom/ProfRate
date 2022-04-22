@@ -1,9 +1,10 @@
-#'Finds the university ID using its name
+#' Finds the university url using its name
 #'
 #' @param school_name A Character value indicating the name of the university
 #' @import rvest
 #' @import stringr
 #' @import dplyr
+#' @import polite
 #' @export
 #' @return A url corresponding to the university of interest
 #' @examples
@@ -15,7 +16,11 @@ get_all_schools <- function(school_name){
   school_name = str_replace_all(school_name, ' ', '+')
   url = paste0( "https://www.ratemyprofessors.com/search/schools?query=", school_name)
 
-  Links = read_html(url) %>%
+  # Read the webpage with polite
+  session <- bow(url)
+  webpage <- scrape(session)
+
+  Links = webpage %>%
     html_nodes('.bJboOI') %>%
     html_attr('href')
 

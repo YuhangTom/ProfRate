@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_attendance.R
 \name{plot_attendance}
 \alias{plot_attendance}
-\title{Plot a bar plot for the attendance type for an instructor}
+\title{Creates a bar plot for the attendance type for an instructor}
 \usage{
 plot_attendance(url)
 }
@@ -10,8 +10,9 @@ plot_attendance(url)
 \item{url}{A character value corresponding to the instructor of interest}
 }
 \description{
-Plot a bar plot for the attendance type for an instructor
+Creates a bar plot for the attendance type for an instructor
 }
 \examples{
-plot_attendance("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2353616")
+url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
+plot_attendance(url = url)
 }

@@ -17,9 +17,9 @@ A list with two elements
 }
 }
 \description{
-Extracts General Information for an Instructor
+Extracts general information for an instructor
 }
 \examples{
-general_info(url = 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448')
-general_info(url = 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1801125')
+url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
+general_info(url = url)
 }
