@@ -1,11 +1,12 @@
-#' Plot a bar plot for the attendance type for an instructor
+#' Creates a bar plot for the attendance type for an instructor
 #'
 #' @param url A character value corresponding to the instructor of interest
 #' @import dplyr
 #' @import ggplot2
 #' @export
 #' @examples
-#' plot_attendance("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2353616")
+#' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
+#' plot_attendance(url = url)
 
 plot_attendance <- function(url) {
 
