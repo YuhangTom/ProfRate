@@ -23,7 +23,7 @@ A list with eight elements
 }
 }
 \description{
-Summarize all rating information for an instructor
+Summarizes all rating information for an instructor
 }
 \examples{
 url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
