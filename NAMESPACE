@@ -8,10 +8,7 @@ export(plot_QualDiff)
 export(plot_attendance)
 export(ratings_summ)
 import(dplyr)
-<<<<<<< HEAD
-=======
 import(ggplot2)
->>>>>>> 869830935fc369cc4f741a46887dec91cb6186ae
 import(polite)
 import(rvest)
 import(stringr)

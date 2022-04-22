@@ -7,8 +7,8 @@
 #' @import stringr
 #' @import tidytext
 #' @import dplyr
+#' @import wordcloud2
 #' @import polite
-
 #' @export
 #' @examples
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
@@ -65,6 +65,7 @@ comment_info <- function(url, y = numeric(0), word = "Positive"){
 
   # Filter and sort positive words by frequency
   sentiment <- NULL
+
   positive <- comment_sentiment %>%
     filter(sentiment == "positive") %>%
     group_by(word) %>%
