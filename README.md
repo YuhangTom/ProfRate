@@ -4,7 +4,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of `ProfRate` is to retrieve and analyze the data on [Rate My Professor](https://www.ratemyprofessors.com/).
+The goal of `ProfRate` is to retrieve and visualize the data on [Rate My Professor](https://www.ratemyprofessors.com/).
 For details,
 please see [THE WEBSITE FOR THE PACKAGE]() for details.
 
