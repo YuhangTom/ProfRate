@@ -63,8 +63,13 @@ The function `plot_attendance` creates a bar plot for the attendance type for an
 plot_attendance(url)
 ```
 
-The function `comment_info` provides wordcloud plots for positive words, negative words in the comments, and tags for an instructor.
+The function `comment_info` provides wordcloud plots for positive words, negative words in the comments, and tags on the website.
 ```r
-comment_info(url = url, y = 2011, word = "negative")
+comment_info(url = url, y = 2018, word = "Negative")
+```
+
+The function `runExample` .......................
+```r
+EXAMPLE FOR runExample
 ```
 
