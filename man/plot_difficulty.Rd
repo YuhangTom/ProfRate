@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_difficulty.R
 \name{plot_difficulty}
 \alias{plot_difficulty}
-\title{Plot a bar plot for the difficulty of a course for an instructor}
+\title{Plot a bar plot for the quality and difficulty of a course for an instructor}
 \usage{
 plot_difficulty(url)
 }
@@ -10,8 +10,9 @@ plot_difficulty(url)
 \item{url}{A character value corresponding to the instructor of interest}
 }
 \description{
-Plot a bar plot for the difficulty of a course for an instructor
+Plot a bar plot for the quality and difficulty of a course for an instructor
 }
 \examples{
 plot_difficulty("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2353616")
+
 }
