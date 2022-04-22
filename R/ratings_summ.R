@@ -69,6 +69,7 @@ ratings_summ <- function(url){
   ### Output
   list(n_ratings = n_ratings,
        percent_take_again = percent_take_again,
+       quality = quality,
        difficulty = difficulty,
        take_again_logic = take_again_logic,
        for_credit_logic = for_credit_logic,
