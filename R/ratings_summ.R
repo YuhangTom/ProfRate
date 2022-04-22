@@ -1,6 +1,6 @@
 #' Ratings Summarizer
 #'
-#' Summarize all rating information for an instructor
+#' Summarizes all rating information for an instructor
 #'
 #' @param url A Character value indicating the url of the webpage corresponding to an instructor
 #' @export

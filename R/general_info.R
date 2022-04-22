@@ -1,6 +1,6 @@
 #' General Info Finder
 #'
-#' Extracts General Information for an Instructor
+#' Extracts general information for an instructor
 #'
 #' @param url A Character value indicating the url of the webpage corresponding to an instructor
 #' @export

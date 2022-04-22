@@ -1,4 +1,4 @@
-#' Provide wordcloud plots for positive words, negative words in the comments, and tags on the website.
+#' Provides wordcloud plots for positive words, negative words in the comments, and tags on the website.
 #'
 #' @param url A Character value indicating the url of the webpage corresponding to an instructor.
 #' @param y A number indicating the user are interested in comments after that year.
