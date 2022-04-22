@@ -9,13 +9,12 @@
 #' @import dplyr
 #' @import wordcloud2
 #' @import polite
-
 #' @export
 #' @examples
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
-#' comment_info(url = url, y = 2011, word = "negative")
+#' comment_info(url = url, y = 2018, word = "Negative")
 
-comment_info <- function(url, y = numeric(0), word = "positive"){
+comment_info <- function(url, y = numeric(0), word = "Positive"){
 
   # Check for input
   stopifnot("Input url must be a character value!" = is.character(url))
@@ -66,13 +65,14 @@ comment_info <- function(url, y = numeric(0), word = "positive"){
 
   # Filter and sort positive words by frequency
   sentiment <- NULL
-  positive_words <- comment_sentiment %>%
+
+  positive <- comment_sentiment %>%
     filter(sentiment == "positive") %>%
     group_by(word) %>%
     count(sort = TRUE)
 
   # Filter and sort negative words by frequency
-  negative_words <- comment_sentiment %>%
+  negative <- comment_sentiment %>%
     filter(sentiment == "negative") %>%
     group_by(word) %>%
     count(sort = TRUE)
@@ -82,17 +82,12 @@ comment_info <- function(url, y = numeric(0), word = "positive"){
     group_by(tags) %>%
     count(sort = TRUE)
 
-  if(word == "positive"){
-    # Wordcloud of positive words
-    positive_words %>%
-      wordcloud2()
-  }else if(word == "negative"){
-    # Wordcloud of negative words
-    negative_words %>%
-      wordcloud2()
+  if(word == "Positive"){
+    return(positive)
+  }else if(word == "Negative"){
+    return(negative)
   }else{
-    # Wordcloud of tags
-    tags %>%
-      wordcloud2()
+    return(tags)
+
   }
 }

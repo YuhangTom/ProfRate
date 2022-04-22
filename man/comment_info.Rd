@@ -4,7 +4,7 @@
 \alias{comment_info}
 \title{Provides wordcloud plots for positive words, negative words in the comments, and tags on the website.}
 \usage{
-comment_info(url, y = numeric(0), word = "positive")
+comment_info(url, y = numeric(0), word = "Positive")
 }
 \arguments{
 \item{url}{A Character value indicating the url of the webpage corresponding to an instructor.}
@@ -18,5 +18,6 @@ Provides wordcloud plots for positive words, negative words in the comments, and
 }
 \examples{
 url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
-comment_info(url = url, y = 2011, word = "negative")
+comment_info(url = url, y = 2018, word = "Negative")
+
 }
