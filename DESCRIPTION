@@ -17,4 +17,5 @@ Imports:
     stringr,
     tidytext,
     tidyverse,
-    wordcloud2
+    wordcloud2,
+    shiny

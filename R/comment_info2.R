@@ -7,14 +7,15 @@
 #' @import stringr
 #' @import tidytext
 #' @import dplyr
+#' @import wordcloud2
 #' @import polite
 
 #' @export
 #' @examples
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
-#' comment_info(url = url, y = 2018, word = "Negative")
+#' comment_info2(url = url, y = 2018, word = "negative")
 
-comment_info <- function(url, y = numeric(0), word = "Positive"){
+comment_info2 <- function(url, y = numeric(0), word = "Positive"){
 
   # Check for input
   stopifnot("Input url must be a character value!" = is.character(url))
@@ -83,7 +84,7 @@ comment_info <- function(url, y = numeric(0), word = "Positive"){
 
   if(word == "Positive"){
     return(positive)
-  }else if(word == "Negative"){
+    }else if(word == "Negative"){
     return(negative)
   }else{
     return(tags)
