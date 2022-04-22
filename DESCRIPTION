@@ -1,9 +1,7 @@
 Package: ProfRate
 Type: Package
-Title: What the Package Does (Title Case)
 Title: ProfRate: Retrieve and Visualize the Data on Rate My Professor
 Version: 0.1.0
-Author: Who wrote it
 Authors@R: c(person(given = "Danyang", family = "ZHANG", email = "zhangdy@iastate.edu", role = "aut"),
   person(given = "Mohammad", family = "Fili", email = "mfili@iastate.edu", role = c("aut", "cre")),
   person(given = "Yuhang", family = "LIN", email = "yhlin@iastate.edu", role = "aut", comment = c(ORCID = "0000-0002-3600-9889")))
@@ -20,11 +18,7 @@ Imports:
     stringr,
     tidytext,
     tidyverse,
-<<<<<<< HEAD
     wordcloud2,
     shiny
-=======
-    wordcloud2
 URL: https://github.com/m-fili/ProfRate
 BugReports: https://github.com/m-fili/ProfRate/issues
->>>>>>> 869830935fc369cc4f741a46887dec91cb6186ae

@@ -7,20 +7,12 @@
 #' @import stringr
 #' @import tidytext
 #' @import dplyr
-<<<<<<< HEAD
-=======
-#' @import wordcloud2
->>>>>>> 869830935fc369cc4f741a46887dec91cb6186ae
 #' @import polite
 
 #' @export
 #' @examples
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
-<<<<<<< HEAD
 #' comment_info(url = url, y = 2018, word = "Negative")
-=======
-#' comment_info(url = url, y = 2011, word = "negative")
->>>>>>> 869830935fc369cc4f741a46887dec91cb6186ae
 
 comment_info <- function(url, y = numeric(0), word = "Positive"){
 
@@ -73,11 +65,7 @@ comment_info <- function(url, y = numeric(0), word = "Positive"){
 
   # Filter and sort positive words by frequency
   sentiment <- NULL
-<<<<<<< HEAD
   positive <- comment_sentiment %>%
-=======
-  positive_words <- comment_sentiment %>%
->>>>>>> 869830935fc369cc4f741a46887dec91cb6186ae
     filter(sentiment == "positive") %>%
     group_by(word) %>%
     count(sort = TRUE)
