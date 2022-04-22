@@ -1,13 +1,14 @@
-#' Plot a bar plot for the quality and difficulty of a course for an instructor
+#' Creates a bar plot for the quality and difficulty of a course for an instructor
 #'
 #' @param url A character value corresponding to the instructor of interest
 #' @import dplyr
 #' @import ggplot2
 #' @export
 #' @examples
-#' plot_difficulty("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2353616")
+#' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
+#' plot_QualDiff(url = url)
 #'
-plot_difficulty <- function(url) {
+plot_QualDiff <- function(url) {
 
   # Get Ratings
   A <- ratings_summ(url)
@@ -25,5 +26,5 @@ plot_difficulty <- function(url) {
   dat.plot %>%
     ggplot(aes(x = Ratings, y = Counts, fill = Group)) +
     geom_bar(stat = "identity", position = position_dodge()) +
-    labs(title = "Barplot for course quality and difficulty ratings.")
+    labs(title = "Bar plot for course quality and difficulty ratings.")
 }
