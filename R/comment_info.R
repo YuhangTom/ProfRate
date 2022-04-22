@@ -1,4 +1,4 @@
-#' Provide wordcloud plots for positive words, negative words in the comments, and tags on the website.
+#' Provides wordcloud plots for positive words, negative words in the comments, and tags on the website.
 #'
 #' @param url A Character value indicating the url of the webpage corresponding to an instructor.
 #' @param y A number indicating the user are interested in comments after that year.
@@ -8,10 +8,12 @@
 #' @import tidytext
 #' @import dplyr
 #' @import wordcloud2
+#' @import polite
 
 #' @export
 #' @examples
-#' comment_info(url = 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448', y = 2011, word = "negative")
+#' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
+#' comment_info(url = url, y = 2011, word = "negative")
 
 comment_info <- function(url, y = numeric(0), word = "positive"){
 
@@ -19,8 +21,9 @@ comment_info <- function(url, y = numeric(0), word = "positive"){
   stopifnot("Input url must be a character value!" = is.character(url))
   stopifnot("Input url must from Rate My Professors!" = str_detect(url, "https://www.ratemyprofessors.com/.+"))
 
-  # Reading the Webpage
-  webpage <- read_html(url)
+  # Reading the Webpage with polite
+  session <- bow(url)
+  webpage <- scrape(session)
 
   # Extract course name
   course <- html_text(html_nodes(webpage, '.gxDIt'))
@@ -62,6 +65,7 @@ comment_info <- function(url, y = numeric(0), word = "positive"){
     inner_join(get_sentiments("bing"))
 
   # Filter and sort positive words by frequency
+  sentiment <- NULL
   positive_words <- comment_sentiment %>%
     filter(sentiment == "positive") %>%
     group_by(word) %>%

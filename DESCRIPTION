@@ -1,20 +1,23 @@
 Package: ProfRate
 Type: Package
-Title: What the Package Does (Title Case)
+Title: ProfRate: Retrieve and Visualize the Data on Rate My Professor
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: c(person(given = "Danyang", family = "ZHANG", email = "zhangdy@iastate.edu", role = "aut"),
+  person(given = "Mohammad", family = "Fili", email = "mfili@iastate.edu", role = c("aut", "cre")),
+  person(given = "Yuhang", family = "LIN", email = "yhlin@iastate.edu", role = "aut", comment = c(ORCID = "0000-0002-3600-9889")))
+Description: Retrieve and visualize the data on Rate My Professor based on the url given, either the url for the professor or for specific class.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.2
 Imports: 
     dplyr,
     ggplot2,
+    polite,
     rvest,
     stringr,
     tidytext,
     tidyverse,
     wordcloud2
+URL: https://github.com/m-fili/ProfRate
+BugReports: https://github.com/m-fili/ProfRate/issues

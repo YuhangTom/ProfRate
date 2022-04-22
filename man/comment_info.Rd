@@ -2,7 +2,7 @@
 % Please edit documentation in R/comment_info.R
 \name{comment_info}
 \alias{comment_info}
-\title{Provide wordcloud plots for positive words, negative words in the comments, and tags on the website.}
+\title{Provides wordcloud plots for positive words, negative words in the comments, and tags on the website.}
 \usage{
 comment_info(url, y = numeric(0), word = "positive")
 }
@@ -14,8 +14,9 @@ comment_info(url, y = numeric(0), word = "positive")
 \item{word}{A string indicating the user are interested in positive words, or negative words, or tags.}
 }
 \description{
-Provide wordcloud plots for positive words, negative words in the comments, and tags on the website.
+Provides wordcloud plots for positive words, negative words in the comments, and tags on the website.
 }
 \examples{
-comment_info(url = 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448', y = 2011, word = "negative")
+url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
+comment_info(url = url, y = 2011, word = "negative")
 }

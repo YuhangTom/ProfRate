@@ -2,7 +2,7 @@
 % Please edit documentation in R/generate_url_school.R
 \name{get_all_schools}
 \alias{get_all_schools}
-\title{Finds the university ID using its name}
+\title{Finds the university url using its name}
 \usage{
 get_all_schools(school_name)
 }
@@ -13,7 +13,7 @@ get_all_schools(school_name)
 A url corresponding to the university of interest
 }
 \description{
-Finds the university ID using its name
+Finds the university url using its name
 }
 \examples{
 get_all_schools('Iowa State University')
