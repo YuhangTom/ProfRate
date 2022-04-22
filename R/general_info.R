@@ -7,14 +7,15 @@
 #' @import rvest
 #' @import stringr
 #' @import dplyr
+#' @import polite
 #' @return A list with two elements
 #' \itemize{
 #'   \item name - Complete Name of the Instructor
 #'   \item place - The department and university of the instructor
 #' }
 #' @examples
-#' general_info(url = 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448')
-#' general_info(url = 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1801125')
+#' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
+#' general_info(url = url)
 
 general_info <- function(url){
   # Check for input
@@ -22,7 +23,8 @@ general_info <- function(url){
   stopifnot("Input url must from Rate My Professors!" = str_detect(url, "https://www.ratemyprofessors.com/.+"))
 
   # Reading the Webpage
-  webpage = read_html(url)
+  session <- bow(url)
+  webpage <- scrape(session)
 
   # Extract Name
   name = html_text(html_nodes(webpage, '.cfjPUG'))

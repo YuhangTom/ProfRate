@@ -8,6 +8,7 @@
 #' @import tidytext
 #' @import dplyr
 #' @import wordcloud2
+#' @import polite
 
 #' @export
 #' @examples
@@ -20,8 +21,9 @@ comment_info <- function(url, y = numeric(0), word = "positive"){
   stopifnot("Input url must be a character value!" = is.character(url))
   stopifnot("Input url must from Rate My Professors!" = str_detect(url, "https://www.ratemyprofessors.com/.+"))
 
-  # Reading the Webpage
-  webpage <- read_html(url)
+  # Reading the Webpage with polite
+  session <- bow(url)
+  webpage <- scrape(session)
 
   # Extract course name
   course <- html_text(html_nodes(webpage, '.gxDIt'))

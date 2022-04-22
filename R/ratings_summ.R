@@ -6,6 +6,7 @@
 #' @export
 #' @import rvest
 #' @import stringr
+#' @import polite
 #' @return A list with eight elements
 #' \itemize{
 #'   \item n_ratings - Number of ratings
@@ -20,16 +21,16 @@
 #' @examples
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
 #' ratings_summ(url = url)
-#' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1801125'
-#' ratings_summ(url = url)
 
 ratings_summ <- function(url) {
   ### Check for input
   stopifnot("Input url must be a character value!" = is.character(url))
   stopifnot("Input url must from Rate My Professors!" = str_detect(url, "https://www.ratemyprofessors.com/.+"))
 
-  ### Read the webpage
-  webpage <- read_html(url)
+  ### Read the webpage with polite
+  session <- bow(url)
+  webpage <- scrape(session)
+
 
   ### Get quality
   quality <- webpage %>%

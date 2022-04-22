@@ -43,7 +43,7 @@ url <- "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448"
 general_info(url)
 ```
 
-The function `generate_url_school` finds the university ID using its name.
+The function `generate_url_school` finds the university url using its name.
 ```r
 get_all_schools("Iowa State University")
 ```
