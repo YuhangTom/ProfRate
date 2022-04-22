@@ -19,5 +19,4 @@ Provides wordcloud plots for positive words, negative words in the comments, and
 \examples{
 url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
 comment_info(url = url, y = 2018, word = "Negative")
-
 }
