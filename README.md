@@ -6,7 +6,7 @@
 
 The goal of `ProfRate` is to retrieve and visualize the data on [Rate My Professor](https://www.ratemyprofessors.com/).
 For details,
-please see [THE WEBSITE FOR THE PACKAGE]() for details.
+please see [the website for ProfRate](https://m-fili.github.io/ProfRate/).
 
 ## Installation
 
@@ -68,8 +68,8 @@ The function `comment_info` provides wordcloud plots for positive words, negativ
 comment_info(url = url, y = 2018, word = "Negative")
 ```
 
-The function `runExample` .......................
+The function `runExample` runs shiny app.
 ```r
-EXAMPLE FOR runExample
+runExample()
 ```
 
