@@ -22,3 +22,5 @@ Imports:
     shiny
 URL: https://github.com/m-fili/ProfRate
 BugReports: https://github.com/m-fili/ProfRate/issues
+Suggests: 
+    covr
