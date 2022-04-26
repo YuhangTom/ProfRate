@@ -2,6 +2,7 @@
 # ProfRate
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/m-fili/ProfRate/workflows/R-CMD-check/badge.svg)](https://github.com/m-fili/ProfRate/actions)
 <!-- badges: end -->
 
 The goal of `ProfRate` is to retrieve and visualize the data on [Rate My Professor](https://www.ratemyprofessors.com/).
