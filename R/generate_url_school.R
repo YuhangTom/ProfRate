@@ -12,6 +12,8 @@
 #' get_all_schools('University of Iowa')
 
 get_all_schools <- function(school_name){
+  stopifnot("Input value must be a character!" = is.character(school_name))
+  stopifnot("Input character must be length 1!" = length(school_name) == 1)
 
   school_name = str_replace_all(school_name, ' ', '+')
   url = paste0( "https://www.ratemyprofessors.com/search/schools?query=", school_name)

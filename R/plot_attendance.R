@@ -22,7 +22,7 @@ plot_attendance <- function(url) {
     Counts = c(atte)
   ) %>%
     ggplot(aes(x = Attendance, y = Counts)) +
-    geom_bar(stat = "identity", , fill = "skyblue") +
+    geom_bar(stat = "identity", fill = "skyblue") +
     labs(title = "Barplot for attendance type for an instructor.")
 }
 
