@@ -14,7 +14,7 @@
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
 #' comment_info(url = url, y = 2018, word = "Negative")
 
-comment_info <- function(url, y = numeric(0), word = "Positive"){
+comment_info <- function(url, y = 2018, word = "Positive"){
 
   # Check for input
   stopifnot("Input url must be a character value!" = is.character(url))
