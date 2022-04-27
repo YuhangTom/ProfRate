@@ -1,4 +1,4 @@
-test_that("multiplication works", {
+test_that("plot_attendance output works", {
   ### Inputs are checked in ratings_summ()
 
   ### Check output
