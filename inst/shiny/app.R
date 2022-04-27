@@ -8,32 +8,55 @@
 #
 
 library(shiny)
+library(shinydashboard)
 library(tidyverse)
 library(wordcloud2)
 library(ProfRate)
 library(polite)
 
 
-ui <- fluidPage(
-  titlePanel("Professor's Key Words"),
-  sidebarLayout(
-    sidebarPanel(
-      textInput("Url", "Please input the url of your interested professor on https://www.ratemyprofessors.com/: ", "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448"),
-      selectInput("WordType", "What types of words you are interested in:", choices = c("Positive", "Negative", "Tags"), selected = "Positive"),
-      selectInput("Year", "Show results after year:", choices = c(2011:2021))
-    ),
-    mainPanel(
-      tags$ol(
-        tags$li("You can have an idea of what words are most frequently used in comments on ratemyprofessors.com."),
-        tags$li("You can choose to see: positive words from comments, negative words from comments, or tags from the website."),
-        tags$li("You can choose only to see comments after a specific year.")
-      ),
-      wordcloud2Output("WC")
-    )
+sidebar <- dashboardSidebar(
+  width = 300,
+  sidebarMenu(
+    menuItem("Home", tabName = "home", icon = icon("home")),
+    menuItem("Ratings", tabName = "ratings", icon = icon("stats", lib = "glyphicon"))
   )
 )
 
 
+
+body <- dashboardBody(
+  tabItems(
+    tabItem(
+      tabName = "home",
+      includeMarkdown("home.md")
+    ),
+
+    tabItem(
+      tabName = "ratings",
+      fluidRow(
+        box(title = "Url", width = 4,
+            textInput("Url", strong("Url for a Professor:"), "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448")
+        ),
+        box(title = "Word Type", width = 4,
+            selectInput("WordType", strong("What Types of Words you are Interested in:"), choices = c("Positive", "Negative", "Tags"), selected = "Positive")
+        ),
+        box(title = "Year", width = 4,
+            selectInput("Year", strong("Show Results after Year:"), choices = c(2011:2021))
+        )
+      ),
+      fluidRow(column = 12, align="center", wordcloud2Output("WC"))
+    )
+  )
+)
+
+ui <- dashboardPage(
+  ### To kind of match the color of RMP
+  skin = "black",
+  dashboardHeader(title = "Rate My Professor by 'ProfRate'", titleWidth = 350),
+  sidebar,
+  body
+)
 
 server <- function(input, output) {
   url <- reactive({
@@ -48,7 +71,7 @@ server <- function(input, output) {
 
   output$WC <- renderWordcloud2({
     comment_info(url(), year(), WT()) %>%
-      wordcloud2()
+      wordcloud2(backgroundColor = "transparent")
   })
 }
 
