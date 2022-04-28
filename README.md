@@ -1,5 +1,7 @@
+# pkgdown <img src="man/figures/logo.png" align="right" />
 
 # ProfRate
+
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/m-fili/ProfRate/workflows/R-CMD-check/badge.svg)](https://github.com/m-fili/ProfRate/actions)
