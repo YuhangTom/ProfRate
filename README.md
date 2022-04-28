@@ -1,6 +1,4 @@
-# pkgdown <img src="man/figures/logo.png" align="right" />
-
-# ProfRate
+# ProfRate <img src="man/figures/logo.png" align="right" />
 
 
 <!-- badges: start -->
