@@ -1,0 +1,24 @@
+---
+title: "More details about the ProfRate package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{More details about the ProfRate package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The vignette is created using `usethis::use_vignette`.
+
+In the README file you learned HOW to use the package,
+here is a bit more about the process of making package and the motivation behind the package.
+
+```{r setup}
+library(ProfRate)
+```
