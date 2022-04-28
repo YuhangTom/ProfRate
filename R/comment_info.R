@@ -1,8 +1,7 @@
-#' Provides wordcloud plots for positive words, negative words in the comments, and tags on the website.
+#' Extracts information on comments including course, year, comments, number of thumbsups and number of thumbsdowns.
 #'
-#' @param url A Character value indicating the url of the webpage corresponding to an instructor.
+#' @param u A Character value indicating the url of the webpage corresponding to an instructor.
 #' @param y A number indicating the user are interested in comments after that year.
-#' @param word A string indicating the user are interested in positive words, or negative words, or tags.
 #' @import rvest
 #' @import stringr
 #' @import tidytext
@@ -12,9 +11,9 @@
 #' @export
 #' @examples
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
-#' comment_info(url = url, y = 2018, word = "Negative")
+#' comment_info(u = url, y = 2018)
 
-comment_info <- function(url, y = 2018, word = "Positive"){
+comment_info <- function(u, y = 2018){
 
   # Check for input
   stopifnot("Input url must be a character value!" = is.character(url))
@@ -53,41 +52,6 @@ comment_info <- function(url, y = 2018, word = "Positive"){
     thumbsdown = down
   ) %>%
     filter(year >= y)
+  return(comment_df)
 
-  # Stop further analysis if fewer than 1 comment
-  stopifnot("Fewer than 1 comment!" = nrow(comment_df) > 1)
-
-  # Sentiment analysis of words in all comments, using sentiment lexicons "bing"
-  # from Bing Liu and collaborators
-  comment_sentiment <- comment_df %>%
-    unnest_tokens(word, comments, drop = FALSE) %>%
-    inner_join(get_sentiments("bing"))
-
-  # Filter and sort positive words by frequency
-  sentiment <- NULL
-
-  positive <- comment_sentiment %>%
-    filter(sentiment == "positive") %>%
-    group_by(word) %>%
-    count(sort = TRUE)
-
-  # Filter and sort negative words by frequency
-  negative <- comment_sentiment %>%
-    filter(sentiment == "negative") %>%
-    group_by(word) %>%
-    count(sort = TRUE)
-
-  # Extract Tags
-  tags <- data.frame(tags = html_text(html_nodes(webpage, '.hHOVKF'))) %>%
-    group_by(tags) %>%
-    count(sort = TRUE)
-
-  if(word == "Positive"){
-    return(positive)
-  }else if(word == "Negative"){
-    return(negative)
-  }else{
-    return(tags)
-
-  }
 }

@@ -2,21 +2,19 @@
 % Please edit documentation in R/comment_info.R
 \name{comment_info}
 \alias{comment_info}
-\title{Provides wordcloud plots for positive words, negative words in the comments, and tags on the website.}
+\title{Extracts information on comments including course, year, comments, number of thumbsups and number of thumbsdowns.}
 \usage{
-comment_info(url, y = 2018, word = "Positive")
+comment_info(u, y = 2018)
 }
 \arguments{
-\item{url}{A Character value indicating the url of the webpage corresponding to an instructor.}
+\item{u}{A Character value indicating the url of the webpage corresponding to an instructor.}
 
 \item{y}{A number indicating the user are interested in comments after that year.}
-
-\item{word}{A string indicating the user are interested in positive words, or negative words, or tags.}
 }
 \description{
-Provides wordcloud plots for positive words, negative words in the comments, and tags on the website.
+Extracts information on comments including course, year, comments, number of thumbsups and number of thumbsdowns.
 }
 \examples{
 url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
-comment_info(url = url, y = 2018, word = "Negative")
+comment_info(u = url, y = 2018)
 }

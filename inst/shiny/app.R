@@ -70,7 +70,7 @@ server <- function(input, output) {
   })
 
   output$WC <- renderWordcloud2({
-    comment_info(url(), year(), WT()) %>%
+    sentiment_info(url(), year(), WT()) %>%
       wordcloud2(backgroundColor = "transparent")
   })
 }
