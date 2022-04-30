@@ -41,12 +41,26 @@ library(ProfRate)
 ```
 
 
-The function `get_tid` gets teacher IDs and general information by name.
+The function `get_tid` gets teacher IDs and general information by name, department and university,
+it is case insensitive and support partial input.
 ```r
 name <- "Brakor"
+department <- "Biology"
+university <- "California Berkeley"
 get_tid(name = name)
+get_tid(name = name, department = department)
+get_tid(name = name, university = university)
+get_tid(name = name, department = department, university = university)
 ```
 
+The function `get_url` gets url by name, department and university,
+it is case insensitive and support partial input.
+```r
+get_url(name = name)
+get_url(name = name, department = department)
+get_url(name = name, university = university)
+get_url(name = name, department = department, university = university)
+```
 
 The function `general_info` extracts general information for an instructor.
 ```r
