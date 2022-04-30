@@ -36,6 +36,7 @@ get_tid <- function(name, department = NULL, university = NULL) {
   }
 
   ### Make url
+  name <- str_replace(name, " ", "+")
   url <- str_c("https://www.ratemyprofessors.com/search/teachers?query=", name)
 
   ### Read the webpage with polite
