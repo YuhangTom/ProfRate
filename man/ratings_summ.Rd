@@ -7,7 +7,7 @@
 ratings_summ(url)
 }
 \arguments{
-\item{url}{A Character value indicating the url of the webpage corresponding to an instructor}
+\item{url}{A character value indicating the url of the webpage corresponding to an instructor}
 }
 \value{
 A list with eight elements
