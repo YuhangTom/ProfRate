@@ -9,38 +9,20 @@ test_that("comment_info inputs work", {
 
 test_that("comment_info outputs work", {
   url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
-  out <- comment_info(url = url, word = "Positive")
+  out <- comment_info(url = url)
 
   expect_type(out, "list")
-  expect_length(out, 2)
-  expect_named(out, c("word", "n"))
-  expect_s3_class(out, c("grouped_df", "tbl_df", "tbl", "data.frame"))
+  expect_length(out, 5)
+  expect_named(out, c("course", "year", "comments", "thumbsup", "thumbsdown"))
+  expect_s3_class(out, c("data.frame"))
 
-  expect_type(out$word, "character")
+  expect_type(out$course, "character")
 
-  expect_type(out$n, "integer")
+  expect_type(out$year, "double")
 
-  ###
-  out <- comment_info(url = url, word = "Negative")
+  expect_type(out$comments, "character")
 
-  expect_type(out, "list")
-  expect_length(out, 2)
-  expect_named(out, c("word", "n"))
-  expect_s3_class(out, c("grouped_df", "tbl_df", "tbl", "data.frame"))
+  expect_type(out$thumbsup, "character")
 
-  expect_type(out$word, "character")
-
-  expect_type(out$n, "integer")
-
-  ###
-  out <- comment_info(url = url, word = "Tags")
-
-  expect_type(out, "list")
-  expect_length(out, 2)
-  expect_named(out, c("tags", "n"))
-  expect_s3_class(out, c("grouped_df", "tbl_df", "tbl", "data.frame"))
-
-  expect_type(out$tags, "character")
-
-  expect_type(out$n, "integer")
+  expect_type(out$thumbsdown, "character")
 })
