@@ -4,7 +4,7 @@
 \alias{sentiment_info}
 \title{Provides positive words and negative words extracted from comments, and tags from the website.}
 \usage{
-sentiment_info(url = url, y = 2018, word = "Positive")
+sentiment_info(url, y = 2018, word = "Positive")
 }
 \arguments{
 \item{url}{A Character value indicating the url of the webpage corresponding to an instructor.}

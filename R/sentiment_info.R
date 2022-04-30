@@ -14,18 +14,19 @@
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
 #' sentiment_info(url = url, y = 2018, word = "Negative")
 
-sentiment_info <- function(url = url, y = 2018, word = "Positive"){
+sentiment_info <- function(url, y = 2018, word = "Positive"){
   # Reading the Webpage with polite
   session <- bow(url)
   webpage <- scrape(session)
 
-  comment_df <- comment_info(u = url, y = y)
+  comment_df <- comment_info(url = url, y = y)
 
   # Stop further analysis if fewer than 1 comment
   stopifnot("Fewer than 1 comment!" = nrow(comment_df) > 1)
 
   # Sentiment analysis of words in all comments, using sentiment lexicons "bing"
   # from Bing Liu and collaborators
+  comments <- NULL
   comment_sentiment <- comment_df %>%
     unnest_tokens(word, comments, drop = FALSE) %>%
     inner_join(get_sentiments("bing"))
