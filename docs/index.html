@@ -109,34 +109,45 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">### Load library</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/m-fili/ProfRate" class="external-link">ProfRate</a></span><span class="op">)</span></code></pre></div>
-<p>The function <code>get_tid</code> gets teacher IDs and general information by name.</p>
+<p>The function <code>get_tid</code> gets teacher IDs and general information by name, department and university, it is case insensitive and support partial input.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">name</span> <span class="op">&lt;-</span> <span class="st">"Brakor"</span>
-<span class="fu"><a href="reference/get_tid.html">get_tid</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span><span class="op">)</span></code></pre></div>
-<p>The function <code>general_info</code> extracts general information for an instructor.</p>
+<span class="va">department</span> <span class="op">&lt;-</span> <span class="st">"Biology"</span>
+<span class="va">university</span> <span class="op">&lt;-</span> <span class="st">"California Berkeley"</span>
+<span class="fu"><a href="reference/get_tid.html">get_tid</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span><span class="op">)</span>
+<span class="fu"><a href="reference/get_tid.html">get_tid</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, department <span class="op">=</span> <span class="va">department</span><span class="op">)</span>
+<span class="fu"><a href="reference/get_tid.html">get_tid</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, university <span class="op">=</span> <span class="va">university</span><span class="op">)</span>
+<span class="fu"><a href="reference/get_tid.html">get_tid</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, department <span class="op">=</span> <span class="va">department</span>, university <span class="op">=</span> <span class="va">university</span><span class="op">)</span></code></pre></div>
+<p>The function <code>get_url</code> gets url by name, department and university, it is case insensitive and support partial input.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/get_url.html">get_url</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span><span class="op">)</span>
+<span class="fu"><a href="reference/get_url.html">get_url</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, department <span class="op">=</span> <span class="va">department</span><span class="op">)</span>
+<span class="fu"><a href="reference/get_url.html">get_url</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, university <span class="op">=</span> <span class="va">university</span><span class="op">)</span>
+<span class="fu"><a href="reference/get_url.html">get_url</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, department <span class="op">=</span> <span class="va">department</span>, university <span class="op">=</span> <span class="va">university</span><span class="op">)</span></code></pre></div>
+<p>The function <code>general_info</code> extracts general information for an instructor.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448"</span>
 <span class="fu"><a href="reference/general_info.html">general_info</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></code></pre></div>
 <p>The function <code>generate_url_school</code> finds the university url using its name.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/get_all_schools.html">get_all_schools</a></span><span class="op">(</span><span class="st">"Iowa State University"</span><span class="op">)</span></code></pre></div>
 <p>The function <code>ratings_summ</code> summarizes all rating information for an instructor</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/ratings_summ.html">ratings_summ</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></code></pre></div>
 <p>The function <code>plot_QualDiff</code> creates a bar plot for the quality and difficulty of a course for an instructor.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/plot_QualDiff.html">plot_QualDiff</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></code></pre></div>
 <p>The function <code>plot_attendance</code> creates a bar plot for the attendance type for an instructor.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/plot_attendance.html">plot_attendance</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></code></pre></div>
 <p>The function <code>comment_info</code> extracts information on comments including course, year, comments, number of thumbsups and number of thumbsdowns.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/comment_info.html">comment_info</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span><span class="op">)</span></code></pre></div>
 <p>The function <code>sentiment_info</code> provides positive words and negative words extracted from comments, and tags from the website.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/sentiment_info.html">sentiment_info</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span>, word <span class="op">=</span> <span class="st">"Negative"</span><span class="op">)</span></code></pre></div>
 <p>The function <code>runExample</code> runs shiny app.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/runExample.html">runExample</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
