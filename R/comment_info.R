@@ -1,6 +1,6 @@
 #' Extracts information on comments including course, year, comments, number of thumbsups and number of thumbsdowns.
 #'
-#' @param u A Character value indicating the url of the webpage corresponding to an instructor.
+#' @param url A Character value indicating the url of the webpage corresponding to an instructor.
 #' @param y A number indicating the user are interested in comments after that year.
 #' @import rvest
 #' @import stringr
@@ -11,9 +11,9 @@
 #' @export
 #' @examples
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
-#' comment_info(u = url, y = 2018)
+#' comment_info(url = url, y = 2018)
 
-comment_info <- function(u, y = 2018){
+comment_info <- function(url, y = 2018){
 
   # Check for input
   stopifnot("Input url must be a character value!" = is.character(url))

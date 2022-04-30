@@ -4,10 +4,10 @@
 \alias{sentiment_info}
 \title{Provides positive words and negative words extracted from comments, and tags from the website.}
 \usage{
-sentiment_info(u = url, y = 2018, word = "Positive")
+sentiment_info(url = url, y = 2018, word = "Positive")
 }
 \arguments{
-\item{u}{A Character value indicating the url of the webpage corresponding to an instructor.}
+\item{url}{A Character value indicating the url of the webpage corresponding to an instructor.}
 
 \item{y}{A number indicating the user are interested in comments after that year.}
 
@@ -18,5 +18,5 @@ Provides positive words and negative words extracted from comments, and tags fro
 }
 \examples{
 url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
-sentiment_info(u = url, y = 2018, word = "Negative")
+sentiment_info(url = url, y = 2018, word = "Negative")
 }

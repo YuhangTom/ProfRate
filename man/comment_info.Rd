@@ -4,10 +4,10 @@
 \alias{comment_info}
 \title{Extracts information on comments including course, year, comments, number of thumbsups and number of thumbsdowns.}
 \usage{
-comment_info(u, y = 2018)
+comment_info(url, y = 2018)
 }
 \arguments{
-\item{u}{A Character value indicating the url of the webpage corresponding to an instructor.}
+\item{url}{A Character value indicating the url of the webpage corresponding to an instructor.}
 
 \item{y}{A number indicating the user are interested in comments after that year.}
 }
@@ -16,5 +16,5 @@ Extracts information on comments including course, year, comments, number of thu
 }
 \examples{
 url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
-comment_info(u = url, y = 2018)
+comment_info(url = url, y = 2018)
 }

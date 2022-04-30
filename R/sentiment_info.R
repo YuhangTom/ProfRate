@@ -1,6 +1,6 @@
 #' Provides positive words and negative words extracted from comments, and tags from the website.
 #'
-#' @param u A Character value indicating the url of the webpage corresponding to an instructor.
+#' @param url A Character value indicating the url of the webpage corresponding to an instructor.
 #' @param y A number indicating the user are interested in comments after that year.
 #' @param word A string indicating the user are interested in positive words, or negative words, or tags.
 #' @import rvest
@@ -12,9 +12,9 @@
 #' @export
 #' @examples
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
-#' sentiment_info(u = url, y = 2018, word = "Negative")
+#' sentiment_info(url = url, y = 2018, word = "Negative")
 
-sentiment_info <- function(u = url, y = 2018, word = "Positive"){
+sentiment_info <- function(url = url, y = 2018, word = "Positive"){
   # Reading the Webpage with polite
   session <- bow(url)
   webpage <- scrape(session)
