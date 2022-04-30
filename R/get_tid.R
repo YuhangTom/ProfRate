@@ -1,8 +1,10 @@
 #' Gets teacher IDs
 #'
-#' Gets teacher IDs and general information by name.
+#' Gets teacher IDs and general information by name, department and university.
 #'
 #' @param name A character value which is the name of an instructor
+#' @param department A character value which is the department of an instructor
+#' @param university A character value which is the university of an instructor
 #'
 #' @export
 #'

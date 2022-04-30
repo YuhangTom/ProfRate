@@ -8,12 +8,16 @@ get_tid(name, department = NULL, university = NULL)
 }
 \arguments{
 \item{name}{A character value which is the name of an instructor}
+
+\item{department}{A character value which is the department of an instructor}
+
+\item{university}{A character value which is the university of an instructor}
 }
 \value{
 A tibble of teacher ID and general information
 }
 \description{
-Gets teacher IDs and general information by name.
+Gets teacher IDs and general information by name, department and university.
 }
 \examples{
 name <- "Brakor"
