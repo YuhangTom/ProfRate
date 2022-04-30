@@ -16,6 +16,6 @@ A tibble of teacher ID and general information
 Get the teacher ID instructors by name
 }
 \examples{
-name <- "A"
+name <- "Brakor"
 get_tid(name = name)
 }
