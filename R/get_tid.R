@@ -1,6 +1,6 @@
-#' Get teacher ID
+#' Gets teacher IDs
 #'
-#' Get the teacher ID instructors by name
+#' Gets teacher IDs and general information by name.
 #'
 #' @param name A character value which is the name of an instructor
 #'

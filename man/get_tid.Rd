@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_tid.R
 \name{get_tid}
 \alias{get_tid}
-\title{Get teacher ID}
+\title{Gets teacher IDs}
 \usage{
 get_tid(name)
 }
@@ -13,7 +13,7 @@ get_tid(name)
 A tibble of teacher ID and general information
 }
 \description{
-Get the teacher ID instructors by name
+Gets teacher IDs and general information by name.
 }
 \examples{
 name <- "Brakor"

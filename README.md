@@ -40,6 +40,14 @@ This is a basic example which shows you how to solve a common problem.
 library(ProfRate)
 ```
 
+
+The function `get_tid` gets teacher IDs and general information by name.
+```r
+name <- "Brakor"
+get_tid(name = name)
+```
+
+
 The function `general_info` extracts general information for an instructor.
 ```r
 url <- "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448"
@@ -66,10 +74,16 @@ The function `plot_attendance` creates a bar plot for the attendance type for an
 plot_attendance(url)
 ```
 
-The function `comment_info` provides wordcloud plots for positive words, negative words in the comments, and tags on the website.
+The function `comment_info` extracts information on comments including course, year, comments, number of thumbsups and number of thumbsdowns.
 ```r
-comment_info(url = url, y = 2018, word = "Negative")
+comment_info(url = url, y = 2018)
 ```
+
+The function `sentiment_info` provides positive words and negative words extracted from comments, and tags from the website.
+```r
+sentiment_info(url = url, y = 2018, word = "Negative")
+```
+
 
 The function `runExample` runs shiny app.
 ```r
