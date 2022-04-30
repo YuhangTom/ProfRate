@@ -14,11 +14,24 @@
 #' @return A tibble of teacher ID and general information
 #' @examples
 #' name <- "Brakor"
+#' department <- "Biology"
+#' university <- "California Berkeley"
 #' get_tid(name = name)
+#' get_tid(name = name, department = department)
+#' get_tid(name = name, university = university)
+#' get_tid(name = name, department = department, university = university)
 
-get_tid <- function(name) {
+get_tid <- function(name, department = NULL, university = NULL) {
+  ### Non of the input are case sensitive or full
+
   ### Check for input
-  stopifnot("Input must be a character value!" = is.character(name))
+  stopifnot("Input name must be a character value!" = is.character(name))
+  if (!is.null(department)) {
+    stopifnot("Input department must be a character value!" = is.character(department))
+  }
+  if (!is.null(university)) {
+    stopifnot("Input university must be a character value!" = is.character(university))
+  }
 
   ### Make url
   url <- str_c("https://www.ratemyprofessors.com/search/teachers?query=", name)
@@ -35,10 +48,22 @@ get_tid <- function(name) {
     str_remove_all('\\"legacyId\\":') %>%
     as.numeric()
 
+  ### Get general info
   info <- map_dfr(tID, function(tid) {
     url <- str_c("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=", tid)
     general_info(url = url)
   })
 
-  tibble(tID = tID, info)
+  out <- tibble(tID = tID, info)
+
+  ### Filter output
+  if (is.null(department) & is.null(university)) {
+    return(out)
+  } else if (!is.null(department) & is.null(university)) {
+    return(out[str_detect(toupper(out$department), toupper(department)), ])
+  } else if (is.null(department) & !is.null(university)) {
+    return(out[str_detect(toupper(out$university), toupper(university)), ])
+  } else if (!is.null(department) & !is.null(university)) {
+    return(out[str_detect(toupper(out$department), toupper(department)) & str_detect(toupper(out$university), toupper(university)), ])
+  }
 }

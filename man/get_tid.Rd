@@ -4,7 +4,7 @@
 \alias{get_tid}
 \title{Gets teacher IDs}
 \usage{
-get_tid(name)
+get_tid(name, department = NULL, university = NULL)
 }
 \arguments{
 \item{name}{A character value which is the name of an instructor}
@@ -17,5 +17,10 @@ Gets teacher IDs and general information by name.
 }
 \examples{
 name <- "Brakor"
+department <- "Biology"
+university <- "California Berkeley"
 get_tid(name = name)
+get_tid(name = name, department = department)
+get_tid(name = name, university = university)
+get_tid(name = name, department = department, university = university)
 }
