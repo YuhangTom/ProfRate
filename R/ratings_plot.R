@@ -18,6 +18,16 @@
 
 
 ratings_plot <- function(url, y = 2018){
+  Overall <- NULL
+  Quality <- NULL
+  Difficulty <- NULL
+  Criterion <- NULL
+  Rating <- NULL
+  Course <- NULL
+  Avg <- NULL
+  Grade <- NULL
+  Year <- NULL
+
   o <- ratings_info(url = url, y = y)
 
   # boxplot of all ratings
@@ -77,7 +87,7 @@ ratings_plot <- function(url, y = 2018){
     labs(fill = "")+
     theme_bw()
 
-  gridExtra::grid.arrange(p1, p2, p3, p4, ncol = 2)
+  grid.arrange(p1, p2, p3, p4, ncol = 2)
 
 }
 
