@@ -13,14 +13,16 @@ RoxygenNote: 7.1.2
 Imports: 
     dplyr,
     ggplot2,
+    gridExtra,
     polite,
+    purrr,
     rvest,
+    shiny,
     stringr,
+    tidyr,
     tidytext,
     tidyverse,
-    wordcloud2,
-    shiny,
-    purrr
+    wordcloud2
 URL: https://github.com/m-fili/ProfRate
 BugReports: https://github.com/m-fili/ProfRate/issues
 Suggests: 

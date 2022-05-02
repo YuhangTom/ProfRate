@@ -19,7 +19,7 @@ sidebar <- dashboardSidebar(
   width = 300,
   sidebarMenu(
     menuItem("Home", tabName = "home", icon = icon("home")),
-    menuItem("Ratings", tabName = "ratings", icon = icon("stats", lib = "glyphicon"))
+    menuItem("Wordclouds", tabName = "ratings", icon = icon("stats", lib = "glyphicon"))
   )
 )
 

@@ -73,19 +73,14 @@ The function `generate_url_school` finds the university url using its name.
 get_all_schools("Iowa State University")
 ```
 
-The function `ratings_summ` summarizes all rating information for an instructor
+The function `ratings_info` shows and summarizes all rating information for an instructor
 ```r
-ratings_summ(url)
+ratings_info(url = url, y = 2018)
 ```
 
-The function `plot_QualDiff` creates a bar plot for the quality and difficulty of a course for an instructor.
+The function `ratings_plot` creates a box plot of all ratings and 3 bar plots of average ratings by course, grade, and year for an instructor.
 ```r
-plot_QualDiff(url)
-```
-
-The function `plot_attendance` creates a bar plot for the attendance type for an instructor.
-```r
-plot_attendance(url)
+ratings_plot(url = url, y = 2018)
 ```
 
 The function `comment_info` extracts information on comments including course, year, comments, number of thumbsups and number of thumbsdowns.
@@ -97,7 +92,6 @@ The function `sentiment_info` provides positive words and negative words extract
 ```r
 sentiment_info(url = url, y = 2018, word = "Negative")
 ```
-
 
 The function `runExample` runs shiny app.
 ```r
