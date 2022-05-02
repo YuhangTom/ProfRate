@@ -2,9 +2,9 @@ Package: ProfRate
 Type: Package
 Title: ProfRate: Retrieve and Visualize the Data on Rate My Professor
 Version: 0.1.0
-Authors@R: c(person(given = "Danyang", family = "ZHANG", email = "zhangdy@iastate.edu", role = c("aut")),
-  person(given = "Mohammad", family = "FILI", email = "mfili@iastate.edu", role = c("aut", "cre")),
-  person(given = "Yuhang", family = "LIN", email = "yhlin@iastate.edu", role = c("aut"), comment = c(ORCID = "0000-0002-3600-9889")))
+Authors@R: c(person(given = "Yuhang", family = "LIN", email = "yhlin@iastate.edu", role = c("aut"), comment = c(ORCID = "0000-0002-3600-9889")),
+  person(given = "Danyang", family = "ZHANG", email = "zhangdy@iastate.edu", role = c("aut")),
+  person(given = "Mohammad", family = "FILI", email = "mfili@iastate.edu", role = c("aut", "cre")))
 Description: Retrieve and visualize the data on Rate My Professor based on the url given, either the url for the professor or for specific class.
 License: MIT + file LICENSE
 Encoding: UTF-8
