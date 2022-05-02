@@ -35,17 +35,30 @@ body <- dashboardBody(
     tabItem(
       tabName = "ratings",
       fluidRow(
-        box(title = "Url", width = 4,
-            textInput("Url", strong("Url for a Professor:"), "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448")
+        box(title = "Name", width = 2,
+            textInput("Name", strong("Name for a Professor (Better to be Full Name and Accurate):"), "Gilbert Strang")
         ),
-        box(title = "Word Type", width = 4,
+        box(title = "Department", width = 2,
+            textInput("Department", strong("Department for this Professor:"), "Mathematics")
+        ),
+        box(title = "University", width = 2,
+            textInput("University", strong("University for this Professor:"), "Massachusetts")
+        ),
+        # box(title = "Url", width = 4,
+        #     textInput("Url", strong("Url for a Professor:"), "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448")
+        # ),
+        box(title = "Word Type", width = 3,
             selectInput("WordType", strong("What Types of Words you are Interested in:"), choices = c("Positive", "Negative", "Tags"), selected = "Positive")
         ),
-        box(title = "Year", width = 4,
-            selectInput("Year", strong("Show Results after Year:"), choices = c(2011:2021))
+        box(title = "Year", width = 3,
+            selectInput("Year", strong("Show Results after Year:"), choices = c(2011:2021), selected = 2018)
         )
       ),
-      fluidRow(column = 12, align="center", wordcloud2Output("WC"))
+      fluidRow(column = 12, align="right", actionButton("update", "Update!")),
+      fluidRow(column = 12, align="center", wordcloud2Output("WC")),
+      br(),
+      br(),
+      fluidRow(column = 12, align="center", plotOutput("RP"))
     )
   )
 )
@@ -59,13 +72,13 @@ ui <- dashboardPage(
 )
 
 server <- function(input, output) {
-  url <- reactive({
-    input$Url
+  url <- eventReactive(input$update, {
+    get_url(name = input$Name, department = input$Department, university = input$University)
   })
-  year <- reactive({
+  year <- eventReactive(input$update, {
     input$Year
   })
-  WT <- reactive({
+  WT <- eventReactive(input$update, {
     input$WordType
   })
 
@@ -73,6 +86,11 @@ server <- function(input, output) {
     sentiment_info(url(), year(), WT()) %>%
       wordcloud2(backgroundColor = "transparent")
   })
+
+  output$RP <- renderPlot({
+    ratings_plot(url(), year())
+  })
+
 }
 
 # Run the application
