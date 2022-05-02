@@ -35,26 +35,26 @@ body <- dashboardBody(
     tabItem(
       tabName = "ratings",
       fluidRow(
-        box(title = "Name", width = 2,
+        box(title = "Name", width = 3, solidHeader = TRUE, status = "primary",
             textInput("Name", strong("Name for a Professor (Better to be Full Name and Accurate):"), "Gilbert Strang")
         ),
-        box(title = "Department", width = 2,
+        box(title = "Department", width = 2, solidHeader = TRUE, status = "primary",
             textInput("Department", strong("Department for this Professor:"), "Mathematics")
         ),
-        box(title = "University", width = 2,
+        box(title = "University", width = 2, solidHeader = TRUE, status = "primary",
             textInput("University", strong("University for this Professor:"), "Massachusetts")
         ),
         # box(title = "Url", width = 4,
         #     textInput("Url", strong("Url for a Professor:"), "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448")
         # ),
-        box(title = "Word Type", width = 3,
+        box(title = "Word Type", width = 3, solidHeader = TRUE, status = "primary",
             selectInput("WordType", strong("What Types of Words you are Interested in:"), choices = c("Positive", "Negative", "Tags"), selected = "Positive")
         ),
-        box(title = "Year", width = 3,
+        box(title = "Year", width = 2, solidHeader = TRUE, status = "primary",
             selectInput("Year", strong("Show Results after Year:"), choices = c(2011:2021), selected = 2020)
         )
       ),
-      fluidRow(column = 12, align="right", actionButton("update", "Update!")),
+      fluidRow(column = 12, align="right", actionButton("update", "Update!", icon = icon("redo"))),
       fluidRow(column = 12, align="center", wordcloud2Output("WC")),
       br(),
       br(),
