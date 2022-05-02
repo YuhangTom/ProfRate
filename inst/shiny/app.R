@@ -51,7 +51,7 @@ body <- dashboardBody(
             selectInput("WordType", strong("What Types of Words you are Interested in:"), choices = c("Positive", "Negative", "Tags"), selected = "Positive")
         ),
         box(title = "Year", width = 3,
-            selectInput("Year", strong("Show Results after Year:"), choices = c(2011:2021), selected = 2018)
+            selectInput("Year", strong("Show Results after Year:"), choices = c(2011:2021), selected = 2020)
         )
       ),
       fluidRow(column = 12, align="right", actionButton("update", "Update!")),
