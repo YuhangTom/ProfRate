@@ -45,7 +45,10 @@ body <- dashboardBody(
             selectInput("Year", strong("Show Results after Year:"), choices = c(2011:2021))
         )
       ),
-      fluidRow(column = 12, align="center", wordcloud2Output("WC"))
+      fluidRow(column = 12, align="center", wordcloud2Output("WC")),
+      br(),
+      br(),
+      fluidRow(column = 12, align="center", plotOutput("RP"))
     )
   )
 )
@@ -73,6 +76,11 @@ server <- function(input, output) {
     sentiment_info(url(), year(), WT()) %>%
       wordcloud2(backgroundColor = "transparent")
   })
+
+  output$RP <- renderPlot({
+    ratings_plot(url(), year())
+  })
+
 }
 
 # Run the application
