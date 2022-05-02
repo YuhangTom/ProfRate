@@ -84,6 +84,7 @@ ratings_info <- function(url, y =2018) {
   ### Get the grades
   grade_key <- grade %>% str_sub(start = 8L)
 
+  Year <- NULL
   rating_raw <- data.frame(
     Year = year,
     Course = course,
