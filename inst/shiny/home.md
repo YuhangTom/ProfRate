@@ -1,11 +1,13 @@
 ## Thanks for using our package!
 
-`ProfRate` is a R package that allows you to retrieve and visualize the data on [Rate My Professor](https://www.ratemyprofessors.com/) with an online Shiny app.
-From `Wordcloud` tab on the navigation panel,
-you can have an idea of common words in comments on the professor. From `Ratings` tab on the navigation panel, you can see visualizations of the ratings.
+`ProfRate` is an R package that allows you to retrieve and visualize the data on [Rate My Professor](https://www.ratemyprofessors.com/) with an online Shiny app.
+From the `Wordcloud` tab on the navigation panel,
+you can have an idea of common words in comments on the professor.
+From the `Ratings` tab on the navigation panel,
+you can see visualizations of the ratings.
 
 - You can have an idea of what words are most frequently used in comments.
-- You can have an idea of distributions of ratings and average ratings by course, grade, and year.
+- You can have an idea of the distributions of ratings and average ratings by course, grade, and year.
 - You can choose to see positive words from comments,
 negative words from comments,
 or tags from the website.
