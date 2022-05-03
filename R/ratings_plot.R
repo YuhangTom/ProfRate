@@ -28,6 +28,15 @@ ratings_plot <- function(url, y = 2018){
   Grade <- NULL
   Year <- NULL
 
+  th <- theme(
+      panel.background = element_rect(fill='transparent'),
+      plot.background = element_rect(fill='transparent', color=NA),
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      legend.background=element_blank(),
+      legend.key = element_rect(fill = NA)
+    )
+
   o <- ratings_info(url = url, y = y)
 
   # boxplot of all ratings
@@ -39,8 +48,9 @@ ratings_plot <- function(url, y = 2018){
     scale_fill_hue(c = 40) +
     xlab("") +
     ylab("") +
+    ggtitle("Overall ratings") +
     labs(fill = "")+
-    theme_bw()
+    th
 
   # barplot of avg ratings by course
   p2 <- o$ratings %>%
@@ -55,7 +65,7 @@ ratings_plot <- function(url, y = 2018){
     ylab("") +
     ggtitle("Average Ratings by Course") +
     labs(fill = "")+
-    theme_bw()
+    th
 
   # barplot of avg ratings by grade
   p3 <- o$ratings %>%
@@ -71,7 +81,7 @@ ratings_plot <- function(url, y = 2018){
     ylab("") +
     ggtitle("Average Ratings by Grade") +
     labs(fill = "")+
-    theme_bw()
+    th
 
   p4 <- o$ratings %>%
     gather(key = "Criterion", value = "Rating", Overall, Quality, Difficulty, -Year) %>%
@@ -85,9 +95,9 @@ ratings_plot <- function(url, y = 2018){
     ylab("") +
     ggtitle("Average Ratings by Year") +
     labs(fill = "")+
-    theme_bw()
+    th
 
-  grid.arrange(p1, p2, p3, p4, ncol = 2)
+  gridExtra::grid.arrange(p1, p2, p3, p4, ncol = 2)
 
 }
 

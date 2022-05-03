@@ -16,10 +16,12 @@ library(polite)
 
 
 sidebar <- dashboardSidebar(
-  width = 300,
+  width = 150,
   sidebarMenu(
     menuItem("Home", tabName = "home", icon = icon("home")),
-    menuItem("Wordclouds", tabName = "ratings", icon = icon("stats", lib = "glyphicon"))
+    menuItem("Wordcloud", tabName = "wordcloud", icon = icon("cloud", lib = "glyphicon")),
+    menuItem("Ratings", tabName = "ratings", icon = icon("stats", lib = "glyphicon"))
+
   )
 )
 
@@ -33,35 +35,49 @@ body <- dashboardBody(
     ),
 
     tabItem(
+      tabName = "wordcloud",
+      fluidRow(
+        box(width = 3, solidHeader = TRUE, color = "black",
+            textInput("Name1", strong("Name of a Professor (Better to be Full Name and Accurate):"), "Gilbert Strang"),
+            textInput("Department1", strong("Department of this Professor:"), "Mathematics"),
+            textInput("University1", strong("University of this Professor:"), "Massachusetts"),
+            selectInput("WordType1", strong("What Types of Words you are Interested in:"), choices = c("Positive", "Negative", "Tags"), selected = "Positive"),
+            selectInput("Year1", strong("Show Results after Year:"), choices = c(2011:2021), selected = 2020),
+            div(style = "display:inline-block", actionButton("update", "Refresh", icon("refresh", lib ="glyphicon"))),
+            height = "35em"
+        ),
+        box(solidHeader = TRUE, color = "black",width = 9, wordcloud2Output("WC"),height = "35em"
+)
+
+      ),
+      br(),
+      br()
+      ),
+
+    tabItem(
       tabName = "ratings",
       fluidRow(
-        box(title = "Name", width = 3, solidHeader = TRUE, status = "primary",
-            textInput("Name", strong("Name for a Professor (Better to be Full Name and Accurate):"), "Gilbert Strang")
+        box(width = 3, solidHeader = TRUE, color = "black",
+            textInput("Name2", strong("Name of a Professor (Better to be Full Name and Accurate):")),
+            textInput("Department2", strong("Department of this Professor:")),
+            textInput("University2", strong("University of this Professor:")),
+            selectInput("Year2", strong("Show Results after Year:"), choices = c(2011:2021)),
+            div(style = "display:inline-block", actionButton("update", "Refresh", icon("refresh", lib ="glyphicon"))),
+            height = "30em"
+
         ),
-        box(title = "Department", width = 2, solidHeader = TRUE, status = "primary",
-            textInput("Department", strong("Department for this Professor:"), "Mathematics")
+        box(solidHeader = TRUE, color = "black",width = 9, plotOutput("RP"),height = "30em"
+)
+
+
         ),
-        box(title = "University", width = 2, solidHeader = TRUE, status = "primary",
-            textInput("University", strong("University for this Professor:"), "Massachusetts")
-        ),
-        # box(title = "Url", width = 4,
-        #     textInput("Url", strong("Url for a Professor:"), "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448")
-        # ),
-        box(title = "Word Type", width = 3, solidHeader = TRUE, status = "primary",
-            selectInput("WordType", strong("What Types of Words you are Interested in:"), choices = c("Positive", "Negative", "Tags"), selected = "Positive")
-        ),
-        box(title = "Year", width = 2, solidHeader = TRUE, status = "primary",
-            selectInput("Year", strong("Show Results after Year:"), choices = c(2011:2021), selected = 2020)
-        )
-      ),
-      fluidRow(column = 12, align="right", actionButton("update", "Update!", icon = icon("redo"))),
-      fluidRow(column = 12, align="center", wordcloud2Output("WC")),
       br(),
       br(),
-      fluidRow(column = 12, align="center", plotOutput("RP"))
+      )
+
     )
   )
-)
+
 
 ui <- dashboardPage(
   ### To kind of match the color of RMP
@@ -71,24 +87,42 @@ ui <- dashboardPage(
   body
 )
 
-server <- function(input, output) {
-  url <- eventReactive(input$update, {
-    get_url(name = input$Name, department = input$Department, university = input$University)
+server <- function(input, output, session) {
+
+
+  observe({
+    updateSelectInput(session,"Name2", selected = input$Name1)
+    updateSelectInput(session,"Department2", selected = input$Department1)
+    updateSelectInput(session,"University2", selected = input$University1)
+    updateSelectInput(session,"Year2", selected = input$Year1)
+
+
   })
-  year <- eventReactive(input$update, {
-    input$Year
+  url1 <- eventReactive(input$update, {
+    get_url(name = input$Name1, department = input$Department1, university = input$University1)
   })
+  year1 <- eventReactive(input$update, {
+    input$Year1
+  })
+
+  url2 <- eventReactive(input$update, {
+    get_url(name = input$Name2, department = input$Department2, university = input$University2)
+  })
+  year2 <- eventReactive(input$update, {
+    input$Year2
+  })
+
   WT <- eventReactive(input$update, {
-    input$WordType
+    input$WordType1
   })
 
   output$WC <- renderWordcloud2({
-    sentiment_info(url(), year(), WT()) %>%
-      wordcloud2(backgroundColor = "transparent")
+    sentiment_info(url1(), year1(), WT()) %>%
+      wordcloud2(backgroundColor = "transparent", size=1, color='random-dark')
   })
 
   output$RP <- renderPlot({
-    ratings_plot(url(), year())
+    ratings_plot(url2(), year2())
   })
 
 }
