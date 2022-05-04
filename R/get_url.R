@@ -1,16 +1,16 @@
-#' Gets url
+#' Gets URL
 #'
-#' Gets url by name, department and university.
+#' Gets URL by the name, department and university.
 #'
-#' @param name A character value which is the name of an instructor
-#' @param department A character value which is the department of an instructor
-#' @param university A character value which is the university of an instructor
+#' @param name A character value which is the name of an instructor.
+#' @param department A character value which is the department of an instructor.
+#' @param university A character value which is the university of an instructor.
 #'
 #' @export
 #'
 #' @import stringr
 #'
-#' @return A vector of urls
+#' @return A vector of URL
 #' @examples
 #' name <- "Brakor"
 #' department <- "Biology"

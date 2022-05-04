@@ -2,19 +2,29 @@
 % Please edit documentation in R/sentiment_info.R
 \name{sentiment_info}
 \alias{sentiment_info}
-\title{Provides positive words and negative words extracted from comments, and tags from the website.}
+\title{Sentiment Info Extractor}
 \usage{
 sentiment_info(url, y = 2018, word = "Positive")
 }
 \arguments{
-\item{url}{A Character value indicating the url of the webpage corresponding to an instructor.}
+\item{url}{A character value indicating the URL of the webpage corresponding to an instructor.}
 
 \item{y}{A number indicating the user are interested in comments after that year.}
 
-\item{word}{A string indicating the user are interested in positive words, or negative words, or tags.}
+\item{word}{A string indicating the user is interested in positive words, negative words, or tags.}
+}
+\value{
+A data frame with 5 columns
+\itemize{
+  \item course - Course code
+  \item year - Delivery year for the course
+  \item comments - Comments for the course
+  \item thumbsup - Number of thumbs-up
+  \item thumbsdown - Number of thumbs-down
+}
 }
 \description{
-Provides positive words and negative words extracted from comments, and tags from the website.
+Provides positive words and negative words extracted from comments and tags from the website.
 }
 \examples{
 url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'

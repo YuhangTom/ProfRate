@@ -1,4 +1,6 @@
-#' Runs shiny app
+#' Shiny app
+#'
+#' Runs shiny app.
 #'
 #' @export
 runExample <- function() {

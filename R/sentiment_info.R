@@ -1,8 +1,10 @@
-#' Provides positive words and negative words extracted from comments, and tags from the website.
+#' Sentiment Info Extractor
 #'
-#' @param url A Character value indicating the url of the webpage corresponding to an instructor.
+#' Provides positive words and negative words extracted from comments and tags from the website.
+#'
+#' @param url A character value indicating the URL of the webpage corresponding to an instructor.
 #' @param y A number indicating the user are interested in comments after that year.
-#' @param word A string indicating the user are interested in positive words, or negative words, or tags.
+#' @param word A string indicating the user is interested in positive words, negative words, or tags.
 #' @import rvest
 #' @import stringr
 #' @import tidytext
@@ -10,11 +12,19 @@
 #' @import wordcloud2
 #' @import polite
 #' @export
+#' @return A data frame with 5 columns
+#' \itemize{
+#'   \item course - Course code
+#'   \item year - Delivery year for the course
+#'   \item comments - Comments for the course
+#'   \item thumbsup - Number of thumbs-up
+#'   \item thumbsdown - Number of thumbs-down
+#' }
 #' @examples
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
 #' sentiment_info(url = url, y = 2018, word = "Negative")
 
-sentiment_info <- function(url, y = 2018, word = "Positive"){
+sentiment_info <- function(url, y = 2018, word = "Positive") {
   # Reading the Webpage with polite
   session <- bow(url)
   webpage <- scrape(session)
@@ -46,15 +56,15 @@ sentiment_info <- function(url, y = 2018, word = "Positive"){
     count(sort = TRUE)
 
   # Extract Tags
-  tags <- data.frame(tags = html_text(html_nodes(webpage, '.hHOVKF'))) %>%
+  tags <- data.frame(tags = html_text(html_nodes(webpage, ".hHOVKF"))) %>%
     group_by(tags) %>%
     count(sort = TRUE)
 
-  if(word == "Positive"){
+  if (word == "Positive") {
     return(positive)
-  }else if(word == "Negative"){
+  } else if (word == "Negative") {
     return(negative)
-  }else{
+  } else {
     return(tags)
   }
 }
