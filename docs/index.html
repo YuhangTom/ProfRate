@@ -135,17 +135,20 @@
 <p>The function <code>sentiment_info</code> uses <code>comment_info</code> to provide positive and negative words extracted from comments and tags from the website.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/sentiment_info.html">sentiment_info</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span>, word <span class="op">=</span> <span class="st">"Negative"</span><span class="op">)</span></code></pre></div>
-<p>The function <code>ratings_info</code> shows and summarizes all rating information for an instructor.</p>
+<p>The function <code>sentiment_plot</code> uses <code>sentiment_info</code> to generate a wordcloud.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/sentiment_plot.html">sentiment_plot</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span>, word <span class="op">=</span> <span class="st">"Positive"</span><span class="op">)</span></code></pre></div>
+<p>The function <code>ratings_info</code> shows and summarizes all rating information for an instructor.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/ratings_info.html">ratings_info</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span><span class="op">)</span></code></pre></div>
 <p>The function <code>ratings_plot</code> uses <code>ratings_info</code> to create a box plot of all ratings and 3 bar plots of average ratings by course, grade, and year for an instructor.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/ratings_plot.html">ratings_plot</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span><span class="op">)</span></code></pre></div>
 <p>Although the analysis of a university is possible, it is not our main interest for <code>ProfRate</code>. We still provide the function <code>get_all_schools</code> to find the university URL using its name.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/get_all_schools.html">get_all_schools</a></span><span class="op">(</span><span class="st">"Iowa State University"</span><span class="op">)</span></code></pre></div>
 <p>The function <code>runExample</code> runs the Shiny app.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/runExample.html">runExample</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
