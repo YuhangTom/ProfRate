@@ -14,4 +14,5 @@ or tags from the website.
 - You can choose only to see word clouds and plots of ratings after a specific year.
 - Please click `Refresh` to show the results.
 
-This application is driven by [Shiny](https://shiny.rstudio.com/) and you may find the code on [GitHub](https://github.com/m-fili/ProfRate). We also have [the website for `ProfRate`](https://m-fili.github.io/ProfRate/).
+This application is driven by [Shiny](https://shiny.rstudio.com/),
+and you may find the code on [GitHub](https://github.com/m-fili/ProfRate). We also have [the website for `ProfRate`](https://m-fili.github.io/ProfRate/).
