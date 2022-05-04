@@ -2,10 +2,10 @@
 % Please edit documentation in R/runExample.R
 \name{runExample}
 \alias{runExample}
-\title{Runs shiny app}
+\title{Shiny app}
 \usage{
 runExample()
 }
 \description{
-Runs shiny app
+Runs shiny app.
 }

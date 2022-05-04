@@ -2,22 +2,22 @@
 % Please edit documentation in R/get_url.R
 \name{get_url}
 \alias{get_url}
-\title{Gets url}
+\title{Gets URL}
 \usage{
 get_url(name, department = NULL, university = NULL)
 }
 \arguments{
-\item{name}{A character value which is the name of an instructor}
+\item{name}{A character value which is the name of an instructor.}
 
-\item{department}{A character value which is the department of an instructor}
+\item{department}{A character value which is the department of an instructor.}
 
-\item{university}{A character value which is the university of an instructor}
+\item{university}{A character value which is the university of an instructor.}
 }
 \value{
-A vector of urls
+A vector of URL
 }
 \description{
-Gets url by name, department and university.
+Gets URL by the name, department and university.
 }
 \examples{
 name <- "Brakor"

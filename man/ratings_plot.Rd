@@ -7,7 +7,7 @@
 ratings_plot(url, y = 2018)
 }
 \arguments{
-\item{url}{A character value indicating the url of the webpage corresponding to an instructor}
+\item{url}{A character value indicating the URL of the webpage corresponding to an instructor.}
 
 \item{y}{A number indicating the user are interested in ratings after that year.}
 }

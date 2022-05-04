@@ -1,7 +1,9 @@
-#' Extracts information on comments including course, year, comments, number of thumbsups and number of thumbsdowns.
+#' Comment Info Extractor
 #'
-#' @param url A Character value indicating the url of the webpage corresponding to an instructor.
-#' @param y A number indicating the user are interested in comments after that year.
+#' Extracts information on comments including course, year, comments, number of thumbs-ups and number of thumbs-downs.
+#'
+#' @param url A character value indicating the URL of the webpage corresponding to an instructor.
+#' @param y A number indicating the user is interested in comments after that year.
 #' @import rvest
 #' @import stringr
 #' @import tidytext
@@ -9,11 +11,19 @@
 #' @import wordcloud2
 #' @import polite
 #' @export
+#' @return A data frame with 5 columns
+#' \itemize{
+#'   \item course - Course code
+#'   \item year - Delivery year for the course
+#'   \item comments - Comments for the course
+#'   \item thumbsup - Number of thumbs-up
+#'   \item thumbsdown - Number of thumbs-down
+#' }
 #' @examples
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
 #' comment_info(url = url, y = 2018)
 
-comment_info <- function(url, y = 2018){
+comment_info <- function(url, y = 2018) {
 
   # Check for input
   stopifnot("Input url must be a character value!" = is.character(url))
@@ -24,19 +34,19 @@ comment_info <- function(url, y = 2018){
   webpage <- scrape(session)
 
   # Extract course name
-  course <- html_text(html_nodes(webpage, '.gxDIt'))
+  course <- html_text(html_nodes(webpage, ".gxDIt"))
   course <- course[seq(1, length(course), 2)]
 
   # Extract commenting year
-  dates <- html_text(html_nodes(webpage, '.BlaCV'))
+  dates <- html_text(html_nodes(webpage, ".BlaCV"))
   dates <- dates[seq(1, length(dates), 2)]
   year <- str_sub(dates, start = -4)
 
   # Extract comments
-  comments <- html_text(html_nodes(webpage, '.gRjWel'))
+  comments <- html_text(html_nodes(webpage, ".gRjWel"))
 
   # Extract reations
-  reation <- html_text(html_nodes(webpage, '.kAVFzA'))
+  reation <- html_text(html_nodes(webpage, ".kAVFzA"))
   up <- reation[seq(1, length(reation), 2)]
   down <- reation[seq(2, length(reation), 2)]
 
@@ -53,5 +63,4 @@ comment_info <- function(url, y = 2018){
   ) %>%
     filter(year >= y)
   return(comment_df)
-
 }

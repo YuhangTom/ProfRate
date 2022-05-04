@@ -1,23 +1,24 @@
 #' General Info Finder
 #'
-#' Extracts general information for an instructor
+#' Extracts general information for an instructor.
 #'
-#' @param url A Character value indicating the url of the webpage corresponding to an instructor
-#' @export
+#' @param url A character value indicating the URL of the webpage corresponding to an instructor.
 #' @import rvest
 #' @import stringr
 #' @import dplyr
 #' @import polite
+#' @export
 #' @return A list with two elements
 #' \itemize{
-#'   \item name - Complete Name of the Instructor
-#'   \item place - The department and university of the instructor
+#'   \item name - Complete name of the instructor
+#'   \item department - The department of the instructor
+#'   \item university - The unversity of the instructor
 #' }
 #' @examples
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
 #' general_info(url = url)
 
-general_info <- function(url){
+general_info <- function(url) {
   # Check for input
   stopifnot("Input url must be a character value!" = is.character(url))
   stopifnot("Input url must from Rate My Professors!" = str_detect(url, "https://www.ratemyprofessors.com/.+"))
@@ -27,22 +28,22 @@ general_info <- function(url){
   webpage <- scrape(session)
 
   # Extract Name
-  name = html_text(html_nodes(webpage, '.cfjPUG'))
-  name = str_to_title(name)
-  name = str_trim(name, side = 'both')
+  name <- html_text(html_nodes(webpage, ".cfjPUG"))
+  name <- str_to_title(name)
+  name <- str_trim(name, side = "both")
 
   # Extract Place
-  department = webpage %>%
-    html_nodes('b') %>%
+  department <- webpage %>%
+    html_nodes("b") %>%
     html_text() %>%
-    str_trim(side = 'both')
+    str_trim(side = "both")
 
   university <- webpage %>%
-    html_nodes('.iLYGwn a') %>%
+    html_nodes(".iLYGwn a") %>%
     html_text() %>%
-    str_trim(side = 'both')
+    str_trim(side = "both")
 
   # Output
-  output = list(name=name, department=department, university=university)
+  output <- list(name = name, department = department, university = university)
   return(output)
 }

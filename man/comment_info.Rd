@@ -2,17 +2,27 @@
 % Please edit documentation in R/comment_info.R
 \name{comment_info}
 \alias{comment_info}
-\title{Extracts information on comments including course, year, comments, number of thumbsups and number of thumbsdowns.}
+\title{Comment Info Extractor}
 \usage{
 comment_info(url, y = 2018)
 }
 \arguments{
-\item{url}{A Character value indicating the url of the webpage corresponding to an instructor.}
+\item{url}{A character value indicating the URL of the webpage corresponding to an instructor.}
 
-\item{y}{A number indicating the user are interested in comments after that year.}
+\item{y}{A number indicating the user is interested in comments after that year.}
+}
+\value{
+A data frame with 5 columns
+\itemize{
+  \item course - Course code
+  \item year - Delivery year for the course
+  \item comments - Comments for the course
+  \item thumbsup - Number of thumbs-up
+  \item thumbsdown - Number of thumbs-down
+}
 }
 \description{
-Extracts information on comments including course, year, comments, number of thumbsups and number of thumbsdowns.
+Extracts information on comments including course, year, comments, number of thumbs-ups and number of thumbs-downs.
 }
 \examples{
 url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'

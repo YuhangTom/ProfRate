@@ -7,20 +7,20 @@
 ratings_info(url, y = 2018)
 }
 \arguments{
-\item{url}{A character value indicating the url of the webpage corresponding to an instructor}
+\item{url}{A character value indicating the URL of the webpage corresponding to an instructor.}
 
 \item{y}{A number indicating the user are interested in ratings after that year.}
 }
 \value{
 A list of the number of ratings after filtering and 2 data frames
 \itemize{
-  \item n_filtered - number of ratings after filtering
-  \item rating_df - All rating information after a given year
-  \item rating_summ - Summary statistics
+  \item n - Number of ratings after filtering
+  \item ratings - All rating information after a given year
+  \item summary - Summary statistics
 }
 }
 \description{
-Extracts and summarizes all rating information for an instructor
+Extracts and summarizes all rating information for an instructor.
 }
 \examples{
 url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'

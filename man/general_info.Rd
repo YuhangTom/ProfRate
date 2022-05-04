@@ -7,17 +7,18 @@
 general_info(url)
 }
 \arguments{
-\item{url}{A Character value indicating the url of the webpage corresponding to an instructor}
+\item{url}{A character value indicating the URL of the webpage corresponding to an instructor.}
 }
 \value{
 A list with two elements
 \itemize{
-  \item name - Complete Name of the Instructor
-  \item place - The department and university of the instructor
+  \item name - Complete name of the instructor
+  \item department - The department of the instructor
+  \item university - The unversity of the instructor
 }
 }
 \description{
-Extracts general information for an instructor
+Extracts general information for an instructor.
 }
 \examples{
 url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'

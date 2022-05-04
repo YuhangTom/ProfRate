@@ -1,26 +1,26 @@
 #' Ratings Summarizer
 #'
-#' Extracts and summarizes all rating information for an instructor
+#' Extracts and summarizes all rating information for an instructor.
 #'
-#' @param url A character value indicating the url of the webpage corresponding to an instructor
+#' @param url A character value indicating the URL of the webpage corresponding to an instructor.
 #' @param y A number indicating the user are interested in ratings after that year.
-#' @export
 #' @import rvest
 #' @import stringr
 #' @import dplyr
 #' @import polite
+#' @export
 #' @return A list of the number of ratings after filtering and 2 data frames
 #' \itemize{
-#'   \item n_filtered - number of ratings after filtering
-#'   \item rating_df - All rating information after a given year
-#'   \item rating_summ - Summary statistics
+#'   \item n - Number of ratings after filtering
+#'   \item ratings - All rating information after a given year
+#'   \item summary - Summary statistics
 
 #' }
 #' @examples
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
 #' ratings_info(url = url)
 
-ratings_info <- function(url, y =2018) {
+ratings_info <- function(url, y = 2018) {
   ### Check for input
   stopifnot("Input url must be a character value!" = is.character(url))
   stopifnot("Input url must from Rate My Professors!" = str_detect(url, "https://www.ratemyprofessors.com/.+"))
@@ -30,20 +30,20 @@ ratings_info <- function(url, y =2018) {
   webpage <- scrape(session)
 
   ### Overall rating
-  rating <- html_text(html_nodes(webpage, '.EmotionLabel__StyledEmotionLabel-sc-1u525uj-0'))
+  rating <- html_text(html_nodes(webpage, ".EmotionLabel__StyledEmotionLabel-sc-1u525uj-0"))
   rating <- rating[seq(1, length(rating), 2)]
-  rating[str_detect(rating, "awful")] = 1
-  rating[str_detect(rating, "average")] = 3
-  rating[str_detect(rating, "awesome")] = 5
+  rating[str_detect(rating, "awful")] <- 1
+  rating[str_detect(rating, "average")] <- 3
+  rating[str_detect(rating, "awesome")] <- 5
   rating <- as.numeric(rating)
 
   ### Extract commenting year
-  dates <- html_text(html_nodes(webpage, '.BlaCV'))
+  dates <- html_text(html_nodes(webpage, ".BlaCV"))
   dates <- dates[seq(1, length(dates), 2)]
   year <- str_sub(dates, start = -4)
 
   ### Extract course name
-  course <- html_text(html_nodes(webpage, '.gxDIt'))
+  course <- html_text(html_nodes(webpage, ".gxDIt"))
   course <- course[seq(1, length(course), 2)]
 
   quadiff <- webpage %>%
@@ -107,10 +107,10 @@ ratings_info <- function(url, y =2018) {
     avgRating = round(mean(rating_df$Overall), 2),
     avgQuality = round(mean(rating_df$Quality), 2),
     avgDifficulty = round(mean(rating_df$Difficulty), 2),
-    percentTakeAgain = round(100* sum(rating_df$Take_again, na.rm = TRUE) / n_filtered, 2),
-    percentForCredit = round(100* sum(rating_df$For_credit, na.rm = TRUE) / n_filtered, 2),
-    percentTextbook = round(100* sum(rating_df$Textbooks, na.rm = TRUE) / n_filtered, 2),
-    percentAttendance = round(100* sum(rating_df$Attendance, na.rm = TRUE) / n_filtered, 2)
+    percentTakeAgain = round(100 * sum(rating_df$Take_again, na.rm = TRUE) / n_filtered, 2),
+    percentForCredit = round(100 * sum(rating_df$For_credit, na.rm = TRUE) / n_filtered, 2),
+    percentTextbook = round(100 * sum(rating_df$Textbooks, na.rm = TRUE) / n_filtered, 2),
+    percentAttendance = round(100 * sum(rating_df$Attendance, na.rm = TRUE) / n_filtered, 2)
   )
 
   ### Output

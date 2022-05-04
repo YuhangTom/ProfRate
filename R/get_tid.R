@@ -1,19 +1,24 @@
 #' Gets teacher IDs
 #'
-#' Gets teacher IDs and general information by name, department and university.
+#' Gets teacher IDs and general information by the name, department and university.
 #'
-#' @param name A character value which is the name of an instructor
-#' @param department A character value which is the department of an instructor
-#' @param university A character value which is the university of an instructor
-#'
-#' @export
+#' @param name A character value which is the name of an instructor.
+#' @param department A character value which is the department of an instructor.
+#' @param university A character value which is the university of an instructor.
 #'
 #' @import rvest
 #' @import stringr
 #' @import polite
 #' @import purrr
+#' @export
 #'
-#' @return A tibble of teacher ID and general information
+#' @return A tibble of teacher ID and general information with 4 columns
+#' \itemize{
+#'   \item tID - Teacher ID for the instructor
+#'   \item name - Complete name of the instructor
+#'   \item department - The department of the instructor
+#'   \item university - The unversity of the instructor
+#' }
 #' @examples
 #' name <- "Brakor"
 #' department <- "Biology"
