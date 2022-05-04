@@ -10,10 +10,10 @@ get_all_schools(school_name)
 \item{school_name}{A character value indicating the name of the university.}
 }
 \value{
-A character string as the URL corresponding to the university of interest.
+A character value as the URL corresponding to the university of interest.
 }
 \description{
-Finds the university URL using its name.
+Finds the university's URL using its name.
 }
 \examples{
 get_all_schools('Iowa State University')

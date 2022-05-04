@@ -1,21 +1,20 @@
-#' Comment Info Extractor
+#' Comments Extractor
 #'
-#' Extracts information on comments including course, year, comments, number of thumbs-ups and number of thumbs-downs.
+#' Extracts comments together with course, year, number of thumbs-ups, and number of thumbs-downs, and filters by year.
 #'
-#' @param url A character value indicating the URL of the webpage corresponding to an instructor.
-#' @param y A number indicating the user is interested in comments after that year.
+#' @param url A character value indicating the URL of the professor's webpage.
+#' @param y A numeric value to filter comments after a certain year.
 #' @import rvest
 #' @import stringr
 #' @import tidytext
 #' @import dplyr
-#' @import wordcloud2
 #' @import polite
 #' @export
 #' @return A data frame with 5 columns
 #' \itemize{
 #'   \item course - Course code
-#'   \item year - Delivery year for the course
-#'   \item comments - Comments for the course
+#'   \item year - Delivery year of the course
+#'   \item comments - Comments on the professor
 #'   \item thumbsup - Number of thumbs-up
 #'   \item thumbsdown - Number of thumbs-down
 #' }

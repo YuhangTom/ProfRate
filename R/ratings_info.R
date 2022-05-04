@@ -1,15 +1,15 @@
-#' Ratings Summarizer
+#' Ratings Extractor
 #'
-#' Extracts and summarizes all rating information for an instructor.
+#' Extracts and summarizes all rating information on an professor.
 #'
-#' @param url A character value indicating the URL of the webpage corresponding to an instructor.
-#' @param y A number indicating the user are interested in ratings after that year.
+#' @param url A character value indicating the URL of the professor's webpage.
+#' @param y A numeric value to filter ratings after a certain year.
 #' @import rvest
 #' @import stringr
 #' @import dplyr
 #' @import polite
 #' @export
-#' @return A list of the number of ratings after filtering and 2 data frames
+#' @return A list of 1 total number of ratings and 2 data frames
 #' \itemize{
 #'   \item n - Number of ratings after filtering
 #'   \item ratings - All rating information after a given year

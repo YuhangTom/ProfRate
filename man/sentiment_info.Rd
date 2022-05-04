@@ -7,24 +7,21 @@
 sentiment_info(url, y = 2018, word = "Positive")
 }
 \arguments{
-\item{url}{A character value indicating the URL of the webpage corresponding to an instructor.}
+\item{url}{A character value indicating the URL of the professor's webpage.}
 
-\item{y}{A number indicating the user are interested in comments after that year.}
+\item{y}{A numeric value to filter ratings after a certain year.}
 
 \item{word}{A string indicating the user is interested in positive words, negative words, or tags. Choices among "Positive", "Negative", and "Tags". (default="positive")}
 }
 \value{
-A data frame with 5 columns
+A data frame with 2 columns
 \itemize{
-  \item course - Course code
-  \item year - Delivery year for the course
-  \item comments - Comments for the course
-  \item thumbsup - Number of thumbs-up
-  \item thumbsdown - Number of thumbs-down
+  \item word - Words or tags
+  \item n - Count of words in comments or tags
 }
 }
 \description{
-Provides positive words and negative words extracted from comments and tags from the website.
+Provides common positive words and negative words extracted from comments, and tags from the website.
 }
 \examples{
 url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'

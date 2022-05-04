@@ -1,9 +1,9 @@
 #' Ratings Plot
 #'
-#' A boxplot of all ratings and 3 barplots of average ratings by course, grade, and year.
+#' 1 boxplot of all ratings and 3 barplots of average ratings by course, grade, and year.
 #'
-#' @param url A character value indicating the URL of the webpage corresponding to an instructor.
-#' @param y A number indicating the user are interested in ratings after that year.
+#' @param url A character value indicating the URL of the professor's webpage.
+#' @param y A numeric value to filter ratings after a certain year.
 #' @import dplyr
 #' @import tidyr
 #' @import ggplot2

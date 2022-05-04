@@ -7,15 +7,15 @@
 ratings_plot(url, y = 2018)
 }
 \arguments{
-\item{url}{A character value indicating the URL of the webpage corresponding to an instructor.}
+\item{url}{A character value indicating the URL of the professor's webpage.}
 
-\item{y}{A number indicating the user are interested in ratings after that year.}
+\item{y}{A numeric value to filter ratings after a certain year.}
 }
 \value{
 A plot including 4 subplots
 }
 \description{
-A boxplot of all ratings and 3 barplots of average ratings by course, grade, and year.
+1 boxplot of all ratings and 3 barplots of average ratings by course, grade, and year.
 }
 \examples{
 url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'

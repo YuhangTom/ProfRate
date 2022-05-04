@@ -1,6 +1,6 @@
 #' URL by School Name Generator
 #'
-#' Finds the university URL using its name.
+#' Finds the university's URL using its name.
 #'
 #' @param school_name A character value indicating the name of the university.
 #' @import rvest
@@ -8,7 +8,7 @@
 #' @import dplyr
 #' @import polite
 #' @export
-#' @return A character string as the URL corresponding to the university of interest.
+#' @return A character value as the URL corresponding to the university of interest.
 #' @examples
 #' get_all_schools('Iowa State University')
 
