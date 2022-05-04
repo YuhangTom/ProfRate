@@ -2,17 +2,17 @@
 % Please edit documentation in R/ratings_info.R
 \name{ratings_info}
 \alias{ratings_info}
-\title{Ratings Summarizer}
+\title{Ratings Extractor}
 \usage{
 ratings_info(url, y = 2018)
 }
 \arguments{
-\item{url}{A character value indicating the URL of the webpage corresponding to an instructor.}
+\item{url}{A character value indicating the URL of the professor's webpage.}
 
-\item{y}{A number indicating the user are interested in ratings after that year.}
+\item{y}{A numeric value to filter ratings after a certain year.}
 }
 \value{
-A list of the number of ratings after filtering and 2 data frames
+A list of 1 total number of ratings and 2 data frames
 \itemize{
   \item n - Number of ratings after filtering
   \item ratings - All rating information after a given year
@@ -20,7 +20,7 @@ A list of the number of ratings after filtering and 2 data frames
 }
 }
 \description{
-Extracts and summarizes all rating information for an instructor.
+Extracts and summarizes all rating information on an professor.
 }
 \examples{
 url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'

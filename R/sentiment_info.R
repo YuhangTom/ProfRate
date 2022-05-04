@@ -1,24 +1,20 @@
 #' Sentiment Info Extractor
 #'
-#' Provides positive words and negative words extracted from comments and tags from the website.
+#' Provides common positive words and negative words extracted from comments, and tags from the website.
 #'
-#' @param url A character value indicating the URL of the webpage corresponding to an instructor.
-#' @param y A number indicating the user are interested in comments after that year.
-#' @param word A string indicating the user is interested in positive words, negative words, or tags.
+#' @param url A character value indicating the URL of the professor's webpage.
+#' @param y A numeric value to filter ratings after a certain year.
+#' @param word A character value indicating the user's interest in positive words, negative words, or tags.
 #' @import rvest
 #' @import stringr
 #' @import tidytext
 #' @import dplyr
-#' @import wordcloud2
 #' @import polite
 #' @export
-#' @return A data frame with 5 columns
+#' @return A data frame with 2 columns
 #' \itemize{
-#'   \item course - Course code
-#'   \item year - Delivery year for the course
-#'   \item comments - Comments for the course
-#'   \item thumbsup - Number of thumbs-up
-#'   \item thumbsdown - Number of thumbs-down
+#'   \item word - Words or tags
+#'   \item n - Count of words in comments or tags
 #' }
 #' @examples
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'

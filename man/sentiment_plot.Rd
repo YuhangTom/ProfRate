@@ -7,17 +7,17 @@
 sentiment_plot(url, y = 2018, word = "Positive")
 }
 \arguments{
-\item{url}{A character value indicating the URL of the webpage corresponding to an instructor.}
+\item{url}{A character value indicating the URL of the professor's webpage.}
 
-\item{y}{A number indicating the user are interested in comments after that year.}
+\item{y}{A numeric value to filter ratings after a certain year.}
 
-\item{word}{A string indicating the user is interested in positive words, negative words, or tags.}
+\item{word}{A character value indicating the user's interest in positive words, negative words, or tags.}
 }
 \value{
-A wordcloud
+A wordcloud of common words or tags
 }
 \description{
-A wordcloud of sentiment information extracted from comments and tags from the website.
+A wordcloud of common positive words and negative words extracted from comments, and tags from the website.
 }
 \examples{
 url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'

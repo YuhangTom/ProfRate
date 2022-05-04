@@ -2,28 +2,28 @@
 % Please edit documentation in R/get_tid.R
 \name{get_tid}
 \alias{get_tid}
-\title{Gets teacher IDs}
+\title{Professor ID Extractor}
 \usage{
 get_tid(name, department = NULL, university = NULL)
 }
 \arguments{
-\item{name}{A character value which is the name of an instructor.}
+\item{name}{A character value of the professor's name.}
 
-\item{department}{A character value which is the department of an instructor.}
+\item{department}{A character value of the professor's department.}
 
-\item{university}{A character value which is the university of an instructor.}
+\item{university}{A character value of the professor's university.}
 }
 \value{
-A tibble of teacher ID and general information with 4 columns
+A tibble of the professor's ID and the general information with 4 columns
 \itemize{
-  \item tID - Teacher ID for the instructor
-  \item name - Complete name of the instructor
-  \item department - The department of the instructor
-  \item university - The unversity of the instructor
+  \item tID - ID of the professor
+  \item name - Complete name of the professor
+  \item department - The department of the professor
+  \item university - The unversity of the professor
 }
 }
 \description{
-Gets teacher IDs and general information by the name, department and university.
+Extracts professor's ID and combines with general information.
 }
 \examples{
 name <- "Brakor"
