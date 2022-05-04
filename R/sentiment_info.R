@@ -2,9 +2,9 @@
 #'
 #' Provides common positive words and negative words extracted from comments, and tags from the website.
 #'
-#' @param url A character value indicating the URL of the webpage corresponding to an instructor.
-#' @param y A number indicating the user are interested in comments after that year.
-#' @param word A string indicating the user is interested in positive words, negative words, or tags. Choices among "Positive", "Negative", and "Tags". (default="positive")
+#' @param url A character value indicating the URL of the professor's webpage.
+#' @param y A numeric value to filter ratings after a certain year.
+#' @param word A character value indicating the user's interest in positive words, negative words, or tags. Choices among "Positive", "Negative", and "Tags" with default as "Positive".
 #' @import rvest
 #' @import stringr
 #' @import tidytext
