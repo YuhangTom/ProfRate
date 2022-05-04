@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="ProfRate: Retrieve and Visualize the Data on Rate My Professor">
-<meta property="og:description" content="Retrieve and visualize the data on Rate My Professor based on the url given, either the url for the professor or for specific class.">
+<meta property="og:description" content="Retrieve and visualize the data on Rate My Professor based on the professor's name, department, and university. One can even specify the word type and year range when visualizing.">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -88,7 +88,7 @@
 <div class="page-header"><h1 id="profrate-">ProfRate <img src="reference/figures/logo.png" align="right"><a class="anchor" aria-label="anchor" href="#profrate-"></a>
 </h1></div>
 <!-- badges: start -->
-<p>The goal of <code>ProfRate</code> is to retrieve and visualize the data on <a href="https://www.ratemyprofessors.com/" class="external-link">Rate My Professor</a>. For details, please see <a href="https://m-fili.github.io/ProfRate/" class="external-link">the website for ProfRate</a>.</p>
+<p>The goal of <code>ProfRate</code> is to retrieve and visualize the data on <a href="https://www.ratemyprofessors.com/" class="external-link">Rate My Professor</a>. For details, please see <a href="https://m-fili.github.io/ProfRate/" class="external-link">the website for ProfRate</a> and the Shiny app.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -105,11 +105,11 @@
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p>This is a basic example which shows you how to solve a common problem.</p>
+<p>This basic example shows you how to retrieve and visualize the data using <code>ProfRate</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">### Load library</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/m-fili/ProfRate" class="external-link">ProfRate</a></span><span class="op">)</span></code></pre></div>
-<p>The function <code>get_tid</code> gets teacher IDs and general information by name, department and university, it is case insensitive and support partial input.</p>
+<p>The function <code>get_tid</code> gets teacher IDs and general information by name, department, and university. The name must be as accurate as possible to filter the results and speed up. All inputs are case insensitive and support partial input.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">name</span> <span class="op">&lt;-</span> <span class="st">"Brakor"</span>
 <span class="va">department</span> <span class="op">&lt;-</span> <span class="st">"Biology"</span>
@@ -118,32 +118,33 @@
 <span class="fu"><a href="reference/get_tid.html">get_tid</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, department <span class="op">=</span> <span class="va">department</span><span class="op">)</span>
 <span class="fu"><a href="reference/get_tid.html">get_tid</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, university <span class="op">=</span> <span class="va">university</span><span class="op">)</span>
 <span class="fu"><a href="reference/get_tid.html">get_tid</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, department <span class="op">=</span> <span class="va">department</span>, university <span class="op">=</span> <span class="va">university</span><span class="op">)</span></code></pre></div>
-<p>The function <code>get_url</code> gets url by name, department and university, it is case insensitive and support partial input.</p>
+<p>The function <code>get_url</code> gets URLs by name, department and university. It use <code>get_tid</code> inside, so it follows the same requirements as <code>get_tid</code> for inputs.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/get_url.html">get_url</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span><span class="op">)</span>
 <span class="fu"><a href="reference/get_url.html">get_url</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, department <span class="op">=</span> <span class="va">department</span><span class="op">)</span>
 <span class="fu"><a href="reference/get_url.html">get_url</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, university <span class="op">=</span> <span class="va">university</span><span class="op">)</span>
 <span class="fu"><a href="reference/get_url.html">get_url</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, department <span class="op">=</span> <span class="va">department</span>, university <span class="op">=</span> <span class="va">university</span><span class="op">)</span></code></pre></div>
-<p>The function <code>general_info</code> extracts general information for an instructor.</p>
+<p>After getting the URL for a professor by name, department, and university, we can use the URL as input for other functions, which avoids scrapping the website multiple times.</p>
+<p>The function <code>general_info</code> extracts general information for an instructor. It is used in <code>get_tid</code> to generate the output tibble.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448"</span>
 <span class="fu"><a href="reference/general_info.html">general_info</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></code></pre></div>
-<p>The function <code>get_all_schools</code> finds the university url using its name.</p>
+<p>The function <code>comment_info</code> extracts information on comments, including course, year, comments, number of thumbs-ups, and number of thumbs-downs.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/get_all_schools.html">get_all_schools</a></span><span class="op">(</span><span class="st">"Iowa State University"</span><span class="op">)</span></code></pre></div>
-<p>The function <code>ratings_info</code> shows and summarizes all rating information for an instructor</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/ratings_info.html">ratings_info</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span><span class="op">)</span></code></pre></div>
-<p>The function <code>ratings_plot</code> creates a box plot of all ratings and 3 bar plots of average ratings by course, grade, and year for an instructor.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/ratings_plot.html">ratings_plot</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span><span class="op">)</span></code></pre></div>
-<p>The function <code>comment_info</code> extracts information on comments including course, year, comments, number of thumbsups and number of thumbsdowns.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/comment_info.html">comment_info</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span><span class="op">)</span></code></pre></div>
-<p>The function <code>sentiment_info</code> provides positive words and negative words extracted from comments, and tags from the website.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<p>The function <code>sentiment_info</code> uses <code>comment_info</code> to provide positive and negative words extracted from comments and tags from the website.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/sentiment_info.html">sentiment_info</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span>, word <span class="op">=</span> <span class="st">"Negative"</span><span class="op">)</span></code></pre></div>
-<p>The function <code>runExample</code> runs shiny app.</p>
+<p>The function <code>ratings_info</code> shows and summarizes all rating information for an instructor.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/ratings_info.html">ratings_info</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span><span class="op">)</span></code></pre></div>
+<p>The function <code>ratings_plot</code> uses <code>ratings_info</code> to create a box plot of all ratings and 3 bar plots of average ratings by course, grade, and year for an instructor.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/ratings_plot.html">ratings_plot</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span><span class="op">)</span></code></pre></div>
+<p>Although the analysis of a university is possible, it is not our main interest for <code>ProfRate</code>. We still provide the function <code>get_all_schools</code> to find the university URL using its name.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/get_all_schools.html">get_all_schools</a></span><span class="op">(</span><span class="st">"Iowa State University"</span><span class="op">)</span></code></pre></div>
+<p>The function <code>runExample</code> runs the Shiny app.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/runExample.html">runExample</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
@@ -178,9 +179,9 @@
 <div class="developers">
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Yuhang LIN <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-3600-9889" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Yuhang LIN <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-3600-9889" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Danyang ZHANG <br><small class="roles"> Author </small>  </li>
-<li>Mohammad FILI <br><small class="roles"> Author, maintainer </small>  </li>
+<li>Mohammad FILI <br><small class="roles"> Author </small>  </li>
 </ul>
 </div>
 
