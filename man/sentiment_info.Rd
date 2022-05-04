@@ -11,7 +11,7 @@ sentiment_info(url, y = 2018, word = "Positive")
 
 \item{y}{A number indicating the user are interested in comments after that year.}
 
-\item{word}{A string indicating the user is interested in positive words, negative words, or tags.}
+\item{word}{A string indicating the user is interested in positive words, negative words, or tags. Choices among "Positive", "Negative", and "Tags". (default="positive")}
 }
 \value{
 A data frame with 5 columns

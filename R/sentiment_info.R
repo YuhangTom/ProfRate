@@ -4,7 +4,7 @@
 #'
 #' @param url A character value indicating the URL of the webpage corresponding to an instructor.
 #' @param y A number indicating the user are interested in comments after that year.
-#' @param word A string indicating the user is interested in positive words, negative words, or tags.
+#' @param word A string indicating the user is interested in positive words, negative words, or tags. Choices among "Positive", "Negative", and "Tags". (default="positive")
 #' @import rvest
 #' @import stringr
 #' @import tidytext
@@ -29,10 +29,14 @@ sentiment_info <- function(url, y = 2018, word = "Positive") {
   session <- bow(url)
   webpage <- scrape(session)
 
+  # Input Words to lower cases (all letters)
+  word = tolower(word)
+
   comment_df <- comment_info(url = url, y = y)
 
   # Stop further analysis if fewer than 1 comment
   stopifnot("Fewer than 1 comment!" = nrow(comment_df) > 1)
+  stopifnot("Incorrect input for argument words. Only 'Positive', 'Negative', and 'Tags' are allowed." = word %in% c('positive', 'negative', 'tags'))
 
   # Sentiment analysis of words in all comments, using sentiment lexicons "bing"
   # from Bing Liu and collaborators
@@ -60,9 +64,9 @@ sentiment_info <- function(url, y = 2018, word = "Positive") {
     group_by(tags) %>%
     count(sort = TRUE)
 
-  if (word == "Positive") {
+  if (word == "positive") {
     return(positive)
-  } else if (word == "Negative") {
+  } else if (word == "negative") {
     return(negative)
   } else {
     return(tags)
