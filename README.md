@@ -9,7 +9,7 @@
 
 The goal of `ProfRate` is to retrieve and visualize the data on [Rate My Professor](https://www.ratemyprofessors.com/).
 For details,
-please see [the website for ProfRate](https://m-fili.github.io/ProfRate/) and the Shiny app.
+please see [the website for ProfRate](https://m-fili.github.io/ProfRate/) and the Shiny app. The set of slides for this project can be found at this [link](https://iastate.box.com/s/yyqushjerzwc7xizwn7p7l1iwzpe95ia).
 
 ## Installation
 
