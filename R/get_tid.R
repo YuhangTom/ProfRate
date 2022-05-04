@@ -1,10 +1,10 @@
-#' Gets teacher IDs
+#' Professor ID Extractor
 #'
-#' Gets teacher IDs and general information by the name, department and university.
+#' Extracts professor's ID and combines with general information.
 #'
-#' @param name A character value which is the name of an instructor.
-#' @param department A character value which is the department of an instructor.
-#' @param university A character value which is the university of an instructor.
+#' @param name A character value of the professor's name.
+#' @param department A character value of the professor's department.
+#' @param university A character value of the professor's university.
 #'
 #' @import rvest
 #' @import stringr
@@ -12,12 +12,12 @@
 #' @import purrr
 #' @export
 #'
-#' @return A tibble of teacher ID and general information with 4 columns
+#' @return A tibble of the professor's ID and the general information with 4 columns
 #' \itemize{
-#'   \item tID - Teacher ID for the instructor
-#'   \item name - Complete name of the instructor
-#'   \item department - The department of the instructor
-#'   \item university - The unversity of the instructor
+#'   \item tID - ID of the professor
+#'   \item name - Complete name of the professor
+#'   \item department - The department of the professor
+#'   \item university - The unversity of the professor
 #' }
 #' @examples
 #' name <- "Brakor"

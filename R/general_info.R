@@ -1,18 +1,18 @@
-#' General Info Finder
+#' General Info Extractor
 #'
-#' Extracts general information for an instructor.
+#' Extracts general information on an professor.
 #'
-#' @param url A character value indicating the URL of the webpage corresponding to an instructor.
+#' @param url A character value indicating the URL of the professor's webpage.
 #' @import rvest
 #' @import stringr
 #' @import dplyr
 #' @import polite
 #' @export
-#' @return A list with two elements
+#' @return A list with three elements
 #' \itemize{
-#'   \item name - Complete name of the instructor
-#'   \item department - The department of the instructor
-#'   \item university - The unversity of the instructor
+#'   \item name - Complete name of the professor
+#'   \item department - The department of the professor
+#'   \item university - The university of the professor
 #' }
 #' @examples
 #' url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'
