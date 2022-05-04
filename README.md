@@ -84,6 +84,11 @@ The function `sentiment_info` uses `comment_info` to provide positive and negati
 sentiment_info(url = url, y = 2018, word = "Negative")
 ```
 
+The function `sentiment_plot` uses `sentiment_info` to generate a wordcloud.
+```r
+sentiment_plot(url = url, y = 2018, word = "Positive")
+```
+
 The function `ratings_info` shows and summarizes all rating information for an instructor.
 ```r
 ratings_info(url = url, y = 2018)

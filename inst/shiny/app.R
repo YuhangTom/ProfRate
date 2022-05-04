@@ -108,8 +108,7 @@ server <- function(input, output, session) {
   })
 
   output$WC <- renderWordcloud2({
-    sentiment_info(url1(), year1(), WT()) %>%
-      wordcloud2(backgroundColor = "transparent", size = 1, color = "random-dark")
+    sentiment_plot(url1(), year1(), WT())
   })
 
   output$RP <- renderPlot({
