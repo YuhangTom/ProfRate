@@ -70,9 +70,6 @@ The website
 
 
 
-```{r setup}
-library(ProfRate)
-```
 
 
 # Functions
@@ -87,7 +84,23 @@ First a URL is generated using the name of the instructor, department name and t
 
 
 ### `get_all_schools`
-This functions generates a URL, given the name of an institution. For this version of the package
+
+* This functions generates a URL, given the name of an institution. 
+* For this version of the package, it is not used, but for the future development it will be used for Campus Evaluation as well.
+
+
+```{r setup}
+library(ProfRate)
+```
+
+```{r}
+get_all_schools('Iowa State University')
+```
+
+
+```{r}
+get_all_schools('MIT')
+```
 
 
 
