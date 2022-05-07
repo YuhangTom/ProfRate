@@ -83,7 +83,7 @@ Note that `file_path_to_target_package` is the placeholder and needs to be repla
 
 <br>
 ## Background
-The website
+The website that we used for this project is [RateMyProfessor](https://www.ratemyprofessors.com/). This website collects comments from students regarding the teaching quality, difficulty, and many more aspect of a course being taught by a specific professor. Our Package uses the information in this website to create a summary of teaching quality for an instructor of interest.
 
 
 
@@ -98,7 +98,7 @@ First, we explain the flowchart of our functions and how they work with each oth
 ```{r echo=FALSE, fig.cap="Flowchart of Functions", out.width="600px"}
 knitr::include_graphics("../man/figures/Functions.jpg")
 ```
-
+<br>
 As shown above, there are 10 functions overall in this package. The first three packages in green generates the URL to start the whole scraping procedure. The functions in blue rectangle, are the body of the package responsible for scraping, summarization, and visualization. The function at the bottom in yellow rectangle, is the Shiny app.
 
 First a URL is generated using the name of the instructor, department name and the institution name. Then the comments and ratings are scraped from the webpage, and summarized and plotted. All the generated outputs then feed into the ShinyApp. In the follwoing the functions are explained in detail.\
@@ -110,7 +110,7 @@ First a URL is generated using the name of the instructor, department name and t
 * This functions generates a URL, given the name of an institution. 
 * For this version of the package, it is not used, but for the future development it will be used for Campus Evaluation as well.
 
-**Examples**:
+Examples:
 
 ```{r setup}
 library(ProfRate)
@@ -133,7 +133,7 @@ get_all_schools('MIT')
 * It takes a URL and extract the instructor's name, department and university.
 * It can be used independently, but it is used as a helper function to filter and find the instructor of interest in `get_tid` function.
 
-**Examples**:
+Examples:
 
 ```{r}
 general_info("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=342455")
@@ -147,14 +147,13 @@ general_info("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=744853")
 ### `get_tid`
 
 * This functions generates the URL given the information of the instructor.
-
-* We can give only the name of the instructor.
+* We can give only the name of the instructor as below:
 
 ```{r}
 get_tid(name = 'Brakor')
 ```
 
-* we can give the name and department:
+* Or, we can give the name and department:
 
 ```{r}
 get_tid(name = 'Brakor', department = 'Biology')
@@ -172,7 +171,7 @@ get_tid(name = 'Brakor', department = 'Biology', university = 'Berkeley')
 
 * This function takes the same argument as `get_tid`, but generates the final URL. Under the hood it uses `get_tid` to first extract the `tid` number and then it generates the URL.
 
-**Examples**:
+Examples:
 
 ```{r}
 get_url(name = 'Brakor')
@@ -210,7 +209,7 @@ comment_info(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1129448
 * It generates the set of _positive_, _negative_, and _tags_ for an instructor.
 * It can filter the year ti include certain from a certain year up to present.
 
-**Example**:
+Example:
 
 ```{r}
 sentiment_info(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792", y = 2009, word = 'Positive')
@@ -234,7 +233,7 @@ sentiment_info(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792
 * It can generate the _positive_, _negative_, and _tags_.
 * It can filter the years to show the words in comments after a scpecific year.
 
-__Examples__:
+Examples:
 
 ```{r}
 sentiment_plot(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792", y = 2009, word = 'Positive')
@@ -260,7 +259,7 @@ sentiment_plot(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792
   * summary of ratings
   
 
-__Examples__:
+Examples:
 
 ```{r}
 ratings_info("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1129448", y=2009)
