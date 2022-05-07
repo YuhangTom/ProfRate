@@ -78,7 +78,7 @@ library(ProfRate)
 # Functions
 First, we explain the flowchart of our functions and how they work with each other. This workflow is shown in the figure below:
 
-![Flowchart of the functions in ProfRate Package](../../../Project/Functions.jpg)
+![Flowchart of the functions in ProfRate Package](../man/figures/Functions.jpg)
 
 As shown above, there are 10 functions overall in this package. The first three packages in green generates the URL to start the whole scraping procedure.
 
