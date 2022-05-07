@@ -21,7 +21,7 @@ In the README file you learned HOW to use the package,
 here, we get into the details of this package and its applications.
 
 
-# Introduction
+## Introduction
 As a student you might be interested to know more about a specific instructor, the characteristics, difficulty of the course being taught by that professor, and the overall teaching quality.
 
 This package makes a user-friendly UI to extract a summary of the information for an instructor of interest and visualizes them.
@@ -31,7 +31,7 @@ This package makes a user-friendly UI to extract a summary of the information fo
 
 
 
-# What is this package for?
+## What is this package for?
 This packages addresses the following areas:
 * What are the positive, negative aspects of an instructor?
 * What are the most frequent words used to describe an instructor?
@@ -45,7 +45,7 @@ This packages addresses the following areas:
 
 
 
-# Who can use this package?
+## Who can use this package?
 * Students: 
   * They can get more familiar with an instructor.
   * Find how other students experiences a course.
@@ -59,6 +59,25 @@ This packages addresses the following areas:
   * Get to know their TAs (Strengths and Weaknesses) to provide constructive feedback.
   * Track their own progress over time
   * See how the course is perceived from students' point of view
+
+
+
+## Installation
+You can install this package from GitHub:
+
+```{r}
+### install.packages("devtools")
+devtools::install_github("m-fili/ProfRate")
+```
+
+Or download the `ProfRate` and install it locally using:
+
+```{r}
+install.packages("file_path_to_target_package/ProfRate", repos=NULL, type="source")
+```
+
+Note that `file_path_to_target_package` is the placeholder and needs to be replace by the correct relative path on your machine.
+
 
 
 
@@ -88,6 +107,7 @@ First a URL is generated using the name of the instructor, department name and t
 * This functions generates a URL, given the name of an institution. 
 * For this version of the package, it is not used, but for the future development it will be used for Campus Evaluation as well.
 
+**Examples**:
 
 ```{r setup}
 library(ProfRate)
@@ -101,6 +121,67 @@ get_all_schools('Iowa State University')
 ```{r}
 get_all_schools('MIT')
 ```
+
+
+
+### `general_info`
+
+* This function generates the general information for an instructor.
+* It takes a URL and extract the instructor's name, department and university.
+* It can be used independently, but it is used as a helper function to filter and find the instructor of interest in `get_tid` function.
+
+**Examples**:
+
+```{r}
+general_info("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=342455")
+```
+
+```{r}
+general_info("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=744853")
+```
+
+
+### `get_tid`
+
+* This functions generates the URL given the information of the instructor.
+
+* We can give only the name of the instructor.
+
+```{r}
+get_tid(name = 'Brakor')
+```
+
+* we can give the name and department:
+
+```{r}
+get_tid(name = 'Brakor', department = 'Biology')
+```
+
+* We can also restrict the searches by specifying all infromation:
+
+```{r}
+get_tid(name = 'Brakor', department = 'Biology', university = 'Berkeley')
+```
+
+
+
+### `get_url`
+
+* This function takes the same argument as `get_tid`, but generates the final URL. Under the hood it uses `get_tid` to first extract the `tid` number and then it generates the URL.
+
+**Examples**:
+
+```{r}
+get_url(name = 'Brakor')
+```
+
+```{r}
+get_url(name = 'Brakor', department = 'Biology', university = 'Berkeley')
+```
+
+
+
+### `comment_info`
 
 
 
