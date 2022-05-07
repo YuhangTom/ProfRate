@@ -14,11 +14,89 @@ knitr::opts_chunk$set(
 )
 ```
 
-The vignette is created using `usethis::use_vignette`.
+<br>
+<br>
 
 In the README file you learned HOW to use the package,
-here is a bit more about the process of making package and the motivation behind the package.
+here, we get into the details of this package and its applications.
+
+
+# Introduction
+As a student you might be interested to know more about a specific instructor, the characteristics, difficulty of the course being taught by that professor, and the overall teaching quality.
+
+This package makes a user-friendly UI to extract a summary of the information for an instructor of interest and visualizes them.
+
+
+
+
+
+
+# What is this package for?
+This packages addresses the following areas:
+* What are the positive, negative aspects of an instructor?
+* What are the most frequent words used to describe an instructor?
+* How difficult are the courses taught by an instructor?
+* How is the overall teaching quality?
+* How the performance of an instructor has changed over time?
+* How do the grades of students affect the rating of an instructor?
+
+
+
+
+
+
+# Who can use this package?
+* Students: 
+  * They can get more familiar with an instructor.
+  * Find how other students experiences a course.
+* TAs:
+  * Self-evaluation
+  * Tracking their progress over time (from student's point of view)
+  * See how students feel about their TA-ship.
+* Instructors:
+  * Self-evaluation
+  * Track the TAs' performances
+  * Get to know their TAs (Strengths and Weaknesses) to provide constructive feedback.
+  * Track their own progress over time
+  * See how the course is perceived from students' point of view
+
+
+
+
+
+
+
+
+
 
 ```{r setup}
 library(ProfRate)
 ```
+
+
+# Applications
+
+
+
+
+
+# Functions
+
+
+
+
+
+# Testing
+
+
+
+# Documentation
+
+
+
+# ShinyApp
+
+
+
+# Future Steps
+
