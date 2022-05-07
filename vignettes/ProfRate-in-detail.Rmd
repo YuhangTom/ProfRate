@@ -186,6 +186,53 @@ get_url(name = 'Brakor', department = 'Biology', university = 'Berkeley')
 
 ### `comment_info`
 
+* This function extracts the comments for a given URL.
+* It separates the comments according to the year and course
+* It also extracts the number of thumbs up and down for each comment.
+* This function can filter the comments to be shown for those after a specific year.
+
+
+
+```{r}
+comment_info(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1031282", y = 2000)
+```
+
+```{r}
+comment_info(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1129448", y = 2000)
+```
+
+
+
+
+### `sentiment_info`
+
+* This function do sentiment analysis on the comments.
+* It generates the set of _positive_, _negative_, and _tags_ for an instructor.
+* It can filter the year ti include certain from a certain year up to present.
+
+**Example**:
+
+```{r}
+sentiment_info(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792", y = 2009, word = 'Positive')
+```
+
+```{r}
+sentiment_info(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792", y = 2000, word = 'Negative')
+```
+
+
+
+```{r}
+sentiment_info(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792", y = 2009, word = 'Tags')
+```
+
+
+
+### sentiment_plot
+
+
+
+
 
 
 
