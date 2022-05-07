@@ -230,11 +230,58 @@ sentiment_info(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792
 
 ### sentiment_plot
 
+* This functions visualizes the comments using word cloud.
+* It can generate the _positive_, _negative_, and _tags_.
+* It can filter the years to show the words in comments after a scpecific year.
+
+__Examples__:
+
+```{r}
+sentiment_plot(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792", y = 2009, word = 'Positive')
+```
+
+
+```{r}
+sentiment_plot(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=902068", y = 2000, word = 'negative')
+```
+
+
+```{r}
+sentiment_plot(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792", y = 2000, word = 'tags')
+```
+
+
+### `ratings_info`
+
+* given the URL, it generate the rating info
+* It creates three outputs:
+  * number of comments
+  * ratings table including the year, course, quality, difficulty, overall rating with some other info regarding the course or student who left that rating.
+  * summary of ratings
+  
+
+__Examples__:
+
+```{r}
+ratings_info("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1129448", y=2009)
+```
 
 
 
+### `ratings_plot`
 
-
+* given the URL, it generate the visualization for the ratings
+* It creates four subplots:
+  * Overall Rating
+  * Average rating by course
+  * Average rating by grade
+  * Average rating by year
+  
+  
+  
+```{r}
+ratings_plot("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1129448", y=2009)
+```
 
 
 
