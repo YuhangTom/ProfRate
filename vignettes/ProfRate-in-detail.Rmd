@@ -31,15 +31,15 @@ This package makes a user-friendly UI to extract a summary of the information fo
 
 
 
-## What is this package for?
-This packages addresses the following areas:
-* What are the positive, negative aspects of an instructor?
-* What are the most frequent words used to describe an instructor?
-* How difficult are the courses taught by an instructor?
-* How is the overall teaching quality?
-* How the performance of an instructor has changed over time?
-* How do the grades of students affect the rating of an instructor?
-
+## What is this package for?    
+This package addresses the following areas: <br>
+  * What are the positive, negative aspects of an instructor?
+  * What are the most frequent words used to describe an instructor?
+  * How difficult are the courses taught by an instructor?
+  * How is the overall teaching quality?
+  * How the performance of an instructor has changed over time?
+  * How do the grades of students affect the rating of an instructor?
+  
 
 
 
@@ -81,8 +81,8 @@ Note that `file_path_to_target_package` is the placeholder and needs to be repla
 
 
 
-
-# Background
+<br>
+## Background
 The website
 
 
@@ -90,8 +90,8 @@ The website
 
 
 
-
-# Functions
+<br>
+## Functions
 First, we explain the flowchart of our functions and how they work with each other. This workflow is shown in the figure below:
 
 
@@ -242,12 +242,12 @@ sentiment_plot(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792
 
 
 ```{r}
-sentiment_plot(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=902068", y = 2000, word = 'negative')
+sentiment_plot(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792", y = 2000, word = 'negative')
 ```
 
 
 ```{r}
-sentiment_plot(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792", y = 2000, word = 'tags')
+sentiment_plot(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792", y = 2000, word = 'Tags')
 ```
 
 
@@ -284,19 +284,50 @@ ratings_plot("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1129448", y=2
 ```
 
 
+## Testing
+We included different tests for each function to make sure it is working properly. The coverage of the package is 98%, as the time of writing this report. Here are the set of things in general that is checked for each function:
 
-
-# Testing
-
-
-
-# Documentation
-
-
-
-# ShinyApp
+* Checking the Data Type
+* Verifying the Length of Inputs and Outputs
+* Correct Format of the URL
+* Correct set of Arguments
+* Error Messages
+* Checking plot producibility
 
 
 
-# Future Steps
+## Documentation
+Each function is documented thoroughly. The set of information included in each function is as below:
 
+* Name and description
+* Usage
+* Arguments and their definition
+* Outputs and their definition
+* Examples
+
+
+
+## Website
+The [website](https://m-fili.github.io/ProfRate/) is launched and includes the references and other useful information on how to use this package.
+
+
+
+
+## ShinyApp
+In this package, there is a function named `runExample` that the user can utilize to show all the functionalities discussed so far through an interactive App.
+
+
+
+
+
+## Future Steps
+
+Here are the future steps to make this package more comprehensive.
+
+1. Adding Campus Evaluation to the App
+
+2. Incorporating correlation Analysis & outlier detection
+  * Relation between the ratings and grades
+  * Relation between the comments and grades
+
+3. Incorporate likes and dislikes into analysis to emphasize on the valid comments.
