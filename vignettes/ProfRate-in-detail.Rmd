@@ -98,7 +98,9 @@ The website that we used for this project is [RateMyProfessor](https://www.ratem
 
 First, we explain the flowchart of our functions and how they work with each other. This workflow is shown in the figure below:
 
-![Flowchart of the functions](Functions.jpg)
+```{r}
+knitr::include_graphics('Functions.jpg')
+```
 
 
 <br>
@@ -243,14 +245,6 @@ sentiment_plot(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792
 ```
 
 
-```{r}
-sentiment_plot(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792", y = 2000, word = 'negative')
-```
-
-
-```{r}
-sentiment_plot(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792", y = 2000, word = 'Tags')
-```
 
 
 ### `ratings_info`
