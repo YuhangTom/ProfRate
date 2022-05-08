@@ -2,7 +2,7 @@
 title: "More details about the ProfRate package"
 output: rmarkdown::html_vignette
 resource_files:
-  - Functions.jpg
+  - vignettes/Functions.jpg
 vignette: >
   %\VignetteIndexEntry{More details about the ProfRate package}
   %\VignetteEngine{knitr::rmarkdown}
