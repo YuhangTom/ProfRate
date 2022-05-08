@@ -98,7 +98,7 @@ The website that we used for this project is [RateMyProfessor](https://www.ratem
 
 First, we explain the flowchart of our functions and how they work with each other. This workflow is shown in the figure below:
 
-![Flowchart of the functions](man/figures/Functions.jpg)
+![Flowchart of the functions](Functions.jpg)
 
 
 <br>
