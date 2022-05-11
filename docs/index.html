@@ -114,39 +114,35 @@
 <code class="sourceCode R"><span class="va">name</span> <span class="op">&lt;-</span> <span class="st">"Brakor"</span>
 <span class="va">department</span> <span class="op">&lt;-</span> <span class="st">"Biology"</span>
 <span class="va">university</span> <span class="op">&lt;-</span> <span class="st">"California Berkeley"</span>
-<span class="fu"><a href="reference/get_tid.html">get_tid</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span><span class="op">)</span>
-<span class="fu"><a href="reference/get_tid.html">get_tid</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, department <span class="op">=</span> <span class="va">department</span><span class="op">)</span>
 <span class="fu"><a href="reference/get_tid.html">get_tid</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, university <span class="op">=</span> <span class="va">university</span><span class="op">)</span>
 <span class="fu"><a href="reference/get_tid.html">get_tid</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, department <span class="op">=</span> <span class="va">department</span>, university <span class="op">=</span> <span class="va">university</span><span class="op">)</span></code></pre></div>
 <p>The function <code>get_url</code> gets URLs by name, department and university. It use <code>get_tid</code> inside, so it follows the same requirements as <code>get_tid</code> for inputs.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/get_url.html">get_url</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span><span class="op">)</span>
-<span class="fu"><a href="reference/get_url.html">get_url</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, department <span class="op">=</span> <span class="va">department</span><span class="op">)</span>
-<span class="fu"><a href="reference/get_url.html">get_url</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, university <span class="op">=</span> <span class="va">university</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="reference/get_url.html">get_url</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, university <span class="op">=</span> <span class="va">university</span><span class="op">)</span>
 <span class="fu"><a href="reference/get_url.html">get_url</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, department <span class="op">=</span> <span class="va">department</span>, university <span class="op">=</span> <span class="va">university</span><span class="op">)</span></code></pre></div>
 <p>After getting the URL for a professor by name, department, and university, we can use the URL as input for other functions, which avoids scrapping the website multiple times.</p>
 <p>The function <code>general_info</code> extracts general information for an instructor. It is used in <code>get_tid</code> to generate the output tibble.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448"</span>
 <span class="fu"><a href="reference/general_info.html">general_info</a></span><span class="op">(</span><span class="va">url</span><span class="op">)</span></code></pre></div>
-<p>The function <code>comment_info</code> extracts information on comments, including course, year, comments, number of thumbs-ups, and number of thumbs-downs.</p>
+<p>The function <code>get_all_schools</code> find the university URL using its name. It is used in <code>get_tid</code> to filter the search result. Although further analysis of a specific university is possible, it is not our main interest for <code>ProfRate</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/get_all_schools.html">get_all_schools</a></span><span class="op">(</span><span class="st">"Iowa State University"</span><span class="op">)</span></code></pre></div>
+<p>The function <code>comment_info</code> extracts information on comments, including course, year, comments, number of thumbs-ups, and number of thumbs-downs.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/comment_info.html">comment_info</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span><span class="op">)</span></code></pre></div>
 <p>The function <code>sentiment_info</code> uses <code>comment_info</code> to provide positive and negative words extracted from comments and tags from the website.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/sentiment_info.html">sentiment_info</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span>, word <span class="op">=</span> <span class="st">"Negative"</span><span class="op">)</span></code></pre></div>
 <p>The function <code>sentiment_plot</code> uses <code>sentiment_info</code> to generate a wordcloud.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/sentiment_plot.html">sentiment_plot</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span>, word <span class="op">=</span> <span class="st">"Positive"</span><span class="op">)</span></code></pre></div>
 <p>The function <code>ratings_info</code> shows and summarizes all rating information for an instructor.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/ratings_info.html">ratings_info</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span><span class="op">)</span></code></pre></div>
 <p>The function <code>ratings_plot</code> uses <code>ratings_info</code> to create a box plot of all ratings and 3 bar plots of average ratings by course, grade, and year for an instructor.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/ratings_plot.html">ratings_plot</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span><span class="op">)</span></code></pre></div>
-<p>Although the analysis of a university is possible, it is not our main interest for <code>ProfRate</code>. We still provide the function <code>get_all_schools</code> to find the university URL using its name.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/get_all_schools.html">get_all_schools</a></span><span class="op">(</span><span class="st">"Iowa State University"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="reference/ratings_plot.html">ratings_plot</a></span><span class="op">(</span>url <span class="op">=</span> <span class="va">url</span>, y <span class="op">=</span> <span class="fl">2018</span><span class="op">)</span></code></pre></div>
 <p>The function <code>runExample</code> runs the Shiny app.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/runExample.html">runExample</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
