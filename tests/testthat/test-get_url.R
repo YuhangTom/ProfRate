@@ -13,13 +13,6 @@ test_that("get_url outputs work", {
   department <- "Biology"
   university <- "California Berkeley"
 
-  out <- get_url(name = name)
-  expect_type(out, "character")
-  expect_length(out, 3)
-
-  out <- get_url(name = name, department = department)
-  expect_type(out, "character")
-  expect_length(out, 2)
 
 
   out <- get_url(name = name, university = university)
