@@ -98,7 +98,7 @@ The website that we used for this project is [RateMyProfessor](https://www.ratem
 
 First, we explain the flowchart of our functions and how they work with each other. This workflow is shown in the figure below:
 
-```{r}
+```{r, echo = FALSE}
 knitr::include_graphics('Functions.jpg')
 ```
 
@@ -112,8 +112,9 @@ First a URL is generated using the name of the instructor, department name and t
 
 ### `get_all_schools`
 
-* This functions generates a URL, given the name of an institution. 
-* For this version of the package, it is not used, but for the future development it will be used for Campus Evaluation as well.
+* This functions generates a URL, given the name of an university.
+* It can be used independently, but it is used as a helper function to filter and find the instructor of interest in `get_tid` function.
+* For the future development it can be used for Campus Evaluation as well.
 
 Examples:
 
@@ -152,16 +153,12 @@ general_info("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=744853")
 ### `get_tid`
 
 * This functions generates the URL given the information of the instructor.
-* We can give only the name of the instructor as below:
+* The name argument should be full name and is required, the university argument is also required, but department argument is optional.
+
+* Or, we can give the name and university:
 
 ```{r}
-get_tid(name = 'Brakor')
-```
-
-* Or, we can give the name and department:
-
-```{r}
-get_tid(name = 'Brakor', department = 'Biology')
+get_tid(name = 'Brakor', university = 'California Berkeley')
 ```
 
 * We can also restrict the searches by specifying all infromation:
@@ -178,9 +175,6 @@ get_tid(name = 'Brakor', department = 'Biology', university = 'Berkeley')
 
 Examples:
 
-```{r}
-get_url(name = 'Brakor')
-```
 
 ```{r}
 get_url(name = 'Brakor', department = 'Biology', university = 'Berkeley')
