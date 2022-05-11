@@ -63,24 +63,24 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_tid</span><span class="op">(</span><span class="va">name</span>, department <span class="op">=</span> <span class="cn">NULL</span>, university <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_tid</span><span class="op">(</span><span class="va">name</span>, department <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">university</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>name</dt>
-<dd><p>A character value of the professor's name.</p></dd>
+<dd><p>A character value of the professor's full name (required).</p></dd>
 <dt>department</dt>
-<dd><p>A character value of the professor's department.</p></dd>
+<dd><p>A character value of the professor's department (optional).</p></dd>
 <dt>university</dt>
-<dd><p>A character value of the professor's university.</p></dd>
+<dd><p>A character value of the professor's university (required).</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
     <p>A tibble of the professor's ID and the general information with 4 columns</p><ul><li><p>tID - ID of the professor</p></li>
-<li><p>name - Complete name of the professor</p></li>
+<li><p>name - Full name of the professor</p></li>
 <li><p>department - The department of the professor</p></li>
-<li><p>university - The unversity of the professor</p></li>
+<li><p>university - The university of the professor</p></li>
 </ul></div>
 
     <div id="ref-examples">
@@ -88,19 +88,6 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">name</span> <span class="op">&lt;-</span> <span class="st">"Brakor"</span></span>
 <span class="r-in"><span class="va">department</span> <span class="op">&lt;-</span> <span class="st">"Biology"</span></span>
 <span class="r-in"><span class="va">university</span> <span class="op">&lt;-</span> <span class="st">"California Berkeley"</span></span>
-<span class="r-in"><span class="fu">get_tid</span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 x 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       tID name              department             university                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 1<span style="text-decoration: underline;">031</span>282 Katie Brakora     Biology department     University of California Ber~</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 1<span style="text-decoration: underline;">948</span>643 Karl Brakora      Engineering department Grand Valley State University</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> 1<span style="text-decoration: underline;">829</span>876 Katherine Brakora Biology department     Saint Mary's College of Cali~</span>
-<span class="r-in"><span class="fu">get_tid</span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, department <span class="op">=</span> <span class="va">department</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 x 4</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       tID name              department         university                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> 1<span style="text-decoration: underline;">031</span>282 Katie Brakora     Biology department University of California Berkeley</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> 1<span style="text-decoration: underline;">829</span>876 Katherine Brakora Biology department Saint Mary's College of Californ~</span>
 <span class="r-in"><span class="fu">get_tid</span><span class="op">(</span>name <span class="op">=</span> <span class="va">name</span>, university <span class="op">=</span> <span class="va">university</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 x 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       tID name          department         university                       </span>

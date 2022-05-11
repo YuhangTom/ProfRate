@@ -2,9 +2,9 @@
 #'
 #' Extracts URL by the name, department and university of the professor.
 #'
-#' @param name A character value of the professor's name.
-#' @param department A character value of the professor's department.
-#' @param university A character value of the professor's university.
+#' @param name A character value of the professor's full name (required).
+#' @param department A character value of the professor's department (optional).
+#' @param university A character value of the professor's university (required).
 #'
 #' @export
 #'
@@ -15,8 +15,6 @@
 #' name <- "Brakor"
 #' department <- "Biology"
 #' university <- "California Berkeley"
-#' get_url(name = name)
-#' get_url(name = name, department = department)
 #' get_url(name = name, university = university)
 #' get_url(name = name, department = department, university = university)
 

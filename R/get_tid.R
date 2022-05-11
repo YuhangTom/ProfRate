@@ -2,9 +2,9 @@
 #'
 #' Extracts professor's ID and combines with general information.
 #'
-#' @param name A character value of the professor's name.
-#' @param department A character value of the professor's department.
-#' @param university A character value of the professor's university.
+#' @param name A character value of the professor's full name (required).
+#' @param department A character value of the professor's department (optional).
+#' @param university A character value of the professor's university (required).
 #'
 #' @import rvest
 #' @import stringr
@@ -15,34 +15,31 @@
 #' @return A tibble of the professor's ID and the general information with 4 columns
 #' \itemize{
 #'   \item tID - ID of the professor
-#'   \item name - Complete name of the professor
+#'   \item name - Full name of the professor
 #'   \item department - The department of the professor
-#'   \item university - The unversity of the professor
+#'   \item university - The university of the professor
 #' }
 #' @examples
 #' name <- "Brakor"
 #' department <- "Biology"
 #' university <- "California Berkeley"
-#' get_tid(name = name)
-#' get_tid(name = name, department = department)
 #' get_tid(name = name, university = university)
 #' get_tid(name = name, department = department, university = university)
 
-get_tid <- function(name, department = NULL, university = NULL) {
-  ### Non of the input are case sensitive or full
-
+get_tid <- function(name, department = NULL, university) {
   ### Check for input
   stopifnot("Input name must be a character value!" = is.character(name))
+  stopifnot("Input university must be a character value!" = is.character(university))
   if (!is.null(department)) {
     stopifnot("Input department must be a character value!" = is.character(department))
   }
-  if (!is.null(university)) {
-    stopifnot("Input university must be a character value!" = is.character(university))
-  }
+
+  ### Get school id
+  sID <- get_all_schools(university) %>% str_extract("[0-9]+")
 
   ### Make url
   name <- str_replace(name, " ", "+")
-  url <- str_c("https://www.ratemyprofessors.com/search/teachers?query=", name)
+  url <- str_c("https://www.ratemyprofessors.com/search/teachers?query=", name, "&sid=", sID)
 
   ### Read the webpage with polite
   session <- bow(url)
@@ -65,13 +62,9 @@ get_tid <- function(name, department = NULL, university = NULL) {
   out <- tibble(tID = tID, info)
 
   ### Filter output
-  if (is.null(department) & is.null(university)) {
+  if (is.null(department)) {
     return(out)
-  } else if (!is.null(department) & is.null(university)) {
+  } else if (!is.null(department)) {
     return(out[str_detect(toupper(out$department), toupper(department)), ])
-  } else if (is.null(department) & !is.null(university)) {
-    return(out[str_detect(toupper(out$university), toupper(university)), ])
-  } else if (!is.null(department) & !is.null(university)) {
-    return(out[str_detect(toupper(out$department), toupper(department)) & str_detect(toupper(out$university), toupper(university)), ])
   }
 }
