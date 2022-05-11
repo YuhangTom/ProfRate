@@ -4,22 +4,22 @@
 \alias{get_tid}
 \title{Professor ID Extractor}
 \usage{
-get_tid(name, department = NULL, university = NULL)
+get_tid(name, department = NULL, university)
 }
 \arguments{
-\item{name}{A character value of the professor's name.}
+\item{name}{A character value of the professor's full name (required).}
 
-\item{department}{A character value of the professor's department.}
+\item{department}{A character value of the professor's department (optional).}
 
-\item{university}{A character value of the professor's university.}
+\item{university}{A character value of the professor's university (required).}
 }
 \value{
 A tibble of the professor's ID and the general information with 4 columns
 \itemize{
   \item tID - ID of the professor
-  \item name - Complete name of the professor
+  \item name - Full name of the professor
   \item department - The department of the professor
-  \item university - The unversity of the professor
+  \item university - The university of the professor
 }
 }
 \description{
@@ -29,8 +29,6 @@ Extracts professor's ID and combines with general information.
 name <- "Brakor"
 department <- "Biology"
 university <- "California Berkeley"
-get_tid(name = name)
-get_tid(name = name, department = department)
 get_tid(name = name, university = university)
 get_tid(name = name, department = department, university = university)
 }
