@@ -37,9 +37,9 @@ body <- dashboardBody(
       fluidRow(
         box(
           width = 3, solidHeader = TRUE, color = "black",
-          textInput("Name1", strong("Name of a Professor (Better to be Full Name and Accurate):"), "Gilbert Strang"),
-          textInput("Department1", strong("Department of this Professor:"), "Mathematics"),
-          textInput("University1", strong("University of this Professor:"), "Massachusetts"),
+          textInput("Name1", strong("Full Name of a Professor (Required):"), "Gilbert Strang"),
+          textInput("Department1", strong("Department of this Professor (Optional):"), "Mathematics"),
+          textInput("University1", strong("University of this Professor (Required):"), "Massachusetts"),
           selectInput("WordType1", strong("What Types of Words you are Interested in:"), choices = c("Positive", "Negative", "Tags"), selected = "Positive"),
           selectInput("Year1", strong("Show Results after Year:"), choices = c(2011:2021), selected = 2020),
           div(style = "display:inline-block", actionButton("updateWC", "Refresh", icon("refresh", lib = "glyphicon"))),
@@ -55,9 +55,9 @@ body <- dashboardBody(
       fluidRow(
         box(
           width = 3, solidHeader = TRUE, color = "black",
-          textInput("Name2", strong("Name of a Professor (Better to be Full Name and Accurate):")),
-          textInput("Department2", strong("Department of this Professor:")),
-          textInput("University2", strong("University of this Professor:")),
+          textInput("Name2", strong("Full Name of a Professor (Required):")),
+          textInput("Department2", strong("Department of this Professor (Optional):")),
+          textInput("University2", strong("University of this Professor (Required):")),
           selectInput("Year2", strong("Show Results after Year:"), choices = c(2011:2021)),
           div(style = "display:inline-block", actionButton("updateRP", "Refresh", icon("refresh", lib = "glyphicon"))),
           height = "30em"
