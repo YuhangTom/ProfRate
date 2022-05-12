@@ -96,18 +96,25 @@
 
     
     
-<p><br><br></p>
-<p>In the README file you learned HOW to use the package, here, we get into the details of this package and its applications.</p>
+<p>In the README file, you learned HOW to use the package. Here, we get into the details of this package and its applications.</p>
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>As a student you might be interested to know more about a specific instructor, the characteristics, difficulty of the course being taught by that professor, and the overall teaching quality.</p>
-<p>This package makes a user-friendly UI to extract a summary of the information for an instructor of interest and visualizes them.</p>
+<p>As a student, you might be interested to know more about a specific professor, like the overall teaching quality, the difficulty of courses taught, and the characteristics. Luckily, the website <a href="https://www.ratemyprofessors.com/" class="external-link">Rate My Professor</a> gathers all this information, and we will use them to assist the user get to know their professors better.</p>
+<p>This package mainly offers a user-friendly Shiny dashboard to visualize students’ feedback on a specific professor of interest. Users can also follow the examples and apply these powerful functions as helpers for other purposes.</p>
 </div>
 <div class="section level2">
 <h2 id="what-is-this-package-for">What is this package for?<a class="anchor" aria-label="anchor" href="#what-is-this-package-for"></a>
 </h2>
-<p>This package addresses the following areas: <br> * What are the positive, negative aspects of an instructor? * What are the most frequent words used to describe an instructor? * How difficult are the courses taught by an instructor? * How is the overall teaching quality? * How the performance of an instructor has changed over time? * How do the grades of students affect the rating of an instructor?</p>
+<p>This package addresses the following areas:</p>
+<ul>
+<li>What are the positive and negative comments on a professor?</li>
+<li>What are the most frequent words used?</li>
+<li>How is the overall teaching quality?</li>
+<li>How difficult are the courses taught by a professor?</li>
+<li>How the performance of a professor has changed over time?</li>
+<li>How do the grades of students affect the rating of a professor?</li>
+</ul>
 </div>
 <div class="section level2">
 <h2 id="who-can-use-this-package">Who can use this package?<a class="anchor" aria-label="anchor" href="#who-can-use-this-package"></a>
@@ -115,65 +122,42 @@
 <ul>
 <li>Students:
 <ul>
-<li>They can get more familiar with an instructor.</li>
-<li>Find how other students experiences a course.</li>
+<li>They can get more familiar with a professor.</li>
+<li>Find how other students experience a course.</li>
 </ul>
 </li>
-<li>TAs:
+<li>Professors:
 <ul>
-<li>Self-evaluation</li>
-<li>Tracking their progress over time (from student’s point of view)</li>
-<li>See how students feel about their TA-ship.</li>
-</ul>
-</li>
-<li>Instructors:
-<ul>
-<li>Self-evaluation</li>
-<li>Track the TAs’ performances</li>
-<li>Get to know their TAs (Strengths and Weaknesses) to provide constructive feedback.</li>
-<li>Track their own progress over time</li>
-<li>See how the course is perceived from students’ point of view</li>
+<li>Self-evaluation purpose. Get to know their strengths and weaknesses from constructive feedback.</li>
+<li>Track their progress and improvement over time.</li>
+<li>See how the course is perceived from students’ point of view.</li>
 </ul>
 </li>
 </ul>
-</div>
-<div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
-</h2>
-<p>You can install this package from GitHub:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">### install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"m-fili/ProfRate"</span><span class="op">)</span></code></pre></div>
-<p>Or download the <code>ProfRate</code> and install it locally using:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"file_path_to_target_package/ProfRate"</span>, repos<span class="op">=</span><span class="cn">NULL</span>, type<span class="op">=</span><span class="st">"source"</span><span class="op">)</span></code></pre></div>
-<p>Note that <code>file_path_to_target_package</code> is the placeholder and needs to be replace by the correct relative path on your machine.</p>
-<p><br> ## Background The website that we used for this project is <a href="https://www.ratemyprofessors.com/" class="external-link">RateMyProfessor</a>. This website collects comments from students regarding the teaching quality, difficulty, and many more aspect of a course being taught by a specific professor. Our Package uses the information in this website to create a summary of teaching quality for an instructor of interest.</p>
-<p><br></p>
 </div>
 <div class="section level2">
 <h2 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a>
 </h2>
-<p>First, we explain the flowchart of our functions and how they work with each other. This workflow is shown in the figure below:</p>
-<p><img src="Functions.jpg" width="390"></p>
-<p><br> As shown above, there are 10 functions overall in this package. The first three packages in green generates the URL to start the whole scraping procedure. The functions in blue rectangle, are the body of the package responsible for scraping, summarization, and visualization. The function at the bottom in yellow rectangle, is the Shiny app.</p>
-<p>First a URL is generated using the name of the instructor, department name and the institution name. Then the comments and ratings are scraped from the webpage, and summarized and plotted. All the generated outputs then feed into the ShinyApp. In the follwoing the functions are explained in detail.<br></p>
+<p>First, we have the flowchart of our functions, and you can see how they work with each other as shown in the figure below:</p>
+<p><img src="Functions.jpg" width="390" style="display: block; margin: auto;"></p>
+<p>There are ten functions in this package. The first three in green generate the URL to start the whole scraping procedure. Those in blue are the body of the package responsible for summarization and visualization. The last one in yellow is used to launch the Shiny dashboard.</p>
+<p>In short, firstly, a URL is generated using the professor’s name, department, and university name. Then the comments and ratings are scraped, summarized, and plotted. All the outputs are then visualized in the Shiny dashboard.</p>
 <div class="section level3">
 <h3 id="get_all_schools">
 <code>get_all_schools</code><a class="anchor" aria-label="anchor" href="#get_all_schools"></a>
 </h3>
 <ul>
 <li>This functions generates a URL, given the name of an university.</li>
-<li>It can be used independently, but it is used as a helper function to filter and find the instructor of interest in <code>get_tid</code> function.</li>
+<li>It can be used independently, but it is used as a helper function to filter and find the professor of interest in <code>get_tid</code> function.</li>
 <li>For the future development it can be used for Campus Evaluation as well.</li>
 </ul>
 <p>Examples:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/m-fili/ProfRate" class="external-link">ProfRate</a></span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_all_schools.html">get_all_schools</a></span><span class="op">(</span><span class="st">'Iowa State University'</span><span class="op">)</span>
 <span class="co">#&gt; [1] "https://www.ratemyprofessors.com/campusRatings.jsp?sid=452"</span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_all_schools.html">get_all_schools</a></span><span class="op">(</span><span class="st">'MIT'</span><span class="op">)</span>
 <span class="co">#&gt; [1] "https://www.ratemyprofessors.com/campusRatings.jsp?sid=580"</span></code></pre></div>
 </div>
@@ -182,12 +166,12 @@
 <code>general_info</code><a class="anchor" aria-label="anchor" href="#general_info"></a>
 </h3>
 <ul>
-<li>This function generates the general information for an instructor.</li>
-<li>It takes a URL and extract the instructor’s name, department and university.</li>
-<li>It can be used independently, but it is used as a helper function to filter and find the instructor of interest in <code>get_tid</code> function.</li>
+<li>This function generates the general information for an professor.</li>
+<li>It takes a URL and extract the professor’s name, department and university.</li>
+<li>It can be used independently, but it is used as a helper function to filter and find the professor of interest in <code>get_tid</code> function.</li>
 </ul>
 <p>Examples:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/general_info.html">general_info</a></span><span class="op">(</span><span class="st">"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=342455"</span><span class="op">)</span>
 <span class="co">#&gt; $name</span>
 <span class="co">#&gt; [1] "John Bush"</span>
@@ -197,7 +181,7 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $university</span>
 <span class="co">#&gt; [1] "Massachusetts Institute of Technology"</span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/general_info.html">general_info</a></span><span class="op">(</span><span class="st">"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=744853"</span><span class="op">)</span>
 <span class="co">#&gt; $name</span>
 <span class="co">#&gt; [1] "Mergel Sarah"</span>
@@ -213,11 +197,11 @@
 <code>get_tid</code><a class="anchor" aria-label="anchor" href="#get_tid"></a>
 </h3>
 <ul>
-<li><p>This functions generates the URL given the information of the instructor.</p></li>
+<li><p>This functions generates the URL given the information of the professor.</p></li>
 <li><p>The name argument should be full name and is required, the university argument is also required, but department argument is optional.</p></li>
 <li><p>Or, we can give the name and university:</p></li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_tid.html">get_tid</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">'Brakor'</span>, university <span class="op">=</span> <span class="st">'California Berkeley'</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 x 4</span></span>
 <span class="co">#&gt;       tID name          department         university                       </span>
@@ -226,7 +210,7 @@
 <ul>
 <li>We can also restrict the searches by specifying all infromation:</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_tid.html">get_tid</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">'Brakor'</span>, department <span class="op">=</span> <span class="st">'Biology'</span>, university <span class="op">=</span> <span class="st">'Berkeley'</span><span class="op">)</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 x 4</span></span>
 <span class="co">#&gt;       tID name          department         university                       </span>
@@ -241,7 +225,7 @@
 <li>This function takes the same argument as <code>get_tid</code>, but generates the final URL. Under the hood it uses <code>get_tid</code> to first extract the <code>tid</code> number and then it generates the URL.</li>
 </ul>
 <p>Examples:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_url.html">get_url</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">'Brakor'</span>, department <span class="op">=</span> <span class="st">'Biology'</span>, university <span class="op">=</span> <span class="st">'Berkeley'</span><span class="op">)</span>
 <span class="co">#&gt; [1] "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1031282"</span></code></pre></div>
 </div>
@@ -255,7 +239,7 @@
 <li>It also extracts the number of thumbs up and down for each comment.</li>
 <li>This function can filter the comments to be shown for those after a specific year.</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/comment_info.html">comment_info</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1031282"</span>, y <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span>
 <span class="co">#&gt;       course year</span>
 <span class="co">#&gt; 1      IB131 2012</span>
@@ -272,7 +256,7 @@
 <span class="co">#&gt; 2        0          0</span>
 <span class="co">#&gt; 3        0          0</span>
 <span class="co">#&gt; 4        0          0</span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/comment_info.html">comment_info</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1129448"</span>, y <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span>
 <span class="co">#&gt;      course year</span>
 <span class="co">#&gt; 1  ENGWR340 2011</span>
@@ -290,11 +274,11 @@
 </h3>
 <ul>
 <li>This function do sentiment analysis on the comments.</li>
-<li>It generates the set of <em>positive</em>, <em>negative</em>, and <em>tags</em> for an instructor.</li>
+<li>It generates the set of <em>positive</em>, <em>negative</em>, and <em>tags</em> for an professor.</li>
 <li>It can filter the year ti include certain from a certain year up to present.</li>
 </ul>
 <p>Example:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/sentiment_info.html">sentiment_info</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792"</span>, y <span class="op">=</span> <span class="fl">2009</span>, word <span class="op">=</span> <span class="st">'Positive'</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = "word"</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 28 x 2</span></span>
@@ -312,7 +296,7 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> awesome       1</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span> enjoyable     1</span>
 <span class="co">#&gt; <span style="color: #949494;"># ... with 18 more rows</span></span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/sentiment_info.html">sentiment_info</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792"</span>, y <span class="op">=</span> <span class="fl">2000</span>, word <span class="op">=</span> <span class="st">'Negative'</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = "word"</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 9 x 2</span></span>
@@ -328,7 +312,7 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;">7</span> sour             1</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">8</span> stress           1</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">9</span> worthless        1</span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/sentiment_info.html">sentiment_info</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792"</span>, y <span class="op">=</span> <span class="fl">2009</span>, word <span class="op">=</span> <span class="st">'Tags'</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = "word"</span>
 <span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 x 2</span></span>
@@ -351,11 +335,11 @@
 <li>It can filter the years to show the words in comments after a scpecific year.</li>
 </ul>
 <p>Examples:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/sentiment_plot.html">sentiment_plot</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792"</span>, y <span class="op">=</span> <span class="fl">2009</span>, word <span class="op">=</span> <span class="st">'Positive'</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = "word"</span></code></pre></div>
-<div id="htmlwidget-71cf08045e882b4edba9" style="width:700px;height:432.632880098888px;" class="wordcloud2 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-71cf08045e882b4edba9">{"x":{"word":["best","great","enjoyed","helped","helpful","nice","amazing","avid","awesome","enjoyable","fine","friendly","golden","good","improvements","interesting","like","loved","loves","manageable","meaningful","outstanding","progress","recommend","spiritual","succeed","sweetheart","work"],"freq":[4,4,3,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":45,"backgroundColor":"transparent","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
+<div id="htmlwidget-75c25bcd9ffa6f229acc" style="width:700px;height:432.632880098888px;" class="wordcloud2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-75c25bcd9ffa6f229acc">{"x":{"word":["best","great","enjoyed","helped","helpful","nice","amazing","avid","awesome","enjoyable","fine","friendly","golden","good","improvements","interesting","like","loved","loves","manageable","meaningful","outstanding","progress","recommend","spiritual","succeed","sweetheart","work"],"freq":[4,4,3,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":45,"backgroundColor":"transparent","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
 </div>
 <div class="section level3">
 <h3 id="ratings_info">
@@ -372,7 +356,7 @@
 </li>
 </ul>
 <p>Examples:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/ratings_info.html">ratings_info</a></span><span class="op">(</span><span class="st">"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1129448"</span>, y<span class="op">=</span><span class="fl">2009</span><span class="op">)</span>
 <span class="co">#&gt; $n</span>
 <span class="co">#&gt; [1] 2</span>
@@ -406,9 +390,9 @@
 </ul>
 </li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/ratings_plot.html">ratings_plot</a></span><span class="op">(</span><span class="st">"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1129448"</span>, y<span class="op">=</span><span class="fl">2009</span><span class="op">)</span></code></pre></div>
-<p><img src="ProfRate-in-detail_files/figure-html/unnamed-chunk-19-1.png" width="700"></p>
+<p><img src="ProfRate-in-detail_files/figure-html/unnamed-chunk-17-1.png" width="700"></p>
 </div>
 </div>
 <div class="section level2">
