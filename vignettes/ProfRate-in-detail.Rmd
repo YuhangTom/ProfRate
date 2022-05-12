@@ -16,104 +16,65 @@ knitr::opts_chunk$set(
 )
 ```
 
-<br>
-<br>
 
-In the README file you learned HOW to use the package,
-here, we get into the details of this package and its applications.
+In the README file, you learned HOW to use the package.
+Here, we get into the details of this package and its applications.
 
 
 ## Introduction
-As a student you might be interested to know more about a specific instructor, the characteristics, difficulty of the course being taught by that professor, and the overall teaching quality.
+As a student, you might be interested to know more about a specific professor,
+like the overall teaching quality, the difficulty of courses taught, and the characteristics.
+Luckily, the website [Rate My Professor](https://www.ratemyprofessors.com/) gathers all this information, and we will use them to assist the user get to know their professors better.
 
-This package makes a user-friendly UI to extract a summary of the information for an instructor of interest and visualizes them.
-
-
-
-
+This package mainly offers a user-friendly Shiny dashboard to visualize students' feedback on a specific professor of interest.
+Users can also follow the examples and apply these powerful functions as helpers for other purposes.
 
 
 ## What is this package for?    
-This package addresses the following areas: <br>
-  * What are the positive, negative aspects of an instructor?
-  * What are the most frequent words used to describe an instructor?
-  * How difficult are the courses taught by an instructor?
-  * How is the overall teaching quality?
-  * How the performance of an instructor has changed over time?
-  * How do the grades of students affect the rating of an instructor?
+This package addresses the following areas:
+
+* What are the positive and negative comments on a professor?
+* What are the most frequent words used?
+* How is the overall teaching quality?
+* How difficult are the courses taught by a professor?
+* How the performance of a professor has changed over time?
+* How do the grades of students affect the rating of a professor?
   
-
-
-
-
 
 ## Who can use this package?
 * Students: 
-  * They can get more familiar with an instructor.
-  * Find how other students experiences a course.
-* TAs:
-  * Self-evaluation
-  * Tracking their progress over time (from student's point of view)
-  * See how students feel about their TA-ship.
-* Instructors:
-  * Self-evaluation
-  * Track the TAs' performances
-  * Get to know their TAs (Strengths and Weaknesses) to provide constructive feedback.
-  * Track their own progress over time
-  * See how the course is perceived from students' point of view
+  * They can get more familiar with a professor.
+  * Find how other students experience a course.
+* Professors:
+  * Self-evaluation purpose. Get to know their strengths and weaknesses from constructive feedback.
+  * Track their progress and improvement over time.
+  * See how the course is perceived from students' point of view.
 
 
-
-## Installation
-You can install this package from GitHub:
-
-```{r eval=FALSE}
-### install.packages("devtools")
-devtools::install_github("m-fili/ProfRate")
-```
-
-Or download the `ProfRate` and install it locally using:
-
-```{r eval=FALSE}
-install.packages("file_path_to_target_package/ProfRate", repos=NULL, type="source")
-```
-
-Note that `file_path_to_target_package` is the placeholder and needs to be replace by the correct relative path on your machine.
-
-
-
-
-<br>
-## Background
-The website that we used for this project is [RateMyProfessor](https://www.ratemyprofessors.com/). This website collects comments from students regarding the teaching quality, difficulty, and many more aspect of a course being taught by a specific professor. Our Package uses the information in this website to create a summary of teaching quality for an instructor of interest.
-
-
-
-
-
-
-<br>
 
 ## Functions
 
-First, we explain the flowchart of our functions and how they work with each other. This workflow is shown in the figure below:
+First, we have the flowchart of our functions, and you can see how they work with each other as shown in the figure below:
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.align='center'}
 knitr::include_graphics('Functions.jpg')
 ```
 
+There are ten functions in this package.
+The first three in green generate the URL to start the whole scraping procedure.
+Those in blue are the body of the package responsible for summarization and visualization.
+The last one in yellow is used to launch the Shiny dashboard.
 
-<br>
-As shown above, there are 10 functions overall in this package. The first three packages in green generates the URL to start the whole scraping procedure. The functions in blue rectangle, are the body of the package responsible for scraping, summarization, and visualization. The function at the bottom in yellow rectangle, is the Shiny app.
-
-First a URL is generated using the name of the instructor, department name and the institution name. Then the comments and ratings are scraped from the webpage, and summarized and plotted. All the generated outputs then feed into the ShinyApp. In the follwoing the functions are explained in detail.\
+In short, firstly, a URL is generated using the professor's name, department, and university name.
+Then the comments and ratings are scraped, summarized, and plotted.
+All the outputs are then visualized in the Shiny dashboard.
 
 
 
 ### `get_all_schools`
 
 * This functions generates a URL, given the name of an university.
-* It can be used independently, but it is used as a helper function to filter and find the instructor of interest in `get_tid` function.
+* It can be used independently, but it is used as a helper function to filter and find the professor of interest in `get_tid` function.
 * For the future development it can be used for Campus Evaluation as well.
 
 Examples:
@@ -135,9 +96,9 @@ get_all_schools('MIT')
 
 ### `general_info`
 
-* This function generates the general information for an instructor.
-* It takes a URL and extract the instructor's name, department and university.
-* It can be used independently, but it is used as a helper function to filter and find the instructor of interest in `get_tid` function.
+* This function generates the general information for an professor.
+* It takes a URL and extract the professor's name, department and university.
+* It can be used independently, but it is used as a helper function to filter and find the professor of interest in `get_tid` function.
 
 Examples:
 
@@ -152,7 +113,7 @@ general_info("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=744853")
 
 ### `get_tid`
 
-* This functions generates the URL given the information of the instructor.
+* This functions generates the URL given the information of the professor.
 * The name argument should be full name and is required, the university argument is also required, but department argument is optional.
 
 * Or, we can give the name and university:
@@ -205,7 +166,7 @@ comment_info(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1129448
 ### `sentiment_info`
 
 * This function do sentiment analysis on the comments.
-* It generates the set of _positive_, _negative_, and _tags_ for an instructor.
+* It generates the set of _positive_, _negative_, and _tags_ for an professor.
 * It can filter the year ti include certain from a certain year up to present.
 
 Example:
