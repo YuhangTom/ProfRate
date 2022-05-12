@@ -3,6 +3,9 @@ title: "More details about the ProfRate package"
 output: rmarkdown::html_vignette
 resource_files:
   - vignettes/Functions.jpg
+  - vignettes/ShinyHome.png
+  - vignettes/ShinyWordcloud.png
+  - vignettes/ShinyRatings.png
 vignette: >
   %\VignetteIndexEntry{More details about the ProfRate package}
   %\VignetteEngine{knitr::rmarkdown}
@@ -21,7 +24,7 @@ In the README file, you learned HOW to use the package.
 Here, we get into the details of this package and its applications.
 
 
-## Introduction
+# Introduction
 As a student, you might be interested to know more about a specific professor,
 like the overall teaching quality, the difficulty of courses taught, and the characteristics.
 Luckily, the website [Rate My Professor](https://www.ratemyprofessors.com/) gathers all this information, and we will use them to assist the user get to know their professors better.
@@ -30,7 +33,7 @@ This package mainly offers a user-friendly Shiny dashboard to visualize students
 Users can also follow the examples and apply these powerful functions as helpers for other purposes.
 
 
-## What is this package for?    
+# What is this package for?    
 This package addresses the following areas:
 
 * What are the positive and negative comments on a professor?
@@ -41,7 +44,7 @@ This package addresses the following areas:
 * How do the grades of students affect the rating of a professor?
   
 
-## Who can use this package?
+# Who can use this package?
 * Students: 
   * They can get more familiar with a professor.
   * Find how other students experience a course.
@@ -52,7 +55,7 @@ This package addresses the following areas:
 
 
 
-## Functions
+# Functions
 
 First, we have the flowchart of our functions, and you can see how they work with each other as shown in the figure below:
 
@@ -69,13 +72,15 @@ In short, firstly, a URL is generated using the professor's name, department, an
 Then the comments and ratings are scraped, summarized, and plotted.
 All the outputs are then visualized in the Shiny dashboard.
 
+All functions that scrape below use `polite` package, and we do try our very best to be ethical scrapers.
+Let us know if there are any issues with using the website data, and we will modify it accordingly.
 
 
-### `get_all_schools`
+## `get_all_schools`
 
-* This functions generates a URL, given the name of an university.
+* This function generates a URL given the name of an university.
 * It can be used independently, but it is used as a helper function to filter and find the professor of interest in `get_tid` function.
-* For the future development it can be used for Campus Evaluation as well.
+* For future development, it can be used for campus evaluation as well.
 
 Examples:
 
@@ -85,54 +90,44 @@ library(ProfRate)
 
 ```{r}
 get_all_schools('Iowa State University')
-```
-
-
-```{r}
 get_all_schools('MIT')
 ```
 
 
 
-### `general_info`
+## `general_info`
 
-* This function generates the general information for an professor.
-* It takes a URL and extract the professor's name, department and university.
+* This function generates the general information for a professor.
+* It takes a URL and extracts the professor's name, department, and university.
 * It can be used independently, but it is used as a helper function to filter and find the professor of interest in `get_tid` function.
 
 Examples:
 
 ```{r}
 general_info("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=342455")
-```
-
-```{r}
 general_info("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=744853")
 ```
 
 
-### `get_tid`
+## `get_tid`
 
-* This functions generates the URL given the information of the professor.
-* The name argument should be full name and is required, the university argument is also required, but department argument is optional.
+* This function generates the URL given the information of the professor.
+* The name argument should be the full name and is required. The university argument is also required, but the department argument is optional.
+* The function uses `rvest::html_text` to check nodes and regular expression to extract ids.
 
-* Or, we can give the name and university:
 
 ```{r}
 get_tid(name = 'Brakor', university = 'California Berkeley')
-```
-
-* We can also restrict the searches by specifying all infromation:
-
-```{r}
 get_tid(name = 'Brakor', department = 'Biology', university = 'Berkeley')
 ```
 
 
 
-### `get_url`
+## `get_url`
 
-* This function takes the same argument as `get_tid`, but generates the final URL. Under the hood it uses `get_tid` to first extract the `tid` number and then it generates the URL.
+* This function takes the same argument as `get_tid`.
+It assesses the tid(s) first and then generate the corresponding url(s).
+* With this function, we can absolutely use name, department, and university as direct inputs for further functions, but to restrict the number of scraping to the minimum, we would only scrape once and then use URL as input for the future.
 
 Examples:
 
@@ -143,55 +138,44 @@ get_url(name = 'Brakor', department = 'Biology', university = 'Berkeley')
 
 
 
-### `comment_info`
+## `comment_info`
 
 * This function extracts the comments for a given URL.
 * It separates the comments according to the year and course
 * It also extracts the number of thumbs up and down for each comment.
-* This function can filter the comments to be shown for those after a specific year.
+* This function can filter the comments shown for those after a specific year.
 
 
 
 ```{r}
 comment_info(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1031282", y = 2000)
-```
-
-```{r}
 comment_info(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1129448", y = 2000)
 ```
 
 
 
 
-### `sentiment_info`
+## `sentiment_info`
 
-* This function do sentiment analysis on the comments.
-* It generates the set of _positive_, _negative_, and _tags_ for an professor.
-* It can filter the year ti include certain from a certain year up to present.
+* This function does sentiment analysis on the comments.
+* It generates the set of _positive_, _negative_, and _tags_ words for a professor.
+* It can filter from a certain year up to the present.
 
 Example:
 
 ```{r}
 sentiment_info(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792", y = 2009, word = 'Positive')
-```
-
-```{r}
 sentiment_info(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792", y = 2000, word = 'Negative')
-```
-
-
-
-```{r}
 sentiment_info(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792", y = 2009, word = 'Tags')
 ```
 
 
 
-### sentiment_plot
+## sentiment_plot
 
-* This functions visualizes the comments using word cloud.
-* It can generate the _positive_, _negative_, and _tags_.
-* It can filter the years to show the words in comments after a scpecific year.
+* This function visualizes the comments using a word cloud.
+* It can generate plots corresponding to _positive_, _negative_, and _tags_ words, respectively.
+* It can filter from a certain year up to the present.
 
 Examples:
 
@@ -202,13 +186,12 @@ sentiment_plot(url = "https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792
 
 
 
-### `ratings_info`
+## `ratings_info`
 
-* given the URL, it generate the rating info
+* Given the URL, it generates the rating info
 * It creates three outputs:
-  * number of comments
-  * ratings table including the year, course, quality, difficulty, overall rating with some other info regarding the course or student who left that rating.
-  * summary of ratings
+  * number of comments,
+  * table including the year, course, quality, difficulty, and overall rating with some other info regarding the course or studen.
   
 
 Examples:
@@ -219,9 +202,9 @@ ratings_info("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1129448", y=2
 
 
 
-### `ratings_plot`
+## `ratings_plot`
 
-* given the URL, it generate the visualization for the ratings
+* Given the URL, it generates the visualization for the ratings.
 * It creates four subplots:
   * Overall Rating
   * Average rating by course
@@ -229,25 +212,31 @@ ratings_info("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1129448", y=2
   * Average rating by year
   
   
-  
 ```{r}
 ratings_plot("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1129448", y=2009)
 ```
 
+## `runExample`
 
-## Testing
-We included different tests for each function to make sure it is working properly. The coverage of the package is 98%, as the time of writing this report. Here are the set of things in general that is checked for each function:
-
-* Checking the Data Type
-* Verifying the Length of Inputs and Outputs
-* Correct Format of the URL
-* Correct set of Arguments
-* Error Messages
-* Checking plot producibility
+* The function is used to launch the Shiny dashboard.
 
 
+# Testing
+We included different tests for each function to make sure they were working properly.
+The coverage of the package is 98%.
+The only function that is not tested is `runExample`, which is used to launch the Shiny dashboard.
+Here is the set of things we checked for each function in general:
 
-## Documentation
+* Checking the data type
+* Verifying the length of inputs and outputs
+* Correct format of the URL
+* Correct set of arguments
+* Error messages
+* Checking plot reproducibility
+
+
+
+# Documentation
 Each function is documented thoroughly. The set of information included in each function is as below:
 
 * Name and description
@@ -258,27 +247,38 @@ Each function is documented thoroughly. The set of information included in each 
 
 
 
-## Website
-The [website](https://m-fili.github.io/ProfRate/) is launched and includes the references and other useful information on how to use this package.
+# Website
+The [website](https://m-fili.github.io/ProfRate/) is launched and includes references, examples, and other useful information like this vignette on how to use this package.
 
 
 
 
-## ShinyApp
-In this package, there is a function named `runExample` that the user can utilize to show all the functionalities discussed so far through an interactive App.
+# Shiny dashboard
+As introduced before, `runExample` would launch our well-designed Shiny dashboard.
+The dashboard is highly comprehensive and user-friendly.
+Most importantly, it utilizes and shows all the functionalities discussed so far in an interactive way.
+We include some screenshots of the Shiny dashboard as below.
 
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics('ShinyHome.png')
+```
 
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics('ShinyWordcloud.png')
+```
 
+```{r, echo = FALSE, fig.align='center'}
+knitr::include_graphics('ShinyRatings.png')
+```
 
-
-## Future Steps
+# Future Steps
 
 Here are the future steps to make this package more comprehensive.
 
-1. Adding Campus Evaluation to the App
+1. Adding campus evaluation to the analysis as well as the Shiny dashboard.
 
-2. Incorporating correlation Analysis & outlier detection
+2. Incorporating correlation analysis and outlier detection:
   * Relation between the ratings and grades
   * Relation between the comments and grades
 
-3. Incorporate likes and dislikes into analysis to emphasize on the valid comments.
+3. Incorporate likes and dislikes into the analysis to emphasize the value of comments.
