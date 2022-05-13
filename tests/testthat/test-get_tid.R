@@ -5,6 +5,7 @@ test_that("get_tid inputs work", {
   expect_error(get_tid(matrix(1:4, 2)))
   expect_error(get_tid(factor(c("a", "b"))))
   expect_error(get_tid(c("a", "b")))
+  expect_error(get_tid(name = "aaaaaaaaaaaaaaaaa", university = "aaaaaaaaaaaaaaaa"))
 })
 
 
@@ -43,4 +44,8 @@ test_that("get_tid outputs work", {
   expect_type(out$department, "character")
 
   expect_type(out$university, "character")
+
+
+  university <- "Iowa State"
+  expect_error(get_tid(name = name, university = university))
 })
