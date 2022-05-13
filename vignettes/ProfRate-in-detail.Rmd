@@ -20,14 +20,14 @@ knitr::opts_chunk$set(
 ```
 
 
-The homepage introduces the functionality of the ProfRate package.
+The homepage introduces the functionality of the `ProfRate` package.
 Here, we will get into more details and its applications for those who are interested.
 
 
 # Motivation
 As a student, you might be interested to know more about a certain professor before registering for a course,
 for example, an overall course quality, the difficulty level, and comments from previous students.
-Luckily, the website [Rate My Professor](https://www.ratemyprofessors.com/) gathers various information on professors, and our ProfRate package will utilize them and assist the users to know their professors better at a glance.
+Luckily, the website [Rate My Professor](https://www.ratemyprofessors.com/) gathers various information on professors, and our `ProfRate` package will utilize them and assist the users to know their professors better at a glance.
 
 This package mainly offers a user-friendly Shiny dashboard to visualize students' feedback on a specific professor of interest.
 Users can also follow the examples and apply these powerful functions as helpers for other purposes.
@@ -219,7 +219,7 @@ ratings_plot("https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1129448", y=2
 
 # Testing
 We included different tests for each function to make sure that they work properly as we expect.
-The testing coverage of the package is 98%.
+The test coverage of the package is 98%.
 The only function that is not tested is the `runExample` function, which is used to launch the Shiny dashboard.
 Here is the set of things we checked for each function in general:
 

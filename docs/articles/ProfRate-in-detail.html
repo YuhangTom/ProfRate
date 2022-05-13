@@ -82,7 +82,7 @@
 
       
 
-      </header><script src="ProfRate-in-detail_files/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="ProfRate-in-detail_files/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet">
+      </header><script src="ProfRate-in-detail_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="ProfRate-in-detail_files/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet">
 <script src="ProfRate-in-detail_files/wordcloud2-0.0.1/wordcloud2-all.js"></script><script src="ProfRate-in-detail_files/wordcloud2-0.0.1/hover.js"></script><script src="ProfRate-in-detail_files/wordcloud2-binding-0.2.1/wordcloud2.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -96,11 +96,11 @@
 
     
     
-<p>The homepage introduces the functionality of the ProfRate package. Here, we will get into more details and its applications for those who are interested.</p>
+<p>The homepage introduces the functionality of the <code>ProfRate</code> package. Here, we will get into more details and its applications for those who are interested.</p>
 <div class="section level2">
 <h2 id="motivation">Motivation<a class="anchor" aria-label="anchor" href="#motivation"></a>
 </h2>
-<p>As a student, you might be interested to know more about a certain professor before registering for a course, for example, an overall course quality, the difficulty level, and comments from previous students. Luckily, the website <a href="https://www.ratemyprofessors.com/" class="external-link">Rate My Professor</a> gathers various information on professors, and our ProfRate package will utilize them and assist the users to know their professors better at a glance.</p>
+<p>As a student, you might be interested to know more about a certain professor before registering for a course, for example, an overall course quality, the difficulty level, and comments from previous students. Luckily, the website <a href="https://www.ratemyprofessors.com/" class="external-link">Rate My Professor</a> gathers various information on professors, and our <code>ProfRate</code> package will utilize them and assist the users to know their professors better at a glance.</p>
 <p>This package mainly offers a user-friendly Shiny dashboard to visualize students’ feedback on a specific professor of interest. Users can also follow the examples and apply these powerful functions as helpers for other purposes.</p>
 </div>
 <div class="section level2">
@@ -328,8 +328,8 @@
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/sentiment_plot.html">sentiment_plot</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792"</span>, y <span class="op">=</span> <span class="fl">2009</span>, word <span class="op">=</span> <span class="st">'Positive'</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = "word"</span></code></pre></div>
-<div id="htmlwidget-52de5c15a18661d463a2" style="width:700px;height:432.632880098888px;" class="wordcloud2 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-52de5c15a18661d463a2">{"x":{"word":["best","great","enjoyed","helped","helpful","nice","amazing","avid","awesome","enjoyable","fine","friendly","golden","good","improvements","interesting","like","loved","loves","manageable","meaningful","outstanding","progress","recommend","spiritual","succeed","sweetheart","work"],"freq":[4,4,3,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":45,"backgroundColor":"transparent","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
+<div id="htmlwidget-f2d07204d605d3ee68de" style="width:700px;height:432.632880098888px;" class="wordcloud2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f2d07204d605d3ee68de">{"x":{"word":["best","great","enjoyed","helped","helpful","nice","amazing","avid","awesome","enjoyable","fine","friendly","golden","good","improvements","interesting","like","loved","loves","manageable","meaningful","outstanding","progress","recommend","spiritual","succeed","sweetheart","work"],"freq":[4,4,3,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":45,"backgroundColor":"transparent","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
 </div>
 <div class="section level3">
 <h3 id="ratings_info">
@@ -394,7 +394,7 @@
 <div class="section level2">
 <h2 id="testing">Testing<a class="anchor" aria-label="anchor" href="#testing"></a>
 </h2>
-<p>We included different tests for each function to make sure that they work properly as we expect. The testing coverage of the package is 98%. The only function that is not tested is the <code>runExample</code> function, which is used to launch the Shiny dashboard. Here is the set of things we checked for each function in general:</p>
+<p>We included different tests for each function to make sure that they work properly as we expect. The test coverage of the package is 98%. The only function that is not tested is the <code>runExample</code> function, which is used to launch the Shiny dashboard. Here is the set of things we checked for each function in general:</p>
 <ul>
 <li>Checking the data type</li>
 <li>Verifying the length of inputs and outputs</li>
@@ -464,7 +464,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
