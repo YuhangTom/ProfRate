@@ -1,6 +1,6 @@
 #' Professor ID Extractor
 #'
-#' Extracts professor's ID and combines with general information.
+#' Extracts the professor's ID and combines it with general information.
 #'
 #' @param name A character value of the professor's full name (required).
 #' @param department A character value of the professor's department (optional).

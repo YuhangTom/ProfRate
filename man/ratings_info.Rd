@@ -20,7 +20,7 @@ A list of 1 total number of ratings and 2 data frames
 }
 }
 \description{
-Extracts and summarizes all rating information on an professor.
+Extracts and summarizes all rating information on a professor.
 }
 \examples{
 url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'

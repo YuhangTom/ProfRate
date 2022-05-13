@@ -1,6 +1,6 @@
 #' Ratings Extractor
 #'
-#' Extracts and summarizes all rating information on an professor.
+#' Extracts and summarizes all rating information on a professor.
 #'
 #' @param url A character value indicating the URL of the professor's webpage.
 #' @param y A numeric value to filter ratings after a certain year.

@@ -17,7 +17,7 @@ sentiment_plot(url, y = 2018, word = "Positive")
 A wordcloud of common words or tags
 }
 \description{
-A wordcloud of common positive words and negative words extracted from comments, and tags from the website.
+A word cloud of common positive words and negative words extracted from comments, and tags from the website.
 }
 \examples{
 url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'

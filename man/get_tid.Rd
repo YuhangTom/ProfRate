@@ -23,7 +23,7 @@ A tibble of the professor's ID and the general information with 4 columns
 }
 }
 \description{
-Extracts professor's ID and combines with general information.
+Extracts the professor's ID and combines it with general information.
 }
 \examples{
 name <- "Brakor"
