@@ -63,8 +63,8 @@ get_tid <- function(name, department = NULL, university) {
 
   stopifnot("No record found for this input combination!" = (nrow(out) > 0))
 
-  Inodat <- str_detect(out$name, regex(name, ignore_case = TRUE)) && str_detect(out$university, regex(university, ignore_case = TRUE))
-  stopifnot("No record found for this input combination!" = Inodat)
+  Inodat <- sum(str_detect(out$name, regex(name, ignore_case = TRUE)) & str_detect(out$university, regex(university, ignore_case = TRUE)))
+  stopifnot("No record found for this input combination!" = (Inodat > 0))
 
   ### Filter output
   if (is.null(department)) {
