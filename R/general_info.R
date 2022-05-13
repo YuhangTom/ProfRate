@@ -1,6 +1,6 @@
 #' General Info Extractor
 #'
-#' Extracts general information on an professor.
+#' Extracts general information on a professor.
 #'
 #' @param url A character value indicating the URL of the professor's webpage.
 #' @import rvest

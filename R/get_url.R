@@ -1,6 +1,6 @@
 #' URL Extractor
 #'
-#' Extracts URL by the name, department and university of the professor.
+#' Extracts URL by the name, department, and university of the professor.
 #'
 #' @param name A character value of the professor's full name (required).
 #' @param department A character value of the professor's department (optional).

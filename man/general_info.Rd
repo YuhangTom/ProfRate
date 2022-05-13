@@ -18,7 +18,7 @@ A list with three elements
 }
 }
 \description{
-Extracts general information on an professor.
+Extracts general information on a professor.
 }
 \examples{
 url <- 'https://www.ratemyprofessors.com/ShowRatings.jsp?tid=2036448'

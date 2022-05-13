@@ -17,7 +17,7 @@ get_url(name, department = NULL, university = NULL)
 A vector of URL(s)
 }
 \description{
-Extracts URL by the name, department and university of the professor.
+Extracts URL by the name, department, and university of the professor.
 }
 \examples{
 name <- "Brakor"

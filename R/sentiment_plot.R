@@ -1,6 +1,6 @@
 #' Sentiment Plot
 #'
-#' A wordcloud of common positive words and negative words extracted from comments, and tags from the website.
+#' A word cloud of common positive words and negative words extracted from comments, and tags from the website.
 #'
 #' @param url A character value indicating the URL of the professor's webpage.
 #' @param y A numeric value to filter ratings after a certain year.

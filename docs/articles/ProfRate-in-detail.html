@@ -82,7 +82,7 @@
 
       
 
-      </header><script src="ProfRate-in-detail_files/htmlwidgets-1.5.4/htmlwidgets.js"></script><link href="ProfRate-in-detail_files/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet">
+      </header><script src="ProfRate-in-detail_files/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="ProfRate-in-detail_files/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet">
 <script src="ProfRate-in-detail_files/wordcloud2-0.0.1/wordcloud2-all.js"></script><script src="ProfRate-in-detail_files/wordcloud2-0.0.1/hover.js"></script><script src="ProfRate-in-detail_files/wordcloud2-binding-0.2.1/wordcloud2.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -96,24 +96,24 @@
 
     
     
-<p>In the README file, you learned HOW to use the package. Here, we get into the details of this package and its applications.</p>
+<p>The homepage introduces the functionality of the ProfRate package. Here, we will get into more details and its applications for those who are interested.</p>
 <div class="section level2">
-<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+<h2 id="motivation">Motivation<a class="anchor" aria-label="anchor" href="#motivation"></a>
 </h2>
-<p>As a student, you might be interested to know more about a specific professor, like the overall teaching quality, the difficulty of courses taught, and the characteristics. Luckily, the website <a href="https://www.ratemyprofessors.com/" class="external-link">Rate My Professor</a> gathers all this information, and we will use them to assist the user get to know their professors better.</p>
+<p>As a student, you might be interested to know more about a certain professor before registering for a course, for example, an overall course quality, the difficulty level, and comments from previous students. Luckily, the website <a href="https://www.ratemyprofessors.com/" class="external-link">Rate My Professor</a> gathers various information on professors, and our ProfRate package will utilize them and assist the users to know their professors better at a glance.</p>
 <p>This package mainly offers a user-friendly Shiny dashboard to visualize students’ feedback on a specific professor of interest. Users can also follow the examples and apply these powerful functions as helpers for other purposes.</p>
 </div>
 <div class="section level2">
 <h2 id="what-is-this-package-for">What is this package for?<a class="anchor" aria-label="anchor" href="#what-is-this-package-for"></a>
 </h2>
-<p>This package addresses the following areas:</p>
+<p>This package provides information and visualization on the following questions:</p>
 <ul>
-<li>What are the positive and negative comments on a professor?</li>
-<li>What are the most frequent words used?</li>
-<li>How is the overall teaching quality?</li>
-<li>How difficult are the courses taught by a professor?</li>
-<li>How the performance of a professor has changed over time?</li>
-<li>How do the grades of students affect the rating of a professor?</li>
+<li>What are the positive and negative words commented on a professor?</li>
+<li>What are the most frequently used positive and negative words?</li>
+<li>What are the overall rating, quality rating, and difficulty rating of a professor?</li>
+<li>Are the ratings of a professor differ among different courses?</li>
+<li>Do the ratings of a professor change over time?</li>
+<li>Do the grades of the students affect the ratings?</li>
 </ul>
 </div>
 <div class="section level2">
@@ -122,15 +122,12 @@
 <ul>
 <li>Students:
 <ul>
-<li>They can get more familiar with a professor.</li>
-<li>Find how other students experience a course.</li>
+<li>Get more familiar with a professor by looking at the feedback of peer students for learning purposes.</li>
 </ul>
 </li>
 <li>Professors:
 <ul>
-<li>Self-evaluation purpose. Get to know their strengths and weaknesses from constructive feedback.</li>
-<li>Track their progress and improvement over time.</li>
-<li>See how the course is perceived from students’ point of view.</li>
+<li>Get constructive feedback on their strengths, weaknesses, and progress over time from students’ point of view for self-evaluation purposes.</li>
 </ul>
 </li>
 </ul>
@@ -138,18 +135,18 @@
 <div class="section level2">
 <h2 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a>
 </h2>
-<p>First, we have the flowchart of our functions, and you can see how they work with each other as shown in the figure below:</p>
+<p>First, we have the following flowchart summarizing the relationship and dependence among all functions in this package:</p>
 <p><img src="Functions.jpg" width="390" style="display: block; margin: auto;"></p>
-<p>There are ten functions in this package. The first three in green generate the URL to start the whole scraping procedure. Those in blue are the body of the package responsible for summarization and visualization. The last one in yellow is used to launch the Shiny dashboard.</p>
+<p>There are ten functions in total. The first three functions in the green box generate the URL for the scraping procedure used in other functions. The next seven functions in the blue box are the body of the package responsible for summarization and visualization. The last one in the yellow box is used to launch the Shiny dashboard.</p>
 <p>In short, firstly, a URL is generated using the professor’s name, department, and university name. Then the comments and ratings are scraped, summarized, and plotted. All the outputs are then visualized in the Shiny dashboard.</p>
-<p>All functions that scrape below use <code>polite</code> package, and we do try our very best to be ethical scrapers. Let us know if there are any issues with using the website data, and we will modify it accordingly.</p>
+<p>All functions that drive webscrapping use the <code>polite</code> package, and we do try our very best to be ethical scrapers. Let us know if there are any issues with using the website data, and we will modify it accordingly.</p>
 <div class="section level3">
 <h3 id="get_all_schools">
 <code>get_all_schools</code><a class="anchor" aria-label="anchor" href="#get_all_schools"></a>
 </h3>
 <ul>
-<li>This function generates a URL given the name of an university.</li>
-<li>It can be used independently, but it is used as a helper function to filter and find the professor of interest in <code>get_tid</code> function.</li>
+<li>This function finds the university’s URL using its name.</li>
+<li>It can be used independently, and it is also used as a helper function to filter and find the professor of interest in the <code>get_tid</code> function.</li>
 <li>For future development, it can be used for campus evaluation as well.</li>
 </ul>
 <p>Examples:</p>
@@ -166,9 +163,9 @@
 <code>general_info</code><a class="anchor" aria-label="anchor" href="#general_info"></a>
 </h3>
 <ul>
-<li>This function generates the general information for a professor.</li>
+<li>This function extracts general information on a professor.</li>
 <li>It takes a URL and extracts the professor’s name, department, and university.</li>
-<li>It can be used independently, but it is used as a helper function to filter and find the professor of interest in <code>get_tid</code> function.</li>
+<li>It can be used independently, and it is also used as a helper function to filter and find the professor of interest in the <code>get_tid</code> function.</li>
 </ul>
 <p>Examples:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -196,8 +193,8 @@
 <code>get_tid</code><a class="anchor" aria-label="anchor" href="#get_tid"></a>
 </h3>
 <ul>
-<li>This function generates the URL given the information of the professor.</li>
-<li>The name argument should be the full name and is required. The university argument is also required, but the department argument is optional.</li>
+<li>This function extracts the professor’s ID and combines it with general information.</li>
+<li>The name argument is required to be a full name and the university argument is also required. The department argument is optional.</li>
 <li>The function uses <code><a href="https://rvest.tidyverse.org/reference/html_text.html" class="external-link">rvest::html_text</a></code> to check nodes and regular expression to extract ids.</li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -217,8 +214,8 @@
 <code>get_url</code><a class="anchor" aria-label="anchor" href="#get_url"></a>
 </h3>
 <ul>
-<li>This function takes the same argument as <code>get_tid</code>. It assesses the tid(s) first and then generate the corresponding url(s).</li>
-<li>With this function, we can absolutely use name, department, and university as direct inputs for further functions, but to restrict the number of scraping to the minimum, we would only scrape once and then use URL as input for the future.</li>
+<li>This function takes the same arguments as <code>get_tid</code>. It assesses the tid(s) first and then generate the corresponding URL(s).</li>
+<li>With this function, we can use name, department, and university as direct inputs for further functions. The advantage is that we can restrict the number of scraping to the minimum - only scrape once and then use URL as input for the future.</li>
 </ul>
 <p>Examples:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -230,10 +227,9 @@
 <code>comment_info</code><a class="anchor" aria-label="anchor" href="#comment_info"></a>
 </h3>
 <ul>
-<li>This function extracts the comments for a given URL.</li>
-<li>It separates the comments according to the year and course</li>
+<li>This function extracts the comments together with the year and course for a given URL.</li>
 <li>It also extracts the number of thumbs up and down for each comment.</li>
-<li>This function can filter the comments shown for those after a specific year.</li>
+<li>This function can filter the comments and only show those after a specific year.</li>
 </ul>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/comment_info.html">comment_info</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=1031282"</span>, y <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span>
@@ -268,8 +264,9 @@
 <code>sentiment_info</code><a class="anchor" aria-label="anchor" href="#sentiment_info"></a>
 </h3>
 <ul>
-<li>This function does sentiment analysis on the comments.</li>
-<li>It generates the set of <em>positive</em>, <em>negative</em>, and <em>tags</em> words for a professor.</li>
+<li>This function does sentiment analysis on the comments and generates sets of <em>positive</em> and <em>negative</em> words with their number of occurrences.</li>
+<li>It can also show <em>tags</em> from the website with the number of occurrences.</li>
+<li>User can decide which set of words/tags to show.</li>
 <li>It can filter from a certain year up to the present.</li>
 </ul>
 <p>Example:</p>
@@ -323,27 +320,28 @@
 <h3 id="sentiment_plot">sentiment_plot<a class="anchor" aria-label="anchor" href="#sentiment_plot"></a>
 </h3>
 <ul>
-<li>This function visualizes the comments using a word cloud.</li>
-<li>It can generate plots corresponding to <em>positive</em>, <em>negative</em>, and <em>tags</em> words, respectively.</li>
+<li>This function visualizes the output of the <code>sentiment_info</code> function using a word cloud.</li>
+<li>It can generate plots corresponding to <em>positive</em> words, <em>negative</em> words, and <em>tags</em> , respectively.</li>
 <li>It can filter from a certain year up to the present.</li>
 </ul>
 <p>Examples:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/sentiment_plot.html">sentiment_plot</a></span><span class="op">(</span>url <span class="op">=</span> <span class="st">"https://www.ratemyprofessors.com/ShowRatings.jsp?tid=69792"</span>, y <span class="op">=</span> <span class="fl">2009</span>, word <span class="op">=</span> <span class="st">'Positive'</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = "word"</span></code></pre></div>
-<div id="htmlwidget-0592faf68d1d92efd59e" style="width:700px;height:432.632880098888px;" class="wordcloud2 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0592faf68d1d92efd59e">{"x":{"word":["best","great","enjoyed","helped","helpful","nice","amazing","avid","awesome","enjoyable","fine","friendly","golden","good","improvements","interesting","like","loved","loves","manageable","meaningful","outstanding","progress","recommend","spiritual","succeed","sweetheart","work"],"freq":[4,4,3,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":45,"backgroundColor":"transparent","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
+<div id="htmlwidget-52de5c15a18661d463a2" style="width:700px;height:432.632880098888px;" class="wordcloud2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-52de5c15a18661d463a2">{"x":{"word":["best","great","enjoyed","helped","helpful","nice","amazing","avid","awesome","enjoyable","fine","friendly","golden","good","improvements","interesting","like","loved","loves","manageable","meaningful","outstanding","progress","recommend","spiritual","succeed","sweetheart","work"],"freq":[4,4,3,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":45,"backgroundColor":"transparent","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
 </div>
 <div class="section level3">
 <h3 id="ratings_info">
 <code>ratings_info</code><a class="anchor" aria-label="anchor" href="#ratings_info"></a>
 </h3>
 <ul>
-<li>Given the URL, it generates the rating info</li>
-<li>It creates three outputs:
+<li>Given the URL, it extracts and summarizes all rating information on an professor.</li>
+<li>It creates a list of three outputs:
 <ul>
-<li>number of comments,</li>
-<li>table including the year, course, quality, difficulty, and overall rating with some other info regarding the course or studen.</li>
+<li>a number of comments</li>
+<li>a table including the year, course, quality, difficulty, and overall rating with some other information regarding the course or the student</li>
+<li>a table of summary statistics of the above table.</li>
 </ul>
 </li>
 </ul>
@@ -375,10 +373,8 @@
 <li>Given the URL, it generates the visualization for the ratings.</li>
 <li>It creates four subplots:
 <ul>
-<li>Overall Rating</li>
-<li>Average rating by course</li>
-<li>Average rating by grade</li>
-<li>Average rating by year</li>
+<li>one boxplot of all ratings</li>
+<li>three barplots of average ratings by course, grade, and year</li>
 </ul>
 </li>
 </ul>
@@ -398,7 +394,7 @@
 <div class="section level2">
 <h2 id="testing">Testing<a class="anchor" aria-label="anchor" href="#testing"></a>
 </h2>
-<p>We included different tests for each function to make sure they were working properly. The coverage of the package is 98%. The only function that is not tested is <code>runExample</code>, which is used to launch the Shiny dashboard. Here is the set of things we checked for each function in general:</p>
+<p>We included different tests for each function to make sure that they work properly as we expect. The testing coverage of the package is 98%. The only function that is not tested is the <code>runExample</code> function, which is used to launch the Shiny dashboard. Here is the set of things we checked for each function in general:</p>
 <ul>
 <li>Checking the data type</li>
 <li>Verifying the length of inputs and outputs</li>
@@ -428,7 +424,7 @@
 <div class="section level2">
 <h2 id="shiny-dashboard">Shiny dashboard<a class="anchor" aria-label="anchor" href="#shiny-dashboard"></a>
 </h2>
-<p>As introduced before, <code>runExample</code> would launch our well-designed Shiny dashboard. The dashboard is highly comprehensive and user-friendly. Most importantly, it utilizes and shows all the functionalities discussed so far in an interactive way. We include some screenshots of the Shiny dashboard as below.</p>
+<p>As introduced before, the <code>runExample</code> function is used to launch our well-designed Shiny dashboard. The dashboard is highly comprehensive and user-friendly. Most importantly, it utilizes and shows all the functionalities discussed so far in an interactive way. We include some screenshots of the Shiny dashboard below.</p>
 <p><img src="ShinyHome.png" width="1919" style="display: block; margin: auto;"></p>
 <p><img src="ShinyWordcloud.png" width="1920" style="display: block; margin: auto;"></p>
 <p><img src="ShinyRatings.png" width="1920" style="display: block; margin: auto;"></p>
@@ -468,7 +464,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
