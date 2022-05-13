@@ -38,8 +38,8 @@ get_tid <- function(name, department = NULL, university) {
   sID <- get_all_schools(university) %>% str_extract("[0-9]+")
 
   ### Make url
-  name <- str_replace(name, " ", "+")
-  url <- str_c("https://www.ratemyprofessors.com/search/teachers?query=", name, "&sid=", sID)
+  nameSearch <- str_replace(name, " ", "+")
+  url <- str_c("https://www.ratemyprofessors.com/search/teachers?query=", nameSearch, "&sid=", sID)
 
   ### Read the webpage with polite
   session <- bow(url)
@@ -61,10 +61,15 @@ get_tid <- function(name, department = NULL, university) {
 
   out <- tibble(tID = tID, info)
 
+  stopifnot("No record found for this input combination!" = (nrow(out) > 0))
+
+  Inodat <- str_detect(out$name, regex(name, ignore_case = TRUE)) && str_detect(out$university, regex(university, ignore_case = TRUE))
+  stopifnot("No record found for this input combination!" = Inodat)
+
   ### Filter output
   if (is.null(department)) {
     return(out)
   } else if (!is.null(department)) {
-    return(out[str_detect(toupper(out$department), toupper(department)), ])
+    return(out[str_detect(out$department, regex(department, ignore_case = TRUE)), ])
   }
 }
