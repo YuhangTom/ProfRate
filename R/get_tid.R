@@ -28,8 +28,11 @@
 
 get_tid <- function(name, department = NULL, university) {
   ### Check for input
+  stopifnot("Full name is required!" = isTruthy(name))
+  stopifnot("University is required!" = isTruthy(university))
   stopifnot("Input name must be a character value!" = is.character(name))
   stopifnot("Input university must be a character value!" = is.character(university))
+
   if (!is.null(department)) {
     stopifnot("Input department must be a character value!" = is.character(department))
   }
@@ -63,14 +66,14 @@ get_tid <- function(name, department = NULL, university) {
 
   stopifnot("No professor with this name can be found at this university!" = (nrow(out) > 0))
 
-  Inodat <- sum(str_detect(out$name, regex(name, ignore_case = TRUE)) & str_detect(out$university, regex(university, ignore_case = TRUE)))
+  Inodat <- sum(str_detect(out$name, fixed(name, ignore_case = TRUE)) & str_detect(out$university, fixed(university, ignore_case = TRUE)))
   stopifnot("No professor with this name can be found at this university!" = (Inodat > 0))
 
   ### Filter output
   if (is.null(department)) {
     return(out)
   } else if (!is.null(department)) {
-    outDept <- out[str_detect(out$department, regex(department, ignore_case = TRUE)), ]
+    outDept <- out[str_detect(out$department, fixed(department, ignore_case = TRUE)), ]
     stopifnot("No professor with this name can be found in this department!" = (nrow(outDept) > 0))
     return(outDept)
   }
