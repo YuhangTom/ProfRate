@@ -61,15 +61,17 @@ get_tid <- function(name, department = NULL, university) {
 
   out <- tibble(tID = tID, info)
 
-  stopifnot("No record found for this input combination!" = (nrow(out) > 0))
+  stopifnot("No professor with this name can be found at this university!" = (nrow(out) > 0))
 
   Inodat <- sum(str_detect(out$name, regex(name, ignore_case = TRUE)) & str_detect(out$university, regex(university, ignore_case = TRUE)))
-  stopifnot("No record found for this input combination!" = (Inodat > 0))
+  stopifnot("No professor with this name can be found at this university!" = (Inodat > 0))
 
   ### Filter output
   if (is.null(department)) {
     return(out)
   } else if (!is.null(department)) {
-    return(out[str_detect(out$department, regex(department, ignore_case = TRUE)), ])
+    outDept <- out[str_detect(out$department, regex(department, ignore_case = TRUE)), ]
+    stopifnot("No professor with this name can be found in this department!" = (nrow(outDept) > 0))
+    return(outDept)
   }
 }

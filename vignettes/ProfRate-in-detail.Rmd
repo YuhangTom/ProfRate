@@ -227,7 +227,7 @@ Here is the set of things we checked for each function in general:
 * Verifying the length of inputs and outputs
 * Correct format of the URL
 * Correct set of arguments
-* Error messages
+* Error messages from the input or output checks embedded in the functions
 * Checking plot reproducibility
 
 

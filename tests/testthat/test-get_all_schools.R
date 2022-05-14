@@ -5,6 +5,7 @@ test_that("get_all_schools input work", {
   expect_error(get_all_schools(matrix(1:4, 2)))
   expect_error(get_all_schools(factor(c("a", "b"))))
   expect_error(get_all_schools(c("a", "b")))
+  expect_error(get_all_schools("aaaaaaaaaaaaaaaaaaaaaa"))
 })
 
 test_that("get_all_schools input work", {

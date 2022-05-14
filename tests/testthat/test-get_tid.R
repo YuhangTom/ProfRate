@@ -48,4 +48,7 @@ test_that("get_tid outputs work", {
 
   university <- "Iowa State"
   expect_error(get_tid(name = name, university = university))
+
+  department <- "Statistics"
+  expect_error(get_tid(name = name, department = department, university = university))
 })

@@ -27,6 +27,8 @@ get_all_schools <- function(school_name) {
     html_nodes(".bJboOI") %>%
     html_attr("href")
 
+  stopifnot("University provided not found!" = (length(Links) > 0))
+
   School_list <- c()
 
   for (i in 1:length(Links)) {
