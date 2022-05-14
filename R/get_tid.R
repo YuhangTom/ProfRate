@@ -28,8 +28,8 @@
 
 get_tid <- function(name, department = NULL, university) {
   ### Check for input
-  stopifnot("Full name is required!" = isTruthy(name))
-  stopifnot("University is required!" = isTruthy(university))
+  stopifnot("Full name is required!" = !is.null(name))
+  stopifnot("University is required!" = !is.null(university))
   stopifnot("Input name must be a character value!" = is.character(name))
   stopifnot("Input university must be a character value!" = is.character(university))
 
