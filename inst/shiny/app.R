@@ -88,7 +88,11 @@ server <- function(input, output, session) {
   })
 
   url1 <- eventReactive(input$updateWC, {
-    get_url(name = input$Name1, department = input$Department1, university = input$University1)
+    if (!isTruthy(input$Department1)) {
+      get_url(name = input$Name1, department = NULL, university = input$University1)
+    } else {
+      get_url(name = input$Name1, department = input$Department1, university = input$University1)
+    }
   })
 
   year1 <- eventReactive(input$updateWC, {
@@ -96,7 +100,11 @@ server <- function(input, output, session) {
   })
 
   url2 <- eventReactive(input$updateRP, {
-    get_url(name = input$Name2, department = input$Department2, university = input$University2)
+    if (!isTruthy(input$Department2)) {
+      get_url(name = input$Name2, department = NULL, university = input$University2)
+    } else {
+      get_url(name = input$Name2, department = input$Department2, university = input$University2)
+    }
   })
 
   year2 <- eventReactive(input$updateRP, {

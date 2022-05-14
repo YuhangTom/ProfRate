@@ -6,6 +6,9 @@ test_that("get_tid inputs work", {
   expect_error(get_tid(factor(c("a", "b"))))
   expect_error(get_tid(c("a", "b")))
   expect_error(get_tid(name = "aaaaaaaaaaaaaaaaa", university = "aaaaaaaaaaaaaaaa"))
+  expect_error(get_tid(name = NULL, university = NULL))
+  expect_error(get_tid(name = NULL, university = "iowa state"))
+  expect_error(get_tid(name = "daniel", university = NULL))
 })
 
 
